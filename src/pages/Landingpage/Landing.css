@@ -1,0 +1,38 @@
+.landing__wrapper {
+  padding-left: 17%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing__content > h3 {
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 143%;
+  /* identical to box height, or 69px */
+  margin: 2% 0 0 0;
+  letter-spacing: 1.1px;
+  color: #4e9f3d;
+}
+
+.landing__content > p {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 143.5%;
+  /* identical to box height, or 29px */
+  margin: 0;
+  letter-spacing: -0.4px;
+  color: #585858;
+}
+
+.landing__content > button {
+  background: #4e9f3d;
+  border-radius: 42px;
+  border: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  margin: 1% 0;
+  padding: 7px 20px;
+  cursor: pointer;
+}
