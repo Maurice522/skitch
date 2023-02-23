@@ -11,9 +11,9 @@ const Landing = () => {
         <div className="landing__content">
           <h3>The FOOD STOCK Exchange</h3>
           <p>To experience this wonderful journey join now</p>
-          {/* <a className="link" href="https://forms.gle/a4pdvX6xtTVxTmNf7"> */}
+          <a className="link" href="https://forms.gle/a4pdvX6xtTVxTmNf7">
             <button>Join Waitlist</button>
-          {/* </a> */}
+          </a>
         </div>
         <Animation />
       </div>
