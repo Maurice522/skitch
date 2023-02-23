@@ -23,7 +23,7 @@
 .gif {
   object-fit: cover;
   display: flex;
-  max-width: 100%;
+  max-width: 98%;
   align-items: center;
   justify-content: center;
 }

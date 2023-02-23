@@ -10,7 +10,7 @@
   font-size: 45px;
   line-height: 143%;
   /* identical to box height, or 69px */
-  margin: 2% 0 0 0;
+  margin: 4% 0 0 0;
   letter-spacing: 1.1px;
   color: #4e9f3d;
 }
@@ -29,7 +29,6 @@
   background: #4e9f3d;
   border-radius: 42px;
   border: none;
-  font-weight: 600;
   font-size: 18px;
   color: #fff;
   margin: 1% 0;

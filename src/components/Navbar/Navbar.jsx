@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <nav className="nav__container">
         <span>Skitch</span>
-        <a href="mailto: dhruv@skitch.in">
+        <a href="mailto:dhruv@skitch.in">
           <button>Contact</button>
         </a>
       </nav>
