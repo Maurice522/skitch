@@ -7,9 +7,9 @@ import "./Animation.css";
 const Animation = () => {
   return (
     <div className="animate__container">
-      <img src={bg} alt="" className="bg" />
-      <img src={burger} alt="" className="burger" />
-      {/* <img src={gif} alt="" className="gif" /> */}
+      {/* <img src={bg} alt="" className="bg" />
+      <img src={burger} alt="" className="burger" /> */}
+      <img src={gif} alt="" className="gif" />
     </div>
   );
 };

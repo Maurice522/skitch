@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav className="nav__container">
         <span>Skitch</span>
         <a href="mailto:connect@skitch.in">
-          <button>Contact us</button>
+          <button>Contact</button>
         </a>
       </nav>
     </>

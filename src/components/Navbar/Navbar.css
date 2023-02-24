@@ -8,7 +8,7 @@
 }
 
 .nav__container > span {
-  margin-left: 17%;
+  padding-left: 17%;
   text-transform: uppercase;
   font-style: italic;
   user-select: none;
@@ -28,4 +28,23 @@
   border: none;
   padding: 7px 20px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 499px) {
+  .nav__container {
+    background-color: #fff;
+    padding-top: 3%;
+    gap: 38%;
+  }
+
+  .nav__container > span {
+    padding-left: 1.7em;
+    font-size: 20px;
+    color: #f59428;
+  }
+
+  .nav__container > a > button {
+    border: 1px solid #797979;
+    font-size: 14px;
+  }
 }

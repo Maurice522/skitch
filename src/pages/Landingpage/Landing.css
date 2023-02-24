@@ -35,3 +35,19 @@
   padding: 7px 20px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 499px) {
+  .landing__wrapper {
+    padding: 0 5% 0 9%;
+  }
+  .landing__content > h3 {
+    margin-top: 25%;
+    font-size: 20px;
+  }
+
+  .landing__content > p,
+  .landing__content > a > button {
+    font-size: 14px;
+    margin-top: 5%;
+  }
+}
