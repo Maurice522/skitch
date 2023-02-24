@@ -6,7 +6,7 @@
 
 .burger {
   position: fixed;
-  height: 2.5rem;
+  height: 2.2rem;
   bottom: 40%;
   left: 20%;
   animation: motion 7.6s ease-in-out infinite;
