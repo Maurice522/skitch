@@ -21,11 +21,7 @@
 }
 
 .gif {
-  object-fit: cover;
-  display: flex;
-  max-width: 98%;
-  align-items: center;
-  justify-content: center;
+  display: none;
 }
 
 /* Keyframes */
@@ -96,9 +92,18 @@
   }
   .gif {
     margin-top: 10%;
+    object-fit: cover;
+    display: flex;
+    max-width: 98%;
+    align-items: center;
+    justify-content: center;
+  }
+  .bg {
+    display: none;
   }
   .burger {
     height: 1rem;
+    display: none;
     bottom: 27%;
     left: 0;
   }

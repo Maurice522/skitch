@@ -9,7 +9,7 @@ const Animation = () => {
     <div className="animate__container">
       <img src={bg} alt="" className="bg" />
       <img src={burger} alt="" className="burger" />
-      {/* <img src={gif} alt="" className="gif" /> */}
+      <img src={gif} alt="" className="gif" />
     </div>
   );
 };
