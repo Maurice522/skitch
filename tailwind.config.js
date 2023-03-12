@@ -10,7 +10,8 @@ module.exports = {
         'stock' : '0px 4px 6px #F59428',
         'lan' : ' 0px 4px 3px rgba(245, 148, 40, 0.51)',
         'lan1' : '0px 4px 9px rgba(245, 148, 40, 0.81)',
-        'eff' : '0px 4px 5px rgba(245, 148, 40, 0.76)'
+        'eff' : '0px 4px 5px rgba(245, 148, 40, 0.76)',
+        'skitch': '0px 4px 31px rgba(245, 148, 40, 0.22)'
       },
       fontFamily: {
         'nav' : ['Poppins']
@@ -34,6 +35,9 @@ module.exports = {
       },
       fontSize: {
         'eff' : '64px'
+      },
+      backgroundImage: {
+        'tri' : "url('../public/Vector 47.png')"
       }
     },
   },

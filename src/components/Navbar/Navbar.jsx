@@ -18,7 +18,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="w-screen">
         <div className="flex flex-row bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
           <span className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-4xl max-md:text-xl absolute left-[135px] max-md:top-[20px] top-[52px] max-md:left-[17px] ">
             SKITCH
