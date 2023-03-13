@@ -2,7 +2,7 @@ export default function Reason() {
     return (
         <>
             <div className="flex flex-col">
-                <div className="font-normal text-center text-[64px] max-sm:text-[24px] max-sm:leading-[55px] max-sm:ml-[5%] max-sm:text-left drop-shadow-lan1 mt-14 max-sm:mt-4 leading-[147px]">
+                <div className="font-normal text-center text-[64px] max-sm:text-[24px] max-sm:leading-[55px] max-sm:text-left drop-shadow-lan1 mt-14 max-sm:mt-4 leading-[147px]">
                     Who are we doing this for?
                 </div>
                 <div className="max-sm:ml-4 ml-[135px] font-nav font-normal text-2xl max-sm:text-sm max-sm:leading-[24px] leading-[42px] max-sm:max-w-[251px]">Skitch is Innovative, Engaging Solution to the problems of all the food stakeholders be it the</div>
