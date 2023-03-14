@@ -29,40 +29,42 @@ const Landing = () => {
   return (
     <div className="mb-4 overflow-hidden">
       <Navbar />
-      <div className="flex ml-[135px] max-sm:items-start max-md:flex-col flex-row mt-[98px] max-sm:mt-[42px] max-sm:ml-4 gap-2">
-        <div className="flex flex-col gap-14 max-sm:gap-4 basis-0.5">
+      <div className="flex lg:ml-[135px] sm:max-lg:gap-4 max-lg:ml-4 max-sm:items-start max-lg:flex-col flex-row mt-[98px] max-sm:mt-[42px] max-sm:ml-4 gap-0">
+        <div className="flex flex-col lg:mt-20 gap-14 max-sm:gap-4 basis-1/4">
           <span className="font-bold text-6xl max-sm:text-2xl max-sm:leading-[31px] leading-[72px] tracking-lan drop-shadow-stock">
-            THE FOOD STOCK EXCHANGE
+            THE FOOD <span className="whitespace-pre">STOCK EXCHANGE</span>
           </span>
-          <div className="font-nav font-normal max-sm:font-medium max-sm:max-w-[251px] max-sm:max-h-[34px] max-sm:text-xs max-sm:leading-[17px] text-2xl text-[#3E3E3E] leading-[34px]">
+          <span className="font-nav font-normal max-sm:font-medium max-sm:max-w-[251px] max-sm:max-h-[34px] max-sm:text-xs max-sm:leading-[17px] text-2xl text-[#3E3E3E] leading-[34px]">
             To experience this wonderful journey be the first one to know when we are live
-          </div>
-          <button className="self-center max-sm:w-[120px] w-[236px] h-[58px] max-sm:h-[33.48px] bg-black text-white tracking-comm rounded-xl font-nav font-semibold text-xl max-sm:text-[10px] max-sm:leading-[14px] max-sm:text-left text-right shadow-lan p-2 leading-[28px]">
+          </span>
+          <button className="max-sm:w-[120px] w-[236px] h-[58px] max-sm:h-[33.48px] bg-black text-white tracking-comm rounded-xl font-nav font-semibold text-xl max-sm:text-[10px] max-sm:leading-[14px] max-sm:text-left text-center max-sm:shadow-none shadow-lan p-2 leading-[28px]">
             Join the Community
           </button>
           <span className="drop-shadow-lan max-sm:text-left max-sm:ml-2 font-bold text-2xl max-sm:text-sm max-sm:leading-[18px] leading-[31px] text-center text-black w-[158px] h-[31px]">
             #SKITCHERS
           </span>
         </div>
-        <div className="relative">
-          <img alt="" src="/Layer_1.jpg" className="w-[742px] h-[750px] md:max-lg:w-[500px] md:max-lg:h-[600px] max-sm:w-[343px] max-sm:h-[267px]" />
-          <img alt="" src="/Phone.jpg" className="w-[247px] h-[507px] md:max-lg:w-[170px] md:max-lg:h-[400px] max-sm:left-[31%] top-[2%] right-[37%] absolute max-sm:w-[100px] max-sm:h-[166px]" />
+        <div className="relative max-lg:bg-[#F7F7F7] max-lg:rounded-lg max-lg:w-[100%]">
+          <img alt="" src="/Phone.png" className="w-[247px] sm:max-md:left-[20%] md:max-lg:left-[18%] sm:max-lg:w-[24%] sm:max-lg:h-[65%] h-[507px] lg:max-xl:w-[38%] lg:max-xl:h-[459px] max-sm:left-[27%] top-[2%] right-[37%] absolute max-sm:w-[28%] max-sm:h-[166px]" />
+          <img alt="" src="/Layer 1.png" className="lg:w-[742px] lg:h-[750px] max-sm:w-[90%] max-sm:h-[267px]" />
         </div>
       </div>
       <Reason />
       <Trifecta />
       <div className="flex flex-col items-center gap-4 mt-20 text-center max-sm:items-start max-sm:ml-4 max-sm:mt-0">
         <div className="font-medium max-sm:text-[10px] max-sm:leading-3 font-nav text-[32px] leading-[42px] text-center">In Mathematical terms here is how we would summaries SKITCH</div>
-        <div className="bg-black rounded-card max-sm:rounded-lg h-[226px] max-sm:w-[300px] max-sm:h-[63px]">
-          <div className="font-semibold font-nav text-[26px] leading-[34px] text-white max-sm:text-[10px] max-sm:leading-3">Food Ordering + Stock Market + Customer Retention =</div>
-          <div className="italic font-bold max-sm:leading-[22px] max-sm:text-[14px] font-nav text-[40px] leading-[22px] text-transparent bg-clip-text bg-gradient-to-b from-[#DC3535] to-[#F59428]">SKITCH</div>
+        <div className="bg-black xl:w-[992px] rounded-card max-sm:rounded-lg h-[226px] max-sm:w-[300px] max-sm:h-[63px]">
+          <div className="max-sm:translate-y-4 sm:max-xl:translate-y-20 sm:max-xl:p-4 xl:translate-y-[250%]">
+            <span className="font-semibold font-nav text-[26px] leading-[34px] text-white max-sm:text-[8px] max-sm:leading-3">Food Ordering + Stock Market + Customer Retention =</span>
+            <span className="italic font-bold max-sm:leading-[22px] max-sm:text-[12px] font-nav text-[40px] leading-[22px] text-transparent bg-clip-text bg-gradient-to-b from-[#DC3535] to-[#F59428]">SKITCH</span>
+          </div>
         </div>
       </div>
       <div className="flex flex-row max-sm:w-[343px] max-sm:h-[63px] justify-center gap-4 mt-6 max-sm:justify-start max-sm:ml-4">
         <span className="font-bold text-[32px] leading-[42px] max-sm:text-sm max-sm:leading-[18px]">Join the Community Now</span>
         <button className="w-[155px] h-[44px] max-sm:w-[90px] max-sm:h-[30px] font-nav font-semibold text-base max-sm:rounded-md max-sm:text-[10px] max-sm:leading-[14px] leading-[22px] bg-black text-white rounded-xl">Click Here</button>
       </div>
-      <div className="font-bold max-sm:w-[91px] text-center drop-shadow-lan max-sm:leading-[18px] max-sm:text-sm max-sm:mt-0 leading-[31px] text-2xl mt-4 max-sm:ml-[25%] max-sm:text-left">#SKITCHERS</div>
+      <div className="font-bold max-sm:w-[91px] text-center drop-shadow-lan max-sm:leading-[18px] max-sm:text-sm max-sm:-mt-[12px] leading-[31px] text-2xl mt-6 max-sm:ml-[25%] max-sm:text-left">#SKITCHERS</div>
     </div>
   );
 };
