@@ -1,7 +1,10 @@
 import React from "react";
+import LogInModal from "../../components/LogInModal";
 // import Animation from "../../components/Animation/Animation";
 import Navbar from "../../components/Navbar/Navbar";
+import OtpModal from "../../components/OtpModal";
 import Reason from "../../components/Reason";
+import SignUpModal from "../../components/SignUpModal";
 import Trifecta from "../../components/Trifecta";
 import "./Landing.css";
 
@@ -67,6 +70,15 @@ const Landing = () => {
         <button className="w-[155px] h-[44px] max-sm:w-[90px] max-sm:h-[30px] font-nav font-semibold text-base max-sm:rounded-md max-sm:text-[10px] max-sm:leading-[14px] leading-[22px] bg-black text-white rounded-xl">Click Here</button>
       </div>
       <div className="font-bold max-sm:mt-[67px] text-center drop-shadow-lan max-sm:leading-[18px] max-sm:text-sm leading-[31px] text-2xl mt-6 max-sm:text-center">#SKITCHERS</div>
+    <SignUpModal 
+      open={true}
+    /> 
+     <LogInModal 
+      open={true}
+    />
+    <OtpModal 
+      open={true}
+    />
     </div>
   );
 };
