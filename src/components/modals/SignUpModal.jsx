@@ -31,7 +31,7 @@ export default function SignUpModal(props) {
                     </div>
                     <div
                         className="relative hover:cursor-pointer left-[80%]"
-                    // onClick={props.close}
+                        onClick={props.close}
                     >
                         <img src="./+.png" alt="close" />
                     </div>
@@ -76,9 +76,9 @@ export default function SignUpModal(props) {
                         <button className="relative top-[65px] max-sm:left-[60%] text-[#808080] w-[109px] h-[46px] left-[70%] bg-[#F3F3F3] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Next</button>
                     </form>
                 </div>
-                <div className="flex flex-row overflow-x-hidden w-[80%] max-sm:left-1 relative left-[10%] top-20">
+                <div className="flex flex-row gap-2 h-11 overflow-x-hidden overflow-y-hidden w-[80%] max-sm:left-1 relative left-[10%] top-20">
                     <div className="h-0 border w-[210px]"></div>
-                    <span className="h-2">or</span>
+                    <span className="relative h-2 text-base -top-[6px]">or</span>
                     <div className="h-0 border w-[210px]"></div>
                 </div>
                 <button className="relative p-3 max-sm:top-24 max-sm:left-1 top-20 left-[22%] w-[280px] border border-solid rounded-md border-[#E1E1E1]">
@@ -87,7 +87,7 @@ export default function SignUpModal(props) {
                         <span>Continue with Google</span>
                     </div>                    
                 </button>
-                <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-24 left-[22%]">
+                <div className="relative overflow-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-24 left-[22%]">
                     <span>Already have an account? </span>
                     <a href="/" className="text-[#DC3535]">Log in</a>
                 </div>

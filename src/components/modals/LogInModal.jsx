@@ -22,7 +22,7 @@ export default function LogInModal(props) {
                     </div>
                     <div
                         className="relative hover:cursor-pointer left-[80%]"
-                    // onClick={props.close}
+                        onClick={props.close}
                     >
                         <img src="./+.png" alt="close" />
                     </div>
@@ -59,7 +59,7 @@ export default function LogInModal(props) {
                         <span>Continue with Google</span>
                     </div>
                 </button>
-                <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-[40%] left-[10%]">
+                <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-[35%] left-[10%]">
                     <span>New to Skitch? </span>
                     <a href="/" className="text-[#DC3535]">Create Account</a>
                 </div>

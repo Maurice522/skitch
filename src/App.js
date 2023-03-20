@@ -1,8 +1,10 @@
-// import { Routes, Route } from "react-router-dom";
-// import routes from "./Route";
-import SignUpModal from "./components/SignUpModal";
-import LogInModal from "./components/LogInModal";
-import OtpModal from "./components/OtpModal";
+// // import { Routes, Route } from "react-router-dom";
+// // import routes from "./Route";
+// import SignUpModal from "./components/modals/SignUpModal";
+// import LogInModal from "./components/modals/LogInModal";
+// import OtpModal from "./components/modals/OtpModal";
+import Layout from "./components/Layout";
+import Home from "./pages";
 
 function App() {
   return (
@@ -12,16 +14,19 @@ function App() {
     //   ))}
     // </Routes>
     <div>
-          <SignUpModal 
-      open={true}
-    /> 
-     <LogInModal 
-      open={true}
-    />
-    <OtpModal 
-      open={true}
-      num={4574578}
-    />
+      {/* <SignUpModal
+        open={true}
+      />
+      <LogInModal
+        open={true}
+      />
+      <OtpModal
+        open={true}
+        num={4574578}
+      /> */}
+      <Layout>
+        <Home />
+      </Layout>
     </div>
   );
 }
