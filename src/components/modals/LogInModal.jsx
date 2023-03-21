@@ -1,11 +1,84 @@
+import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import { auth } from '../../firebase/config';
+import { login, logout } from '../../redux/userSlice';
+
+
 export default function LogInModal(props) {
+    const provider = new GoogleAuthProvider();
+const[loading,setLoading]=useState(false)
+const[data,setData]=useState({email:"",pass:""})
+const dispatch=useDispatch()
+
+ //HANDLE LOGIN
+ const handleLogin=async(e)=>{
+    e.preventDefault();
+    setLoading(true)
+    signInWithEmailAndPassword(auth, data.email, data.pass)
+
+      .then(() => {
+        toast.success("Sucessfully logged in");
+        setLoading(false)
+        // navigate("/dashboard");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+        setLoading(false)
+      });
+    }
+
+//CHECK IF USER IS ALREADY LOGGED IN
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          dispatch(
+            login({
+              email: auth.currentUser.email,
+              uid: auth.currentUser.uid,
+              displayName: auth.currentUser.displayName,
+              photoURL: auth.currentUser.photoURL,
+            })
+          )
+        //   navigate("/dashboard")
+        } else {
+          dispatch(logout());
+        }
+      });
+    }, []);
+
+
+//SIGIN USING GOOGLE AUTH
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+          .then(async (userCredential) => {
+            dispatch(
+              login({
+                email: auth.currentUser.email,
+                uid: auth.currentUser.uid,
+                displayName: auth.currentUser.displayName,
+                profilePic: auth.currentUser.photoURL,
+              })
+            );
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      };
+
     return (
+        <>
+  
         <div style={{
             visibility: props.open ? "visible" : "hidden",
             pointerEvents: "none",
             zIndex: "99"
         }}
             className="fixed top-0 left-0 w-[100%] min-h-screen backdrop-brightness-50">
+            
             <div
                 className="fixed flex flex-col w-11/12 max-w-xl overflow-y-auto bg-white"
                 style={{
@@ -51,12 +124,12 @@ export default function LogInModal(props) {
                         <img alt="" src="./Email.jpg" />
                         <span>Continue with Email</span>
                     </div>
-                </button>    
-                <br></br>            
+                </button>  
+                <br></br>        
                 <button className="relative p-3 max-sm:top-24 max-sm:left-1 top-24 left-[10%] w-[80%] border border-solid rounded-md border-[#E1E1E1]">
                     <div className="flex flex-row justify-center gap-2">
                         <img alt="" src="./google.jpg" />
-                        <span>Continue with Google</span>
+                        <span onClick={signInWithGoogle}>Continue with Google</span>
                     </div>
                 </button>
                 <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-[35%] left-[10%]">
@@ -65,5 +138,6 @@ export default function LogInModal(props) {
                 </div>
             </div>
         </div>
+        </>
     )
 }

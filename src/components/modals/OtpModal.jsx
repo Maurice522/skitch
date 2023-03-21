@@ -22,7 +22,7 @@ export default function OtpModal(props) {
                     </div>
                     <div
                         className="relative hover:cursor-pointer left-[80%]"
-                    // onClick={props.close}
+                    onClick={props.close}
                     >
                         <img src="./+.png" alt="close" />
                     </div>

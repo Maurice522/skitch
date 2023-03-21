@@ -1,11 +1,12 @@
-import { useState } from "react"
+import {useState } from "react"
 import LogInModal from "../modals/LogInModal"
 import SignUpModal from "../modals/SignUpModal"
 
 export default function NewNav() {
-
+  
     const [logIn, openLogIn] = useState(false)
     const [signUp, openSignUp] = useState(false)
+
 
     function login() {
         openLogIn(!logIn)
@@ -14,6 +15,11 @@ export default function NewNav() {
     function signup() {
         openSignUp(!signUp)
     }
+
+
+
+
+
 
     return (
         <div className="overflow-x-hidden">
