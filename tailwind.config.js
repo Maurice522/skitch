@@ -39,7 +39,15 @@ module.exports = {
       },
       backgroundImage: {
         'tri' : "url('../public/Vector 47.png')",
-        'burger' : "url('../public/Burger.jpg')"
+        'burger' : "url('../public/Burger.jpg')",
+        'pasta' : "url('../public/Pasta.jpg')",
+        'veg' : "url('../public/Veg_Restaurant.jpg')",
+        'pizza' : "url('../public/Pizza.jpg')",
+        'ice' : "url('../public/Ice_Cream.jpg')",
+        'italian' : "url('../public/Italian_Hunt.jpg')",
+        'pizzeria' : "url('../public/Pizzeria.jpg')",
+        'tandoori' : "url('../public/Tandoori.jpg')",
+        'momos' : "url('../public/Momos.jpg')"
       },
     },
   },
