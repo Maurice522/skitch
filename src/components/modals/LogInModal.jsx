@@ -4,14 +4,17 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { auth } from '../../firebase/config';
-import { login, logout } from '../../redux/userSlice';
+import { login, logout } from '../../redux/userSlice'; 
+import OtpModal from '../modals/OtpModal'
 
 
 export default function LogInModal(props) {
     const provider = new GoogleAuthProvider();
-const[loading,setLoading]=useState(false)
-const[data,setData]=useState({email:"",pass:""})
-const dispatch=useDispatch()
+    const[loading,setLoading]=useState(false)
+    const[data,setData]=useState({email:"",pass:""})
+    const dispatch=useDispatch()
+    const [phone,setPhone] = useState("")
+    const [otpModal,setOtpModal] = useState(false)
 
  //HANDLE LOGIN
  const handleLogin=async(e)=>{
@@ -50,6 +53,9 @@ const dispatch=useDispatch()
       });
     }, []);
 
+    function onchange(e) {
+      setPhone(e.target.value)
+    }
 
 //SIGIN USING GOOGLE AUTH
     const signInWithGoogle = () => {
@@ -71,7 +77,10 @@ const dispatch=useDispatch()
 
     return (
         <>
-  
+        <OtpModal 
+          open={otpModal}
+          num={phone}
+        />
         <div style={{
             visibility: props.open ? "visible" : "hidden",
             pointerEvents: "none",
@@ -111,7 +120,7 @@ const dispatch=useDispatch()
                             placeholder='Phone Number'
                         />
                         <br></br>
-                        <button className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Send one time password</button>
+                        <button onClick={()=> {setOtpModal(true)}} className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Send one time password</button>
                     </form>
                 </div>
                 <div className="flex flex-row gap-2 w-[80%] max-sm:left-1 relative left-[10%] top-[90px]">
