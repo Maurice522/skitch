@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { auth } from '../../firebase/config';
 import { login, logout } from '../../redux/userSlice'; 
 import OtpModal from '../modals/OtpModal'
+import LoginByEmail from './LoginByEmailModal';
 
 
 export default function LogInModal(props) {
@@ -15,6 +16,7 @@ export default function LogInModal(props) {
     const dispatch=useDispatch()
     const [phone,setPhone] = useState("")
     const [otpModal,setOtpModal] = useState(false)
+    const [emailModal,setEmailModal] = useState(false)
 
  //HANDLE LOGIN
  const handleLogin=async(e)=>{
@@ -75,11 +77,20 @@ export default function LogInModal(props) {
           });
       };
 
+      function signInWithEmail(e) {
+        e.preventDefault();
+        setEmailModal(!emailModal)
+      }
+
     return (
         <>
         <OtpModal 
           open={otpModal}
           num={phone}
+        />
+        <LoginByEmail 
+          open={emailModal}
+          close={signInWithEmail}
         />
         <div style={{
             visibility: props.open ? "visible" : "hidden",
@@ -128,7 +139,7 @@ export default function LogInModal(props) {
                     <span className="relative h-2 -top-3">or</span>
                     <div className="h-0 border w-[210px]"></div>
                 </div>
-                <button className="relative p-3 max-sm:top-24 max-sm:left-1 top-24 left-[10%] w-[80%] border border-solid rounded-md border-[#E1E1E1]">
+                <button onClick={signInWithEmail} className="relative p-3 max-sm:top-24 max-sm:left-1 top-24 left-[10%] w-[80%] border border-solid rounded-md border-[#E1E1E1]">
                     <div className="flex flex-row justify-center gap-2">
                         <img alt="" src="./Email.jpg" />
                         <span>Continue with Email</span>

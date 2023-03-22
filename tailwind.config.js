@@ -28,7 +28,8 @@ module.exports = {
         'card' : '0px 0px 60px rgba(0, 0, 0, 0.13)',
         'card2' : '0px 0px 61px rgba(0, 0, 0, 0.09)',
         'tap' : '1px 15px rgba(0, 0, 0, 0.18)',
-        'grpcard': '0px 0px 22px rgba(0, 0, 0, 0.06)'
+        'grpcard': '0px 0px 22px rgba(0, 0, 0, 0.06)',
+        'filter' : '0px 0px 12px rgba(0, 0, 0, 0.08)'
       },
       borderRadius: {
         'card' : '30px'
@@ -37,8 +38,9 @@ module.exports = {
         'eff' : '64px'
       },
       backgroundImage: {
-        'tri' : "url('../public/Vector 47.png')"
-      }
+        'tri' : "url('../public/Vector 47.png')",
+        'burger' : "url('../public/Burger.jpg')"
+      },
     },
   },
   plugins: [],
