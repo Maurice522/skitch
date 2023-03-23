@@ -1,16 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.00a96bfd.css",
-    "main.js": "/static/js/main.7801a994.js",
+    "main.css": "/static/css/main.57b98caa.css",
+    "main.js": "/static/js/main.99a46d80.js",
     "static/js/787.acd12348.chunk.js": "/static/js/787.acd12348.chunk.js",
+    "static/media/Pasta.jpg": "/static/media/Pasta.06582239bb867e4f6f34.jpg",
+    "static/media/Burger.jpg": "/static/media/Burger.84c21e91f64f9900dc0c.jpg",
+    "static/media/Pizza.jpg": "/static/media/Pizza.55925a07a28e812b98cc.jpg",
+    "static/media/Pizzeria.jpg": "/static/media/Pizzeria.cff647e8244e93d049e1.jpg",
+    "static/media/Veg_Restaurant.jpg": "/static/media/Veg_Restaurant.4ec1d7ff4c060b01350f.jpg",
+    "static/media/Tandoori.jpg": "/static/media/Tandoori.0a27e52a9520764399dc.jpg",
+    "static/media/Ice_Cream.jpg": "/static/media/Ice_Cream.bc08aed43d04c7008ebe.jpg",
+    "static/media/Italian_Hunt.jpg": "/static/media/Italian_Hunt.75d9389e72bf3ac583d7.jpg",
+    "static/media/Momos.jpg": "/static/media/Momos.1c7c730abaf5b13cf30a.jpg",
     "static/media/Vector 47.png": "/static/media/Vector 47.66b11e1f36432a3c906c.png",
     "index.html": "/index.html",
-    "main.00a96bfd.css.map": "/static/css/main.00a96bfd.css.map",
-    "main.7801a994.js.map": "/static/js/main.7801a994.js.map",
+    "main.57b98caa.css.map": "/static/css/main.57b98caa.css.map",
+    "main.99a46d80.js.map": "/static/js/main.99a46d80.js.map",
     "787.acd12348.chunk.js.map": "/static/js/787.acd12348.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.00a96bfd.css",
-    "static/js/main.7801a994.js"
+    "static/css/main.57b98caa.css",
+    "static/js/main.99a46d80.js"
   ]
 }
