@@ -31,7 +31,8 @@ module.exports = {
         'grpcard': '0px 0px 22px rgba(0, 0, 0, 0.06)',
         'filter' : '0px 0px 12px rgba(0, 0, 0, 0.08)',
         'profile' : '0px 4px 19px rgba(0, 0, 0, 0.17)',
-        'optionCard' : ' 0px 0px 28px rgba(0, 0, 0, 0.1)'
+        'optionCard' : ' 0px 0px 28px rgba(0, 0, 0, 0.1)',
+        'editCard' : '0px 0px 28px rgba(0, 0, 0, 0.1)'
       },
       borderRadius: {
         'card' : '30px'

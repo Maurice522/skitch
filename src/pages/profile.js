@@ -1,4 +1,28 @@
+import { useState } from "react"
+import EditModal from "../components/modals/EditModal"
+import SettingModal from "../components/modals/SettingModal"
+
 export default function Profile() {
+
+    const [editModal,setEditModal] = useState(false)
+    const [settingsModal,setSettingsModal] = useState(false)
+
+    function edModal() {
+        setEditModal(true)
+    }
+
+    function closeEditModal() {
+        setEditModal(false)
+    }
+
+    function settModal() {
+        setSettingsModal(true)
+    }
+
+    function closeSettModal() {
+        setSettingsModal(false)
+    }
+
     return (
         <div className="flex flex-col gap-8 mt-8 max-md:m-4">
             <div className="md:flex md:bg-[#F59428] md:flex-row md:gap-4 md:h-[120px] md:items-center md:mt-auto md:justify-center">
@@ -13,13 +37,13 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="flex flex-row gap-8 max-md:hidden">
-                    <button className="bg-white rounded-lg w-[161px] h-[50px]">
+                    <button onClick={edModal} className="bg-white rounded-lg w-[161px] h-[50px]">
                         <div className="flex flex-row items-center justify-center gap-2">
                             <img src="edit.png" alt="edit" />
                             <span className="font-nav font-normal text-base leading-[24px] text-[#474747]">Edit Profile</span>
                         </div>
                     </button>
-                    <button className="bg-white rounded-lg w-[161px] h-[50px]">
+                    <button onClick={settModal} className="bg-white rounded-lg w-[161px] h-[50px]">
                         <div className="flex flex-row items-center justify-center gap-2">
                             <img src="setting-2.png" alt="setting" />
                             <span className="font-nav font-normal text-base leading-[24px] text-[#474747]">Settings</span>
@@ -30,10 +54,10 @@ export default function Profile() {
             <div className="md:flex md:flex-row md:gap-6 md:justify-center">
                 <div className="flex flex-col max-md:rounded-2xl max-md:shadow-optionCard max-md:gap-2 max-md:justify-center max-md:items-center md:gap-6">
                     <div className="md:hidden flex w-[333px] max-md:justify-center max-md:gap-4  max-md:items-start max-md:p-4 max-md:border-b-2 flex-col  max-md:border-solid max-md-border-[#909090] justify-center md:gap-4 md:p-3 md:border md:border-solid md:border-[#E1E1E1] md:rounded-md">
-                        <button className="flex flex-row gap-1"><img src="edit.png" alt="edit" />
+                        <button onClick={edModal} className="flex flex-row gap-1"><img src="edit.png" alt="edit" />
                             <span className="font-nav font-normal text-base leading-[24px] text-[#474747]">Edit profile</span>
                         </button>
-                        <button className="flex flex-row gap-1"><img src="setting-2.png" alt="setting" />
+                        <button onClick={settModal} className="flex flex-row gap-1"><img src="setting-2.png" alt="setting" />
                             <span className="font-nav font-normal text-base leading-[24px] text-[#474747]">Settings</span>
                         </button>
                     </div> 
@@ -61,6 +85,14 @@ export default function Profile() {
                     <span>Your Orders</span>
                 </div>
             </div>
+            <EditModal 
+                open={editModal}
+                close={closeEditModal}
+            />
+            <SettingModal 
+                open={settingsModal}
+                close={closeSettModal}
+            />
         </div>
     )
 }
