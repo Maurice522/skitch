@@ -1,5 +1,5 @@
-// // import { Routes, Route } from "react-router-dom";
-// // import routes from "./Route";
+import { Routes, Route } from "react-router-dom";
+import routes from "./Route";
 // import SignUpModal from "./components/modals/SignUpModal";
 // import LogInModal from "./components/modals/LogInModal";
 // import OtpModal from "./components/modals/OtpModal";
@@ -12,10 +12,10 @@ import { auth, getUserFromDatabase } from "./firebase/config";
 import { login, logout, setUserData } from './redux/userSlice'
 import Profile from "./pages/profile";
 function App() {
-  const user = useSelector(state=>state.user);
-  const dispatch=useDispatch()
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch()
 
-  console.log("user",user)
+  console.log("user", user)
 
   //CHECK FOR LOGIN/LOGOUT/ALREADY LOGED IN
   useEffect(() => {
@@ -37,41 +37,29 @@ function App() {
   }, []);
 
 
-//FETCH USERDATA FROM FIREBASE
-const fetchdata=async(email)=>{
-  const userDetaill=await getUserFromDatabase(email)
-  dispatch(setUserData(userDetaill))
-}
+  //FETCH USERDATA FROM FIREBASE
+  const fetchdata = async (email) => {
+    const userDetaill = await getUserFromDatabase(email)
+    dispatch(setUserData(userDetaill))
+  }
 
-//CHECK FOR USER
-useEffect(()=>{
-if(user.user&&!user.userData){fetchdata(user.user.email)}
-},[user])
+  //CHECK FOR USER
+  useEffect(() => {
+    if (user.user && !user.userData) { fetchdata(user.user.email) }
+  }, [user])
 
-useEffect(()=>{
-if(user.user){fetchdata(user.user.email)}
-},[])
+  useEffect(() => {
+    if (user.user) { fetchdata(user.user.email) }
+  }, [])
 
   return (
-    // <Routes>
-    //   {routes.map((route) => (
-    //     <Route key={route.name} path={route.path} element={route.component} />
-    //   ))}
-    // </Routes>
     <div>
-      {/* <SignUpModal
-        open={true}
-      />
-      <LogInModal
-        open={true}
-      />
-      <OtpModal
-        open={true}
-        num={4574578}
-      /> */}
       <Layout>
-        {/* <Home /> */}
-        <Profile />
+        <Routes>
+          {routes.map((route) => (
+            <Route key={route.name} path={route.path} element={route.component} />
+          ))}
+        </Routes>
       </Layout>
     </div>
   );
