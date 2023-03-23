@@ -1,0 +1,53 @@
+.outerCont{
+    width: 70%;
+    height: 60px;
+    border-radius: 7px;
+    background-color: white;
+    border: 1px solid black;
+    /* margin-top: 2rem; */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+
+}
+.value{
+    font: normal normal Mulish;
+  color: black;
+  font-size: 1rem;
+}
+.arrowIcon{
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.valueCont{
+    width: 90%;
+    height: 200px;
+    border: 2px solid #BDD5FA;
+    border-radius: 11px;
+    position: absolute;
+    top: 60px;
+    z-index: 10;
+    overflow-y: scroll;
+    background-color: white;
+}
+.valueCont::-webkit-scrollbar {
+    display: none;
+}
+.options{
+    width: 100%;
+    margin: auto;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    
+    color: black;
+    border-radius: 6px;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+.options:hover{
+background-color: #3c4ed6;
+color: white;
+}

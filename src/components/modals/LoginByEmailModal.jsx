@@ -1,5 +1,16 @@
+
 export default function LoginByEmail(props) {
+
+   const handleInputChange=(e)=>{
+const{name,value}=e.target
+props.setData((prev)=>{
+    return {...prev,[name]:value}
+})
+   } 
     return (
+        <>
+         
+        
         <div style={{
             visibility: props.open ? "visible" : "hidden",
             pointerEvents: "none",
@@ -29,25 +40,29 @@ export default function LoginByEmail(props) {
                     </div>
                 </div>
                 <div>
-                    <form>
+                    <form onSubmit={props.handleLogin}>
                         <input
                             className="relative h-[50px] top-[20px] placeholder:font-normal placeholder:font-nav placeholder:text-base placeholder:text-[#808080] bg-[#F3F3F3] left-[10%] w-[80%] max-sm:w-[100%] max-sm:left-0 placeholder:relative placeholder:left-[26px]"
                             id="email"
                             name="email"
                             type="email"
-                            // onChange={onchange}
+                            onChange={handleInputChange}
                             placeholder='Email'
+                            value={props.data.email}
+                            required
                         />                        
                         <input
                             className="relative h-[50px] top-[35px] placeholder:font-normal placeholder:font-nav placeholder:text-base placeholder:text-[#808080] bg-[#F3F3F3] left-[10%] w-[80%] max-sm:w-[100%] max-sm:left-0 placeholder:relative placeholder:left-[26px]"
                             id="password"
-                            name="password"
+                            name="pass"
                             type="password"
-                            // onChange={onchange}
+                            onChange={handleInputChange}
                             placeholder='Password'
+                            value={props.data.pass}
+                            required
                         />
                         <br></br>
-                        <button className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Submit</button>
+                        <button disabled={props.loading} type="submit" className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Submit</button>
                     </form>
                 </div>
                 <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-[35%] left-[10%]">
@@ -56,5 +71,6 @@ export default function LoginByEmail(props) {
                 </div>
             </div>
         </div>
+        </>
     )
 }

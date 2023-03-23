@@ -1,0 +1,26 @@
+.outerCont{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+
+}
+
+.leftCont{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.createResturantBtn{
+    padding: 1rem;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.rightCont{
+    width: 70%;
+    max-height: 99vh;
+    overflow-y: auto;
+}

@@ -27,11 +27,13 @@ export default function LogInModal(props) {
       .then(() => {
         toast.success("Sucessfully logged in");
         setLoading(false)
+        setEmailModal(false)
         // navigate("/dashboard");
       })
       .catch((error) => {
         const errorMessage = error.message;
         toast.error(errorMessage);
+        setEmailModal(false)
         setLoading(false)
       });
     }
@@ -90,7 +92,11 @@ export default function LogInModal(props) {
         />
         <LoginByEmail 
           open={emailModal}
+          setData={setData}
+          data={data}
           close={signInWithEmail}
+          handleLogin={handleLogin}
+          loading={loading}
         />
         <div style={{
             visibility: props.open ? "visible" : "hidden",

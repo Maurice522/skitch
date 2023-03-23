@@ -71,12 +71,22 @@ export const updateUserInDataBase=async(email,data,setIsloading)=>{
 }
 }
   export const uploadMedia = async (media, path) => {
+    let id=new Date().getTime()
     try {
-      await uploadBytesResumable(ref(storage, `${path}/${media.name}`), media);
-      const getMedia = await ref(storage, `${path}/${media.name}`);
+      await uploadBytesResumable(ref(storage, `${path}/${media.name+id}`), media);
+      const getMedia = await ref(storage, `${path}/${media.name+id}`);
       const mediaLink = await getDownloadURL(getMedia);
       return mediaLink;
     } catch (err) {
       console.log("Err: ", err);
     }
   };
+
+  export const createRestaurantInDataBase=async(id,data)=>{
+    try {
+      await setDoc(
+          doc(db, "Restaurant", id),data)       
+  } catch (error) {
+    console.log(error.message)
+  }
+  }
