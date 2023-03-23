@@ -10,6 +10,7 @@ import Home from "./pages";
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, getUserFromDatabase } from "./firebase/config";
 import { login, logout, setUserData } from './redux/userSlice'
+import Profile from "./pages/profile";
 function App() {
   const user = useSelector(state=>state.user);
   const dispatch=useDispatch()
@@ -69,7 +70,8 @@ if(user.user){fetchdata(user.user.email)}
         num={4574578}
       /> */}
       <Layout>
-        <Home />
+        {/* <Home /> */}
+        <Profile />
       </Layout>
     </div>
   );
