@@ -90,3 +90,18 @@ export const updateUserInDataBase=async(email,data,setIsloading)=>{
     console.log(error.message)
   }
   }
+
+  // getDocs
+export const getRestaurantFromDatabase = async () => {
+  try {
+    let restaurant = [];
+    await (
+      await getDocs(collection(db, `Restaurant`))
+    ).forEach((doc) => {
+      restaurant.push({ ...doc.data() });
+    });
+    return restaurant;
+  } catch (err) {
+    console.log("Err: ", err);
+  }
+};
