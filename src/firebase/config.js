@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { DocumentReference, getFirestore } from "firebase/firestore";
+import { deleteDoc, DocumentReference, getFirestore } from "firebase/firestore";
 import {
   doc,
   getDocs,
@@ -105,3 +105,13 @@ export const getRestaurantFromDatabase = async () => {
     console.log("Err: ", err);
   }
 };
+
+//DELETE DOC
+export const deleteRestaurantFromFirebase = async (id) => {
+  try {
+    await deleteDoc(doc(db, "Restaurant", id));
+  } catch (error) {
+    console.log("Err: ", error);
+  }
+
+}

@@ -12,6 +12,7 @@ import { auth, getUserFromDatabase } from "./firebase/config";
 import { login, logout, setUserData } from './redux/userSlice'
 import AdminPage from "./components/Admin Pannel/AdminPage";
 import CreateRestaurant from "./components/Admin Pannel/Create Restaurant/CreateRestaurant";
+import EditRestaurant from "./components/Admin Pannel/Edit Restaurant/EditRestaurant";
 function App() {
   const user = useSelector(state=>state.user);
   const dispatch=useDispatch()
@@ -66,7 +67,9 @@ if(user.user){fetchdata(user.user.email)}
       <Route path="/" element={<Layout><Home /></Layout>}></Route>
         <Route path="/admin" element={<AdminPage/>}></Route>
         <Route path="/createrestaurant" element={<CreateRestaurant/>}></Route>
+        <Route path="/editRestaurant" element={<EditRestaurant/>}></Route>
       </Routes>
+
 
     </>
    

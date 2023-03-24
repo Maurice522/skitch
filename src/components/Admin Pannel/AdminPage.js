@@ -14,8 +14,6 @@ const AdminPage = () => {
     const dispatch=useDispatch()
     const restaurantList=useSelector((state)=>state.restaurantList.restaurantList)
 
-console.log("restaurantList",restaurantList)
-
     const getRestaurants = async () => {
       const results = await getRestaurantFromDatabase();
       if (results.length) {

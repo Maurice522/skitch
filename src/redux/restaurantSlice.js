@@ -13,7 +13,7 @@ export const restaurantSlice = createSlice({
       state.restaurantList = action.payload;
     },
 
-    deleteDeal: (state, action) => {
+    deleteRestaurant: (state, action) => {
       state.restaurantList = state.restaurantList.filter(
         (data) => data.id !== action.payload
       );
@@ -22,7 +22,7 @@ export const restaurantSlice = createSlice({
 });
 
 export const {
-    setRestaurantList,deleteDeal
+    setRestaurantList,deleteRestaurant
 } = restaurantSlice.actions;
 
 export default restaurantSlice.reducer;

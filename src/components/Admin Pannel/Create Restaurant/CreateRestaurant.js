@@ -165,8 +165,7 @@ const createRestaurant=async()=>{
 
   return (
     <>
-    {editMenuItem&&<EditMenuItem setEditMenuItem={setEditMenuItem} editMenuItem={editMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={menuList} setMenuList={setMenuList}
-/>}
+    {editMenuItem&&<EditMenuItem setEditMenuItem={setEditMenuItem} editMenuItem={editMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={menuList} setMenuList={setMenuList}/>}
     <ToastContainer/>
         <section className={styles.outerCont}>
             <h1 className={styles.title}>Create restaurant</h1>
