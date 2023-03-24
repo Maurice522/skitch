@@ -7,6 +7,8 @@ import styles from "./EditRestaurant.module.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createRestaurantInDataBase, uploadMedia } from '../../../firebase/config'
+import Toggle from 'react-toggle'
+import { SmalluidGenerator } from '../UID GENERATOR/SmallUidGenerator'
 
 const cusineList=["Indian","Global","American","Chinese","German","Italian","French","Caribbean","Indonesian","European","Japanese","African","Oceanic","Arab","Spanish","Greek","Mexican","Chifa","Canadian","Thai","Korean","Russian","Regional","Turkish","Brazilian","Mediterranean","Cuban","Irish","Scottish","Egyptian","Belgian","Swedish","British","Tibetian","Lebanese"]
 
@@ -15,7 +17,11 @@ const EditRestaurant = () => {
     const navigate=useNavigate()
     const restaurant=useLocation().state
     const chooseFileRef = useRef(null);
-
+    const[newMenuTagItem,setNewMenuTagItem]=useState("")
+    const[newTagMenuItemArray,setNewMenuTagItemArray]=useState([])
+    const[newMenuCuisineArray,setNewMenuCuisineArray]=useState([])
+    const[newMenuCategoryArray,setNewMenuCategoryArray]=useState([])
+    const[newMenuImage,setNewMenuImage]=useState(null)
     const[editMenu,setEditMenu]=useState(null)
     const[tempRestaurantImg,settempRestaurantImg]=useState(null)
     const[newRestaurantImg,setnewRestaurantImg]=useState(null)
@@ -25,12 +31,54 @@ const EditRestaurant = () => {
     const[menuList,setMenuList]=useState(restaurant.menu)
 
     const[restaurantData,setRestaurantData]=useState({id:restaurant.id,name:restaurant.name,price:restaurant.price,desc:restaurant.desc,coupons:restaurant.coupons,location:restaurant.location,ratings:[],discount:{},foodList:{},type:"delivery"})
-
+    
+    const[menuData,setMenuData]=useState({id:"",name:"",price:"",veg:false,addOns:"",half:{available:false,price:""}})
 
 useEffect(()=>{
 if(!restaurant){navigate("/admin")}
 },[])
 
+
+const addMenuTagToList=()=>{
+    if(newMenuTagItem===""){return}
+    setNewMenuTagItemArray((prev)=>{return [...prev,newMenuTagItem]})
+    setNewMenuTagItem("")
+}
+
+const removeMenuTagItem=(e)=>{
+    const newMenuTagList=newTagMenuItemArray.filter((item)=>{return item!==e})
+    setNewMenuTagItemArray(newMenuTagList)
+}
+
+
+const handleMenuCategoryClick=(e)=>{
+    let text=e.target.innerHTML
+  
+    if(e.target.className===styles.menuCategoryContainer){return}
+    if(newMenuCategoryArray.includes(text)){
+      let newTagArr=newMenuCategoryArray.filter((item)=>{return item!==text})
+      setNewMenuCategoryArray(newTagArr)
+
+      
+    }
+    else{setNewMenuCategoryArray((prev)=>{return [...prev,text]})
+ 
+    }
+  }
+
+  const handleMenuCuisineClick=(e)=>{
+    let text=e.target.innerHTML
+  
+    if(e.target.className===styles.menuCusineContainer){return}
+    if(newMenuCuisineArray.includes(text)){
+      let newTagArr=newMenuCuisineArray.filter((item)=>{return item!==text})
+      setNewMenuCuisineArray(newTagArr)
+      
+    }
+    else{setNewMenuCuisineArray((prev)=>{return [...prev,text]})
+  
+    }
+  }
 
 const chooseFile = () => {
     if (chooseFileRef.current) {
@@ -77,6 +125,34 @@ setRestaurantCuisineArray((prev)=>{
 })
 }
 
+const handleMenuCardInput=(e)=>{
+    const{name,value}=e.target
+    setMenuData((prev)=>{return {...prev,[name]:value}})
+}
+
+
+const createNewMenuList=async()=>{
+    if(menuData.name===""||menuData.price===""||newMenuImage===null){toast.error("Fill Compulsory Fields");return}
+    if(newMenuCategoryArray.length===0&&newMenuCuisineArray.length===0){toast.error("Fill one Field out of Category or Cuisine");return}
+    setLoading(true)
+    let menuUid=restaurant.id+SmalluidGenerator()
+    let imgUrl=null
+    if(newMenuImage){imgUrl=await uploadMedia(newMenuImage,"Restaurant/Menu")}
+    let newMenuData={...menuData,image:imgUrl,id:menuUid,category:newMenuCategoryArray,cuisine:newMenuCuisineArray,tags:newTagMenuItemArray}
+    setMenuList((prev)=>{return [...prev,newMenuData]})
+    setMenuData({id:"",name:"",price:"",veg:false,addOns:"",half:{available:false,price:""}})
+    setNewMenuTagItemArray([])
+    setNewMenuImage(null)
+    setNewMenuCategoryArray([])
+    setNewMenuCuisineArray([])
+    setLoading(false)
+    toast.success("Menu Created")
+    }
+
+    const handleMenuItemDel=(id)=>{
+        const newMenuList=menuList.filter((item)=>{return item.id!==id})
+        setMenuList(newMenuList)
+    }
 
 const makeChangesTorestaurantdata=async()=>{
     setLoading(true)
@@ -158,6 +234,98 @@ navigate("/admin")
             </div>
     </div>
     
+
+    {/* MENU CARD MAKING */}
+    {(restaurantCategoryArray.length!==0||restaurantCuisineArray.length!==0)&&
+            <section className={styles.menuItemCont}>
+            <h1 className={styles.menuText}>Create Menu</h1>
+            <div className={styles.menuForm}>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Menu Name* </p>
+            <input onChange={handleMenuCardInput} name='name' className={styles.input} type="text" placeholder='Menu Name' value={menuData.name}/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Tags </p>
+            <div className={styles.categoryCont}>
+            <div className={styles.categoryContInputCont}>
+            <input onChange={(e)=>{setNewMenuTagItem(e.target.value)}} className={styles.categoryContInput} type="text" placeholder='Tags' value={newMenuTagItem}/>
+            <button onClick={addMenuTagToList} className={styles.AddbtnCont}>Add</button>
+            </div>
+            <div className={styles.categoryListCont}>
+            {newTagMenuItemArray.map((item,idx)=>{
+                return <p onClick={()=>{removeMenuTagItem(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Price* </p>
+            <input onChange={handleMenuCardInput} name='price' className={styles.input} type="number" placeholder='Price' value={menuData.price}/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Veg* </p>
+            <Toggle
+  defaultChecked={menuData.veg}
+  aria-label='No label tag'
+  onChange={()=>{setMenuData((prev)=>{return{...prev,veg:!menuData.veg}})}} />
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Image*: </p>
+            <input onChange={(e)=>{setNewMenuImage(e.target.files[0])}} className={styles.input} type="file" accept="image/png, image/gif, image/jpeg"/>
+            </div>
+            
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Category* </p>
+            {restaurantCategoryArray.length===0&&<p>No Category Choosen Above</p>}
+            <div onClick={handleMenuCategoryClick} className={styles.menuCategoryContainer}>
+            {restaurantCategoryArray.map((item,idx)=>{
+                return <p style={{backgroundColor:newMenuCategoryArray.includes(item)?"#2a72de":"",color:newMenuCategoryArray.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCategory}>{item}</p>
+            })}
+              
+            </div>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Cuisine* </p>
+            {restaurantCuisineArray.length===0&&<p>No Cuisine Choosen Above</p>}
+            <div onClick={handleMenuCuisineClick} className={styles.menuCusineContainer}>
+            {restaurantCuisineArray.map((item,idx)=>{
+                return <p style={{backgroundColor:newMenuCuisineArray.includes(item)?"#2a72de":"",color:newMenuCuisineArray.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCuisine}>{item}</p>
+            })}
+            </div>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            <input onChange={handleMenuCardInput} name='addOns' className={styles.input} type="text" placeholder='Addons' value={menuData.addOns}/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Half Available* </p>
+            <Toggle
+  defaultChecked={menuData.half.available}
+  aria-label='No label tag'
+  onChange={()=>{setMenuData((prev)=>{return{...prev,half:{available:!menuData.half.available,price:""}}})}} />
+            </div>
+
+            {menuData.half.available&&<div className={styles.inputCont}>
+            <p className={styles.label}>Half Price* </p>
+            <input onChange={(e)=>{setMenuData((prev)=>{return{...prev,half:{available:true,price:e.target.value}}})}} className={styles.input} type="number" placeholder='Half Price' value={menuData.half.price}/>
+            </div>}
+
+            {newMenuCategoryArray.length===0&&newMenuCuisineArray.length===0?null:<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createNewMenuList} className={styles.createMenuBtn}>Create Menu</button>}
+            </div>
+            </section>
+            }
+
+
+                {/* SHOWING MENU ITEMS */}
     <section className={styles.menuItemOuterC}>
                 <h1 className={styles.menuText}>Menu Items</h1>
 
@@ -219,14 +387,15 @@ navigate("/admin")
             </div>}
             <div className={styles.btnCont}>
             <button onClick={()=>setEditMenu(item)} className={styles.editBtn}>Edit</button>
+            <button onClick={()=>handleMenuItemDel(item.id)} className={styles.deleteBtn}>Delete</button>
             </div>
     </div>
     
    
 })}</div>
         <div className={styles.btnCont}>
-            <button onClick={()=>navigate("/admin")} className={styles.editBtn}>Cancel</button>
-            <button style={{cursor:loading?"default":""}} disabled={loading} onClick={makeChangesTorestaurantdata} className={styles.editBtn}>Save</button>
+            <button onClick={()=>navigate("/admin")} className={styles.cancelOrSaveBtn}>Cancel</button>
+            {menuList.length>0&&<button style={{cursor:loading?"default":""}} disabled={loading} onClick={makeChangesTorestaurantdata} className={styles.cancelOrSaveBtn}>Save</button>}
         </div>
     </section>
   
