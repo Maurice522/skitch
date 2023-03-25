@@ -16,6 +16,7 @@ const AdminPage = () => {
 
     const getRestaurants = async () => {
       const results = await getRestaurantFromDatabase();
+      console.log("results",results)
       if (results.length) {
         dispatch(setRestaurantList([...results]));
       }
@@ -35,7 +36,8 @@ const AdminPage = () => {
     <button onClick={()=>navigate("/createrestaurant")} className={styles.createResturantBtn}>Create Resturant</button>
    </div> 
    <div className={styles.rightCont}>
-    {!restaurantList&&<h1 style={{fontSize:"2rem"}}>Loading....</h1>}
+    {(loading&&!restaurantList)&&<h1 style={{fontSize:"2rem"}}>Loading....</h1>}
+    {loading===false&&!restaurantList?<><h1 style={{fontSize:"2rem"}}>No Restaurant To Show</h1></>:null}
    {restaurantList?.map((restaurant)=>{
     return <>
     <AvailableRestaurant key={restaurant.id} restaurant={restaurant}/>
