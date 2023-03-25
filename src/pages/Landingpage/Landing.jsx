@@ -1,10 +1,10 @@
 import React from "react";
-import LogInModal from "../../components/LogInModal";
+import LogInModal from "../../components/modals/LogInModal";
+import OtpModal from "../../components/modals/OtpModal";
+import SignUpModal from "../../components/modals/SignUpModal";
 // import Animation from "../../components/Animation/Animation";
 import Navbar from "../../components/Navbar/Navbar";
-import OtpModal from "../../components/OtpModal";
 import Reason from "../../components/Reason";
-import SignUpModal from "../../components/SignUpModal";
 import Trifecta from "../../components/Trifecta";
 import "./Landing.css";
 

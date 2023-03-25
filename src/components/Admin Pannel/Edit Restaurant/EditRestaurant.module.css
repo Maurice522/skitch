@@ -1,0 +1,265 @@
+.outerCont{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid black;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.form{
+    width: 100%;
+    min-height: 90vh;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.inpCont{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.tagName{
+    width: 30%;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.inputCont{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+.label{
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 30%;
+}
+.input{
+    padding: 1rem;
+    margin-top: .5rem;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 70%;
+}
+.menuItemImage{
+    width: 100px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+.editiCon{
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: .5rem;
+}
+.cusineListContainer{
+    display: flex;
+    align-self: center;
+    gap: 2rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+}
+.categoryCont{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.categoryContInputCont{
+    width: 80%;
+    display: flex;
+}
+.categoryContInput{
+    padding: 1rem;
+    margin-top: .5rem;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 90%;  
+}
+.AddbtnCont{
+   
+    border: 1px solid black ;
+    margin-left: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 150px;
+    height: 70px;
+}
+.categoryListCont{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: .5rem;
+}
+
+.categoryItem{
+    padding: .5rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.remove{
+    color: red;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.menuItemCont,.menuItemOuterC{
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.menuText{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.menuForm{
+    width: 100%;
+    margin: auto;
+    min-height: 90vh;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;  
+    
+}
+
+.menuCategoryContainer,.menuCusineContainer{
+    display: flex;
+    align-self: center;
+    gap: 2rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.menuCategory,.menuCuisine{
+    width: fit-content;
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.menuCategory:hover,.menuCuisine:hover{
+    background-color: #2a72de;
+    color: white;
+}
+.menuCategorySelected,.menuCuisineSelected{
+    width: fit-content;
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: #2a72de;
+    color: white;
+}
+
+.createMenuBtn{
+    border: 1px solid black;
+    width: 300px;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.listDisplayCont{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.menuIndItemCont{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid black;
+}
+.listItem{
+    padding: .5rem 1rem;
+    border: 1px solid black;
+}
+.btnCont{
+    width: 60%;
+    display: flex;
+    margin: auto;
+}
+.deleteBtn{
+    margin: auto;
+    margin-top: 1.5rem;
+    color: red;
+    border: 1px solid red;
+    padding: 1rem;
+    width: 150px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.editBtn{
+    margin: auto;
+    margin-top: 1.5rem;
+    color: black;
+    border: 1px solid black;
+    padding: 1rem;
+    width: 150px;
+    border-radius: 7px;
+    cursor: pointer;  
+}
+.menuItemValue{
+    width: 70%;
+    font-size: 1.2rem;
+}
+.menuItemImage{
+    width: 100px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+.createRestarauntBtn{
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 7px;
+}
+
+.cancelOrSaveBtn{
+    padding: 1rem;
+    width: 150px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 7px; 
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+

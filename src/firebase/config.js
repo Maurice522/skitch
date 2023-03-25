@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { DocumentReference, getFirestore } from "firebase/firestore";
+import { deleteDoc, DocumentReference, getFirestore } from "firebase/firestore";
 import {
   doc,
   getDocs,
@@ -71,12 +71,47 @@ export const updateUserInDataBase=async(email,data,setIsloading)=>{
 }
 }
   export const uploadMedia = async (media, path) => {
+    let id=new Date().getTime()
     try {
-      await uploadBytesResumable(ref(storage, `${path}/${media.name}`), media);
-      const getMedia = await ref(storage, `${path}/${media.name}`);
+      await uploadBytesResumable(ref(storage, `${path}/${media.name+id}`), media);
+      const getMedia = await ref(storage, `${path}/${media.name+id}`);
       const mediaLink = await getDownloadURL(getMedia);
       return mediaLink;
     } catch (err) {
       console.log("Err: ", err);
     }
   };
+
+  export const createRestaurantInDataBase=async(id,data)=>{
+    try {
+      await setDoc(
+          doc(db, "Restaurant", id),data)       
+  } catch (error) {
+    console.log(error.message)
+  }
+  }
+
+  // getDocs
+export const getRestaurantFromDatabase = async () => {
+  try {
+    let restaurant = [];
+    await (
+      await getDocs(collection(db, `Restaurant`))
+    ).forEach((doc) => {
+      restaurant.push({ ...doc.data() });
+    });
+    return restaurant;
+  } catch (err) {
+    console.log("Err: ", err);
+  }
+};
+
+//DELETE DOC
+export const deleteRestaurantFromFirebase = async (id) => {
+  try {
+    await deleteDoc(doc(db, "Restaurant", id));
+  } catch (error) {
+    console.log("Err: ", error);
+  }
+
+}

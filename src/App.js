@@ -1,16 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import routes from "./Route";
-// import SignUpModal from "./components/modals/SignUpModal";
-// import LogInModal from "./components/modals/LogInModal";
-// import OtpModal from "./components/modals/OtpModal";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./components/Layout";
-import Home from "./pages";
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, getUserFromDatabase } from "./firebase/config";
 import { login, logout, setUserData } from './redux/userSlice'
-import Profile from "./pages/profile";
+
+
 function App() {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch()
@@ -52,7 +49,8 @@ function App() {
     if (user.user) { fetchdata(user.user.email) }
   }, [])
 
-  return (
+  return (   
+
     <div>
       <Layout>
         <Routes>
@@ -62,6 +60,7 @@ function App() {
         </Routes>
       </Layout>
     </div>
+
   );
 }
 
