@@ -29,7 +29,10 @@ module.exports = {
         'card2' : '0px 0px 61px rgba(0, 0, 0, 0.09)',
         'tap' : '1px 15px rgba(0, 0, 0, 0.18)',
         'grpcard': '0px 0px 22px rgba(0, 0, 0, 0.06)',
-        'filter' : '0px 0px 12px rgba(0, 0, 0, 0.08)'
+        'filter' : '0px 0px 12px rgba(0, 0, 0, 0.08)',
+        'profile' : '0px 4px 19px rgba(0, 0, 0, 0.17)',
+        'optionCard' : ' 0px 0px 28px rgba(0, 0, 0, 0.1)',
+        'editCard' : '0px 0px 28px rgba(0, 0, 0, 0.1)'
       },
       borderRadius: {
         'card' : '30px'

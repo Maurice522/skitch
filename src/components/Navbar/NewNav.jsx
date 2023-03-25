@@ -31,7 +31,7 @@ export default function NewNav() {
                         <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5 justify-self-end font-nav font-medium text-base leading-5 rounded-md sm:p-4 w-[122px]">Sign Up</button>
                     </div>
                 </div>                
-                <div className="flex flex-row gap-4 lg:hidden bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
+                <div className="flex p-2 flex-row gap-4 lg:hidden bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
                     <img src="location.png" alt="location"/>
                     <div className="flex flex-col text-left">
                         <span>Home</span>

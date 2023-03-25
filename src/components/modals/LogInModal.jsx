@@ -99,9 +99,9 @@ export default function LogInModal(props) {
           loading={loading}
         />
         <div style={{
-            visibility: props.open ? "visible" : "hidden",
             pointerEvents: "none",
-            zIndex: "99"
+            zIndex: "99",
+            display: props.open ? "block" : "none",
         }}
             className="fixed top-0 left-0 w-[100%] min-h-screen backdrop-brightness-50">
             

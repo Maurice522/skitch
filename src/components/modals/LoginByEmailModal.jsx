@@ -12,9 +12,9 @@ props.setData((prev)=>{
          
         
         <div style={{
-            visibility: props.open ? "visible" : "hidden",
             pointerEvents: "none",
-            zIndex: "100000"
+            zIndex: "100000",
+            display: props.open ? "block" : "none",
         }}
             className="fixed top-0 left-0 w-[100%] min-h-screen backdrop-brightness-50">
 
