@@ -32,7 +32,8 @@ module.exports = {
         'filter' : '0px 0px 12px rgba(0, 0, 0, 0.08)',
         'profile' : '0px 4px 19px rgba(0, 0, 0, 0.17)',
         'optionCard' : ' 0px 0px 28px rgba(0, 0, 0, 0.1)',
-        'editCard' : '0px 0px 28px rgba(0, 0, 0, 0.1)'
+        'editCard' : '0px 0px 28px rgba(0, 0, 0, 0.1)',
+        'direction' : '0px 3px 10px rgba(0, 0, 0, 0.12)'
       },
       borderRadius: {
         'card' : '30px'

@@ -9,7 +9,8 @@ export default function Restaurant() {
     }
 
     return (
-        <div className="grid grid-cols-3 gap-12 m-8 lg:max-xl:grid-cols-3 lg:max-xl:gap-4">
+        <div className="flex flex-col items-center gap-4 mt-2 md:grid md:max-lg:grid-cols-2 2xl:grid-cols-4 md:grid-cols-3 md:gap-12 md:m-8 lg:max-xl:grid-cols-3 lg:max-xl:gap-4">
+            <span className="text-base font-normal md:hidden font-nav leading-[24px]">Restaurants</span>
             <button onClick={page2}>
                 <div className="flex bg-black flex-col gap-0 w-[343px] h-[240px] rounded-2xl">
                     <div className="bg-cafe1 rounded-t-2xl bg-cover w-[343px] h-[240px] bg-no-repeat"></div>

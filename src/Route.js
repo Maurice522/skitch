@@ -22,6 +22,16 @@ const routes = [
     component: <AdminPage />,
   },
   {
+    path: "/restaurant",
+    name: "restaurant",
+    component: <Restaurant />
+  },
+  {
+    path: "/restaurant2",
+    name: "restaurant2",
+    component: <Restaurant2 />
+  },
+  {
 
     path: "/createrestaurant",
     name: "createrestaurant",
