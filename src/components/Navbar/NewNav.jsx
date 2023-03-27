@@ -26,9 +26,9 @@ export default function NewNav() {
             <nav className="w-screen">
                 <div className="flex max-lg:hidden flex-row bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
                     <span className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-4xl max-md:text-xl">SKITCH</span>
-                    <div className="flex flex-row sm:gap-3 sm:ml-auto basis-1/2">
-                        <button onClick={login} className="border border-solid justify-self-end sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-4 w-[122px]">Log In</button>
-                        <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5 justify-self-end font-nav font-medium text-base leading-5 rounded-md sm:p-4 w-[122px]">Sign Up</button>
+                    <div className="flex flex-row ml-auto mr-12 sm:gap-3 basis-1/2">
+                        <button onClick={login} className="border border-solid sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-4 w-[122px]">Log In</button>
+                        <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5  font-nav font-medium text-base leading-5 rounded-md sm:p-4 w-[122px]">Sign Up</button>
                     </div>
                 </div>                
                 <div className="flex p-2 flex-row gap-4 lg:hidden bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
