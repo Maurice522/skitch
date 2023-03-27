@@ -7,6 +7,7 @@ import Restaurant from "./pages/restaurant";
 import Restaurant2 from "./pages/restaurant2";
 import CreateRestaurant from "./components/Admin Pannel/Create Restaurant/CreateRestaurant";
 import EditRestaurant from "./components/Admin Pannel/Edit Restaurant/EditRestaurant";
+import Cart from "./pages/cart";
 
 
 const routes = [
@@ -38,7 +39,6 @@ const routes = [
     component: <CreateRestaurant/>,
   },
   {
-
     path: "/editRestaurant",
     name: "editRestaurant",
     component: <EditRestaurant/>,
@@ -47,6 +47,11 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: <Profile />
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: <Cart />
   }
 ];
 
