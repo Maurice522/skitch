@@ -225,10 +225,102 @@ const createRestaurant=async()=>{
             <div className={styles.menuForm}>
 
             <div className={styles.inputCont}>
-            <p className={styles.label}>Menu Name* </p>
-            <input onChange={handleMenuCardInput} name='name' className={styles.input} type="text" placeholder='Menu Name' value={menuData.name}/>
+            <p className={styles.label}>Food Name* </p>
+            <input onChange={handleMenuCardInput} name='name' className={styles.input} type="text" placeholder='Food Name' value={menuData.name}/>
+            </div>
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Food Description* </p>
+            <input onChange={handleMenuCardInput} name='desc' className={styles.input} type="text" placeholder='Food Description' value={menuData.desc}/>
+            </div>    
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Tags </p>
+            <div className={styles.categoryCont}>
+            <div className={styles.categoryContInputCont}>
+            <input onChange={(e)=>{setTagItem(e.target.value)}} className={styles.categoryContInput} type="text" placeholder='Tags' value={tagItem}/>
+            <button onClick={addMenuTagToList} className={styles.AddbtnCont}>Add</button>
+            </div>
+            <div className={styles.categoryListCont}>
+            {menuTagsList.map((item,idx)=>{
+                return <p onClick={()=>{removeMenuTagItem(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
             </div>
 
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Price* </p>
+            <input onChange={handleMenuCardInput} name='price' className={styles.input} type="number" placeholder='Price' value={menuData.price}/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Veg* </p>
+            <Toggle
+  defaultChecked={menuData.veg}
+  aria-label='No label tag'
+  onChange={()=>{setMenuData((prev)=>{return{...prev,veg:!menuData.veg}})}} />
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Image*: </p>
+            <input onChange={(e)=>{setMenuImage(e.target.files[0])}} className={styles.input} type="file" accept="image/png, image/gif, image/jpeg"/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Category* </p>
+            {categoryList.length===0&&<p>No Category Choosen Above</p>}
+            <div onClick={handleMenuCategoryClick} className={styles.menuCategoryContainer}>
+            {categoryList.map((item,idx)=>{
+                return <p style={{backgroundColor:menuCategory.includes(item)?"#2a72de":"",color:menuCategory.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCategory}>{item}</p>
+            })}
+              
+            </div>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Cuisine* </p>
+            {cusineArray.length===0&&<p>No Cuisine Choosen Above</p>}
+            <div onClick={handleMenuCuisineClick} className={styles.menuCusineContainer}>
+            {cusineArray.map((item,idx)=>{
+                return <p style={{backgroundColor:menuCuisine.includes(item)?"#2a72de":"",color:menuCuisine.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCuisine}>{item}</p>
+            })}
+            </div>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            <input onChange={handleMenuCardInput} name='addOns' className={styles.input} type="text" placeholder='Addons' value={menuData.addOns}/>
+            </div>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Half Available* </p>
+            <Toggle
+  defaultChecked={menuData.half.available}
+  aria-label='No label tag'
+  onChange={()=>{setMenuData((prev)=>{return{...prev,half:{available:!menuData.half.available,price:""}}})}} />
+            </div>
+
+            {menuData.half.available&&<div className={styles.inputCont}>
+            <p className={styles.label}>Half Price* </p>
+            <input onChange={(e)=>{setMenuData((prev)=>{return{...prev,half:{available:true,price:e.target.value}}})}} className={styles.input} type="number" placeholder='Half Price' value={menuData.half.price}/>
+            </div>}
+
+            {menuCategory.length===0&&menuCuisine.length===0?null:<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createMenuList} className={styles.createMenuBtn}>Create Menu</button>}
+            </div>
+            </section>
+            }
+            {((cusineArray.length!==0||categoryList.length!==0))&&
+            <section className={styles.menuItemCont}>
+            <h1 className={styles.menuText}>Combo Menu</h1>
+            <div className={styles.menuForm}>
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Food Name* </p>
+            <input onChange={handleMenuCardInput} name='name' className={styles.input} type="text" placeholder='Food Name' value={menuData.name}/>
+            </div>
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Food Description* </p>
+            <input onChange={handleMenuCardInput} name='desc' className={styles.input} type="text" placeholder='Food Description' value={menuData.desc}/>
+            </div>    
             <div className={styles.inputCont}>
             <p className={styles.label}>Tags </p>
             <div className={styles.categoryCont}>
