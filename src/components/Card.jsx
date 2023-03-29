@@ -1,6 +1,6 @@
 export default function Card() {
     return (
-        <div className="grid grid-cols-3 gap-12 max-lg:hidden 2xl:grid-cols-4 2xl:gap-0 2xl:auto-cols-max lg:max-xl:grid-cols-3 lg:max-xl:gap-4">
+        <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-4">
             <div className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
                 <div className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div>
                 <div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
