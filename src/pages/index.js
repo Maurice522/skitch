@@ -15,13 +15,13 @@ export default function Home() {
     }
 
     useEffect(()=> {
-        setInterval(()=> {setFood1(random1());setFood2(random1());setFood3(random1());setFood4(random1())},5000)
+        setInterval(()=> {setFood1(random1());setFood2(random1());setFood3(random1());setFood4(random1())},10000)
     },[])
 
     return (
         <div className="flex flex-row gap-2 mt-4 overflow-x-hidden bg-white lg:ml-4 max-lg:flex max-lg:flex-col">
             <div className="flex flex-col gap-4 md:ml-3 xl:basis-3/4 basis-1/2">
-                <div className="flex flex-row w-full gap-4">
+                <div className="flex flex-row w-[98%] gap-4">
                     <div className="flex flex-row p-2 w-full border gap-2 rounded-lg border-r border-solid border-[#969696]">
                         <img src="./Search.jpg" alt="" className="p-2" />
                         <input type={"search"} placeholder="Search Restaurants,food or dish" className="w-full focus:outline-none border-[0px] max-sm:placeholder:text-xs" />
@@ -30,7 +30,7 @@ export default function Home() {
                         <img src="Setting.png" alt="settings" />
                     </div>
                 </div>
-                <div className="flex flex-row items-center overflow-x-auto gap-9">
+                <div className="flex flex-row m-4 items-center overflow-x-auto gap-9">
                     <div className="flex flex-row items-center w-[96px] gap-2 p-4 bg-white rounded-lg shadow-filter">
                         <span className="text-base leading-[24px] font-normal font-nav">Sort</span>
                         <img src="Settings(1).jpg" alt="" className="h-3" />
@@ -68,7 +68,7 @@ export default function Home() {
                             <span>Indian</span>
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
-                            <span className="text-[#4E9F3D]">672.27</span>
+                            <span className={food1>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food1>5 ? ((620+(620)/100 * (food1-5))).toPrecision(5) : (620-(620)/100 * (5-food1)).toPrecision(5)}</span>
                             <span className={food1>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food1 >5 ? "+" : "-"}{food1}%</span>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ export default function Home() {
                             <span>Thai</span>
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
-                            <span className="text-[#4E9F3D]">672.27</span>
+                            <span className={food2>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food2>5 ? (620+(620)/100 * (food2-5)).toPrecision(5) : (620-(620)/100 * (5-food2)).toPrecision(5)}</span>
                             <span className={food2>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food2 >5 ? "+" : "-"}{food2}%</span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ export default function Home() {
                             <span>French</span>
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
-                            <span className="text-[#4E9F3D]">672.27</span>
+                            <span className={food3>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food3>5 ? (620+(620)/100 * (food3-5)).toPrecision(5) : (620-(620)/100 * (5-food3)).toPrecision(5)}</span>
                             <span className={food3>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food3 >5 ? "+" : "-"}{food3}%</span>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ export default function Home() {
                             <span>Chinese</span>
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
-                            <span className="text-[#4E9F3D]">672.27</span>
+                            <span className={food4>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food4>5 ? (620+(620)/100 * (food4-5)).toPrecision(5) : (620-(620)/100 * (5-food4)).toPrecision(5)}</span>
                             <span className={food4>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food4 >5 ? "+" : "-"}{food4}%</span>
                         </div>
                     </div>
