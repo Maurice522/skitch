@@ -1,14 +1,22 @@
 // import Layout from "../components/Layout";
-
+import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import RestaurantCard from "../components/RestaurantCard";
 
 export default function Home() {
 
+    const [food1,setFood1] = useState(0)
+    const [food2,setFood2] = useState(0)
+    const [food3,setFood3] = useState(0)
+    const [food4,setFood4] = useState(0)
+
     function random1() {
-        console.log("Line 9",Math.random())
         return ((Math.random()) * 10).toPrecision(3);
     }
+
+    useEffect(()=> {
+        setInterval(()=> {setFood1(random1());setFood2(random1());setFood3(random1());setFood4(random1())},5000)
+    },[])
 
     return (
         <div className="flex flex-row gap-2 mt-4 overflow-x-hidden bg-white lg:ml-4 max-lg:flex max-lg:flex-col">
@@ -61,7 +69,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
                             <span className="text-[#4E9F3D]">672.27</span>
-                            <span className={random1()}>{random1()}%</span>
+                            <span className={food1>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food1 >5 ? "+" : "-"}{food1}%</span>
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 p-1">
@@ -71,7 +79,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
                             <span className="text-[#4E9F3D]">672.27</span>
-                            <span className="text-[#4E9F3D]">+1.45%</span>
+                            <span className={food2>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food2 >5 ? "+" : "-"}{food2}%</span>
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 p-1">
@@ -81,7 +89,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
                             <span className="text-[#4E9F3D]">672.27</span>
-                            <span className="text-[#4E9F3D]">+1.45%</span>
+                            <span className={food3>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food3 >5 ? "+" : "-"}{food3}%</span>
                         </div>
                     </div>
                     <div className="flex flex-row gap-1 p-1">
@@ -91,7 +99,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col text-right basis-1/2">
                             <span className="text-[#4E9F3D]">672.27</span>
-                            <span className="text-[#4E9F3D]">+1.45%</span>
+                            <span className={food4>=5 ? "text-[#4E9F3D]" : "text-[#DC3535]" }>{food4 >5 ? "+" : "-"}{food4}%</span>
                         </div>
                     </div>
                 </div>                
