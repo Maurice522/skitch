@@ -1,9 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.409e0e4c.css",
-    "main.js": "/static/js/main.50f66eea.js",
+    "main.css": "/static/css/main.0132020f.css",
+    "main.js": "/static/js/main.1d91847e.js",
     "static/js/787.acd12348.chunk.js": "/static/js/787.acd12348.chunk.js",
+    "static/media/image 18 (3).png": "/static/media/image 18 (3).d78fd523cf537c2d16da.png",
+    "static/media/image 18.png": "/static/media/image 18.d78fd523cf537c2d16da.png",
+    "static/media/image 18 (2).png": "/static/media/image 18 (2).1a1b9666989d0e304084.png",
+    "static/media/image 18 (5).png": "/static/media/image 18 (5).1a1b9666989d0e304084.png",
     "static/media/Pasta.jpg": "/static/media/Pasta.06582239bb867e4f6f34.jpg",
+    "static/media/image 18 (1).png": "/static/media/image 18 (1).56225bbc651d7cb8dc05.png",
+    "static/media/image 18 (4).png": "/static/media/image 18 (4).56225bbc651d7cb8dc05.png",
     "static/media/Burger.jpg": "/static/media/Burger.84c21e91f64f9900dc0c.jpg",
     "static/media/Pizza.jpg": "/static/media/Pizza.55925a07a28e812b98cc.jpg",
     "static/media/Pizzeria.jpg": "/static/media/Pizzeria.cff647e8244e93d049e1.jpg",
@@ -14,12 +20,12 @@
     "static/media/Momos.jpg": "/static/media/Momos.1c7c730abaf5b13cf30a.jpg",
     "static/media/Vector 47.png": "/static/media/Vector 47.66b11e1f36432a3c906c.png",
     "index.html": "/index.html",
-    "main.409e0e4c.css.map": "/static/css/main.409e0e4c.css.map",
-    "main.50f66eea.js.map": "/static/js/main.50f66eea.js.map",
+    "main.0132020f.css.map": "/static/css/main.0132020f.css.map",
+    "main.1d91847e.js.map": "/static/js/main.1d91847e.js.map",
     "787.acd12348.chunk.js.map": "/static/js/787.acd12348.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.409e0e4c.css",
-    "static/js/main.50f66eea.js"
+    "static/css/main.0132020f.css",
+    "static/js/main.1d91847e.js"
   ]
 }
