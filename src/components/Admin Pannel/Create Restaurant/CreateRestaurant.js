@@ -21,24 +21,76 @@ const CreateRestaurant = () => {
     const[categoryList,setCategoryList]=useState([])
     const[categoryItem,setCategoryItem]=useState("")
     const[tagItem,setTagItem]=useState("")
+    const[comboTagItem,setComboTagItem]=useState("")
     const[menuTagsList,setMenuTagList]=useState([])
+    const[comboMenuTagsList,setComboMenuTagList]=useState([])
     
     const[restaurantImage,setrestaurantImage]=useState(null)
     const[menuImage,setMenuImage]=useState(null)
+    const[comboMenuImage,setComboMenuImage]=useState(null)
     const[menuCategory,setMenuCategory]=useState([])
+    const[comboMenuCategory,setComboMenuCategory]=useState([])
     const[menuCuisine,setMenuCuisine]=useState([])
+    const[comboMenuCuisine,setComboMenuCuisine]=useState([])
     const[menuList,setMenuList]=useState([])
+    const[comboMenuList,setComboMenuList]=useState([])
+    const[menuAddOnArray,setMenuAddonArray]=useState([])
+    const[ComboMenuAddOnArray,setComboMenuAddonArray]=useState([])
+    const [addOnObj,setAddonObj]=useState({text:"",price:""})
+    const [ComboAddOnObj,setComboAddonObj]=useState({text:"",price:""})
 
+    const[isComboAvailable,setIsComboAvailable]=useState(false)
     const[restaurantData,setRestaurantData]=useState({id:"",name:"",price:"",desc:"",coupons:"",location:"",ratings:[],discount:{},foodList:{},type:"delivery"})
 
-    const[menuData,setMenuData]=useState({id:"",name:"",price:"",veg:false,addOns:"",half:{available:false,price:""}})
+    const[menuData,setMenuData]=useState({id:"",name:"",price:"",veg:false,half:{available:false,price:""}})
+
+    const[comboMenuData,setComboMenuData]=useState({id:"",name:"",desc:"",price:"",veg:false,half:{available:false,price:""}})
 
     const[editMenuItem,setEditMenuItem]=useState(null)
-
+    const [editComboMenuItem,setEditComboMenuItem]=useState(null)
 useEffect(()=>{
     setRestaurantId(BiguidGenerator())
 },[])
 
+const handleAddonInpChange=(e)=>{
+    const{name,value}=e.target
+    setAddonObj((p)=>{
+        return {...p,[name]:value}
+    })
+}
+
+const handleComboAddonInpChange=(e)=>{
+    const{name,value}=e.target
+    setComboAddonObj((p)=>{
+        return {...p,[name]:value}
+    })
+}
+
+const addAddonToArray=()=>{
+    if(addOnObj.text===""||addOnObj.price===""){toast.error('Fill Req Field');return}
+    setMenuAddonArray((prev)=>{
+        return [...prev,{...addOnObj,id:new Date().getTime()}]
+    })
+    setAddonObj({text:"",price:""})
+}
+
+const addComboAddonToArray=()=>{
+    if(ComboAddOnObj.text===""||ComboAddOnObj.price===""){toast.error('Fill Req Field');return}
+    setComboMenuAddonArray((prev)=>{
+        return [...prev,{...ComboAddOnObj,id:new Date().getTime()}]
+    })
+    setComboAddonObj({text:"",price:""})
+}
+
+const removeAddOnItem=(id)=>{
+const newAddONlist=menuAddOnArray.filter((item)=>{return item.id!==id})
+setMenuAddonArray(newAddONlist)
+}
+
+const removeComboAddOnItem=(id)=>{
+    const newComboAddONlist=ComboMenuAddOnArray.filter((item)=>{return item.id!==id})
+    setComboMenuAddonArray(newComboAddONlist)
+    }
 
 const handleMenuCategoryClick=(e)=>{
   let text=e.target.innerHTML
@@ -47,30 +99,54 @@ const handleMenuCategoryClick=(e)=>{
   if(menuCategory.includes(text)){
     let newTagArr=menuCategory.filter((item)=>{return item!==text})
     setMenuCategory(newTagArr)
-    // let p=e.target
-    // p.className=styles.menuCategory
     
   }
   else{setMenuCategory((prev)=>{return [...prev,text]})
-//   let p=e.target
-//   p.className=styles.menuCategorySelected
+
   }
 }
 
+const handleComboMenuCategoryClick=(e)=>{
+    let text=e.target.innerHTML
+
+    if(e.target.className===styles.menuCategoryContainer){return}
+    if(comboMenuCategory.includes(text)){
+      let newComboTagArr=comboMenuCategory.filter((item)=>{return item!==text})
+      setComboMenuCategory(newComboTagArr)
+      
+    }
+    else{setComboMenuCategory((prev)=>{return [...prev,text]})
+  
+    }
+}
 const handleMenuCuisineClick=(e)=>{
+  
     let text=e.target.innerHTML
   
     if(e.target.className===styles.menuCusineContainer){return}
     if(menuCuisine.includes(text)){
       let newTagArr=menuCuisine.filter((item)=>{return item!==text})
       setMenuCuisine(newTagArr)
-    //   let p=e.target
-    //   p.className=styles.menuCuisine
+  
       
     }
     else{setMenuCuisine((prev)=>{return [...prev,text]})
-    // let p=e.target
-    // p.className=styles.menuCuisineSelected
+    
+    }
+  }
+  const handleComboMenuCuisineClick=(e)=>{
+  
+    let text=e.target.innerHTML
+  
+    if(e.target.className===styles.menuCusineContainer){return}
+    if(comboMenuCuisine.includes(text)){
+      let newComboCuisineArr=comboMenuCuisine.filter((item)=>{return item!==text})
+      setComboMenuCuisine(newComboCuisineArr)
+  
+      
+    }
+    else{setComboMenuCuisine((prev)=>{return [...prev,text]})
+    
     }
   }
 
@@ -79,9 +155,15 @@ const handleResturantDataInput=(e)=>{
     setRestaurantData((prev)=>{return {...prev,[name]:value}})
 }
 
+
 const handleMenuCardInput=(e)=>{
     const{name,value}=e.target
     setMenuData((prev)=>{return {...prev,[name]:value}})
+}
+
+const handleComboMenuCardInput=(e)=>{
+    const{name,value}=e.target
+    setComboMenuData((prev)=>{return {...prev,[name]:value}})
 }
 
 const handleCusinineOptionClick=(e)=>{
@@ -113,10 +195,19 @@ const addMenuTagToList=()=>{
     setMenuTagList((prev)=>{return [...prev,tagItem]})
     setTagItem("")
 }
+const addComboMenuTagToList=()=>{
+    if(comboTagItem===""){return}
+    setComboMenuTagList((prev)=>{return [...prev,comboTagItem]})
+    setComboTagItem("")
+}
 
 const removeMenuTagItem=(e)=>{
     const newMenuTagList=menuTagsList.filter((item)=>{return item!==e})
     setMenuTagList(newMenuTagList)
+}
+const removeComboMenuTagItem=(e)=>{
+    const newComboMenuTagList=comboMenuTagsList.filter((item)=>{return item!==e})
+    setComboMenuTagList(newComboMenuTagList)
 }
 
 
@@ -125,6 +216,26 @@ const handleMenuItemDel=(id)=>{
     setMenuList(newMenuList)
 }
 
+const handleComboMenuItemDel=(id)=>{
+    const newComboMenuList=comboMenuList.filter((item)=>{return item.id!==id})
+    setComboMenuList(newComboMenuList) 
+}
+
+const handleComboAvailableToggle=()=>{
+if(isComboAvailable){
+    const newCategoryList=categoryList.filter((item)=>{return item!=="Combo"})
+    const newcomboMenuCategory=comboMenuCategory.filter((item)=>{return item!=="Combo"})
+    setCategoryList(newCategoryList)
+    setComboMenuCategory(newcomboMenuCategory)
+    setIsComboAvailable(false)
+    return
+}
+setCategoryList((prev)=>{return [...prev,"Combo"]})
+setComboMenuCategory((prev)=>{return [...prev,"Combo"]})
+setIsComboAvailable(true)
+}
+
+
 const createMenuList=async()=>{
     if(menuData.name===""||menuData.price===""||menuImage===null){toast.error("Fill Compulsory Fields");return}
     if(menuCategory.length===0&&menuCuisine.length===0){toast.error("Fill one Field out of Category or Cuisine");return}
@@ -132,17 +243,37 @@ const createMenuList=async()=>{
     let menuUid=restaurantId+SmalluidGenerator()
     let imgUrl=null
     if(menuImage){imgUrl=await uploadMedia(menuImage,"Restaurant/Menu")}
-    let newMenuData={...menuData,image:imgUrl,id:menuUid,category:menuCategory,cuisine:menuCuisine,tags:menuTagsList}
+    let newMenuData={...menuData,image:imgUrl,id:menuUid,category:menuCategory,cuisine:menuCuisine,tags:menuTagsList,addOns:menuAddOnArray}
     setMenuList((prev)=>{return [...prev,newMenuData]})
-    setMenuData({id:"",name:"",price:"",veg:false,addOns:"",half:{available:false,price:""}})
+    setMenuData({id:"",name:"",price:"",veg:false,half:{available:false,price:""}})
     setMenuTagList([])
     setMenuImage(null)
     setMenuCategory([])
     setMenuCuisine([])
+    setMenuAddonArray([])
     setLoading(false)
     toast.success("Menu Created")
     }
-    
+  
+    const createComboMenuList=async()=>{
+        if(comboMenuData.name===""||comboMenuData.desc===""||comboMenuData.price===""||comboMenuImage===null){toast.error("Fill Compulsory Fields");return}
+        if(comboMenuCategory.length===0&&comboMenuCuisine.length===0){toast.error("Fill one Field out of Category or Cuisine");return}
+        setLoading(true)
+        let comboMenuUid=restaurantId+SmalluidGenerator()
+        let imgUrl=null
+        if(comboMenuImage){imgUrl=await uploadMedia(comboMenuImage,"Restaurant/Menu")}
+        let newComboMenuData={...comboMenuData,image:imgUrl,id:comboMenuUid,category:comboMenuCategory,cuisine:comboMenuCuisine,tags:comboMenuTagsList,addOns:ComboMenuAddOnArray}
+        setComboMenuList((prev)=>{return [...prev,newComboMenuData]})
+        setComboMenuData({id:"",name:"",desc:"",price:"",veg:false,half:{available:false,price:""}})
+        setComboMenuTagList([])
+        setComboMenuImage(null)
+        setComboMenuCategory(["Combo"])
+        setComboMenuCuisine([])
+        setComboMenuAddonArray([])
+        setLoading(false)
+        toast.success("Combo Menu Created")
+        }  
+
     
 const createRestaurant=async()=>{
     if(restaurantData.name===""||restaurantData.price===""||restaurantData.desc===""||restaurantData.location===""||restaurantImage===null){toast.error("Fill Compulsory fields");return}
@@ -153,7 +284,7 @@ const createRestaurant=async()=>{
         imgUrl=await uploadMedia(restaurantImage,"Restaurant") 
     }
    
-    let newRestaurant={...restaurantData,image:imgUrl,id:restaurantId,category:categoryList,cusine:cusineArray,menu:menuList}
+    let newRestaurant={...restaurantData,image:imgUrl,id:restaurantId,category:categoryList,cusine:cusineArray,menu:menuList,isComboMenuAvailable:isComboAvailable,comboMenu:comboMenuList}
     await createRestaurantInDataBase(restaurantId,newRestaurant)
     setLoading(false)
     toast.success("Successfully Cretated")
@@ -166,6 +297,7 @@ const createRestaurant=async()=>{
   return (
     <>
     {editMenuItem&&<EditMenuItem setEditMenuItem={setEditMenuItem} editMenuItem={editMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={menuList} setMenuList={setMenuList}/>}
+    {editComboMenuItem&&<EditMenuItem setEditMenuItem={setEditComboMenuItem} editMenuItem={editComboMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={comboMenuList} setMenuList={setComboMenuList}/>}
     <ToastContainer/>
         <section className={styles.outerCont}>
             <h1 className={styles.title}>Create restaurant</h1>
@@ -191,9 +323,20 @@ const createRestaurant=async()=>{
             <input onChange={(e)=>setrestaurantImage(e.target.files[0])} name='image' className={styles.input} type="file" accept="image/png, image/gif, image/jpeg" />
             </div>
 
+            <div className={styles.inputContCuisine}>
             <div className={styles.inputCont}>
             <p className={styles.label}>Cuisine* </p>
+            <div className={styles.cuisineDropdownNOpt}>
             <Dropdown cusineArray={cusineArray} cusineList={cusineList} handleCusinineOptionClick={handleCusinineOptionClick}/>
+
+            <div className={styles.categoryListCont}>
+            {cusineArray.map((item,idx)=>{
+                return <p onClick={()=>{handleCusinineOptionClick(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
+            </div>
+            
             </div>
 
             <div className={styles.inputCont}>
@@ -287,8 +430,19 @@ const createRestaurant=async()=>{
             </div>
 
             <div className={styles.inputCont}>
-            <p className={styles.label}>Addons </p>
-            <input onChange={handleMenuCardInput} name='addOns' className={styles.input} type="text" placeholder='Addons' value={menuData.addOns}/>
+            <p className={styles.label}>Addons* </p>
+            <div className={styles.categoryCont}>
+            <div className={styles.categoryContInputCont}>
+            <input name='text' onChange={handleAddonInpChange} className={styles.categoryContInput} type="text" placeholder='Write Text' value={addOnObj.text}/>
+            <input name='price' onChange={handleAddonInpChange} className={styles.categoryContInput} type="number" placeholder='Write Price' value={addOnObj.price}/>
+            <button onClick={addAddonToArray} className={styles.AddbtnCont}>Add</button>
+            </div>
+            <div className={styles.categoryListCont}>
+            {menuAddOnArray.map((item,idx)=>{
+                return <p onClick={()=>{removeAddOnItem(item.id)}} key={idx} className={styles.categoryItem}>{item.text},Rs{item.price} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
             </div>
 
             <div className={styles.inputCont}>
@@ -308,29 +462,40 @@ const createRestaurant=async()=>{
             </div>
             </section>
             }
-            {((cusineArray.length!==0||categoryList.length!==0))&&
+
+            <div className={styles.inputCont}>
+            <p className={styles.label}>Combo </p>
+            <Toggle
+  defaultChecked={isComboAvailable}
+  aria-label='No label tag'
+  onChange={()=>{handleComboAvailableToggle()}} />
+            </div>
+
+            {/* COMBO MENU */}
+
+            {(isComboAvailable)&&
             <section className={styles.menuItemCont}>
             <h1 className={styles.menuText}>Combo Menu</h1>
             <div className={styles.menuForm}>
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Food Name* </p>
-            <input onChange={handleMenuCardInput} name='name' className={styles.input} type="text" placeholder='Food Name' value={menuData.name}/>
+            <input onChange={handleComboMenuCardInput} name='name' className={styles.input} type="text" placeholder='Food Name' value={comboMenuData.name}/>
             </div>
             <div className={styles.inputCont}>
             <p className={styles.label}>Food Description* </p>
-            <input onChange={handleMenuCardInput} name='desc' className={styles.input} type="text" placeholder='Food Description' value={menuData.desc}/>
+            <input onChange={handleComboMenuCardInput} name='desc' className={styles.input} type="text" placeholder='Food Description' value={comboMenuData.desc}/>
             </div>    
             <div className={styles.inputCont}>
             <p className={styles.label}>Tags </p>
             <div className={styles.categoryCont}>
             <div className={styles.categoryContInputCont}>
-            <input onChange={(e)=>{setTagItem(e.target.value)}} className={styles.categoryContInput} type="text" placeholder='Tags' value={tagItem}/>
-            <button onClick={addMenuTagToList} className={styles.AddbtnCont}>Add</button>
+            <input onChange={(e)=>{setComboTagItem(e.target.value)}} className={styles.categoryContInput} type="text" placeholder='Tags' value={comboTagItem}/>
+            <button onClick={addComboMenuTagToList} className={styles.AddbtnCont}>Add</button>
             </div>
             <div className={styles.categoryListCont}>
-            {menuTagsList.map((item,idx)=>{
-                return <p onClick={()=>{removeMenuTagItem(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
+            {comboMenuTagsList.map((item,idx)=>{
+                return <p onClick={()=>{removeComboMenuTagItem(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
             })}
             </div>
             </div>
@@ -338,28 +503,28 @@ const createRestaurant=async()=>{
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Price* </p>
-            <input onChange={handleMenuCardInput} name='price' className={styles.input} type="number" placeholder='Price' value={menuData.price}/>
+            <input onChange={handleComboMenuCardInput} name='price' className={styles.input} type="number" placeholder='Price' value={comboMenuData.price}/>
             </div>
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Veg* </p>
             <Toggle
-  defaultChecked={menuData.veg}
+  defaultChecked={comboMenuData.veg}
   aria-label='No label tag'
-  onChange={()=>{setMenuData((prev)=>{return{...prev,veg:!menuData.veg}})}} />
+  onChange={()=>{setComboMenuData((prev)=>{return{...prev,veg:!comboMenuData.veg}})}} />
             </div>
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Image*: </p>
-            <input onChange={(e)=>{setMenuImage(e.target.files[0])}} className={styles.input} type="file" accept="image/png, image/gif, image/jpeg"/>
+            <input onChange={(e)=>{setComboMenuImage(e.target.files[0])}} className={styles.input} type="file" accept="image/png, image/gif, image/jpeg"/>
             </div>
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Category* </p>
             {categoryList.length===0&&<p>No Category Choosen Above</p>}
-            <div onClick={handleMenuCategoryClick} className={styles.menuCategoryContainer}>
+            <div onClick={handleComboMenuCategoryClick} className={styles.menuCategoryContainer}>
             {categoryList.map((item,idx)=>{
-                return <p style={{backgroundColor:menuCategory.includes(item)?"#2a72de":"",color:menuCategory.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCategory}>{item}</p>
+                return <p style={{backgroundColor:comboMenuCategory.includes(item)?"#2a72de":"",color:comboMenuCategory.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCategory}>{item}</p>
             })}
               
             </div>
@@ -368,32 +533,43 @@ const createRestaurant=async()=>{
             <div className={styles.inputCont}>
             <p className={styles.label}>Cuisine* </p>
             {cusineArray.length===0&&<p>No Cuisine Choosen Above</p>}
-            <div onClick={handleMenuCuisineClick} className={styles.menuCusineContainer}>
+            <div onClick={handleComboMenuCuisineClick} className={styles.menuCusineContainer}>
             {cusineArray.map((item,idx)=>{
-                return <p style={{backgroundColor:menuCuisine.includes(item)?"#2a72de":"",color:menuCuisine.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCuisine}>{item}</p>
+                return <p style={{backgroundColor:comboMenuCuisine.includes(item)?"#2a72de":"",color:comboMenuCuisine.includes(item)?"white":""}} key={idx} value={item} className={styles.menuCuisine}>{item}</p>
             })}
             </div>
             </div>
 
             <div className={styles.inputCont}>
-            <p className={styles.label}>Addons </p>
-            <input onChange={handleMenuCardInput} name='addOns' className={styles.input} type="text" placeholder='Addons' value={menuData.addOns}/>
+            <p className={styles.label}>Addons* </p>
+            <div className={styles.categoryCont}>
+            <div className={styles.categoryContInputCont}>
+            <input name='text' onChange={handleComboAddonInpChange} className={styles.categoryContInput} type="text" placeholder='Write Text' value={ComboAddOnObj.text}/>
+            <input name='price' onChange={handleComboAddonInpChange} className={styles.categoryContInput} type="number" placeholder='Write Price' value={ComboAddOnObj.price}/>
+            <button onClick={addComboAddonToArray} className={styles.AddbtnCont}>Add</button>
+            </div>
+            <div className={styles.categoryListCont}>
+            {ComboMenuAddOnArray.map((item,idx)=>{
+                return <p onClick={()=>{removeComboAddOnItem(item.id)}} key={idx} className={styles.categoryItem}>{item.text},Rs{item.price} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
             </div>
 
             <div className={styles.inputCont}>
             <p className={styles.label}>Half Available* </p>
             <Toggle
-  defaultChecked={menuData.half.available}
+  defaultChecked={comboMenuData.half.available}
   aria-label='No label tag'
-  onChange={()=>{setMenuData((prev)=>{return{...prev,half:{available:!menuData.half.available,price:""}}})}} />
+  onChange={()=>{setComboMenuData((prev)=>{return{...prev,half:{available:!comboMenuData.half.available,price:""}}})}} />
             </div>
 
-            {menuData.half.available&&<div className={styles.inputCont}>
+            {comboMenuData.half.available&&<div className={styles.inputCont}>
             <p className={styles.label}>Half Price* </p>
-            <input onChange={(e)=>{setMenuData((prev)=>{return{...prev,half:{available:true,price:e.target.value}}})}} className={styles.input} type="number" placeholder='Half Price' value={menuData.half.price}/>
+            <input onChange={(e)=>{setComboMenuData((prev)=>{return{...prev,half:{available:true,price:e.target.value}}})}} className={styles.input} type="number" placeholder='Half Price' value={comboMenuData.half.price}/>
             </div>}
 
-            {menuCategory.length===0&&menuCuisine.length===0?null:<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createMenuList} className={styles.createMenuBtn}>Create Menu</button>}
+            {comboMenuCategory.length===0&&comboMenuCuisine.length===0?null:<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createComboMenuList} className={styles.createMenuBtn}>Create Combo</button>}
             </div>
             </section>
             }
@@ -475,7 +651,84 @@ const createRestaurant=async()=>{
                 </section>
             }
 
-            {menuList.length!==0&&<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createRestaurant} className={styles.createRestarauntBtn}>Create Restaraunt</button>}
+{/* COMBO MENU ITEMS */}
+            {
+                comboMenuList.length!==0&&
+                <section className={styles.menuItemOuterC}>
+                <h1 className={styles.menuText}>Combo Menu Items</h1>
+
+                <div style={{border:"none"}} className={styles.form}>
+{comboMenuList.map((item,idx)=>{
+    return  <div className={styles.menuIndItemCont} key={idx}>
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Name </p>
+            <p className={styles.menuItemValue}>{item.name}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Category </p>
+            {item.category.length===0&&<p style={{width:"70%"}}>No Category To display</p>}
+           {item.category.length!==0&&<div className={styles.listDisplayCont}>
+           {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+           </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Cuisine </p>
+            {item.cuisine.length===0&&<p style={{width:"70%"}}>No Cuisine To display</p>}
+            {item.cuisine.length!==0&&<div className={styles.listDisplayCont}>
+            {item.cuisine.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Tags </p>
+            {item.tags.length===0&&<p style={{width:"70%"}}>No Tags To Display</p>}
+            {item.tags.length!==0&&<div className={styles.listDisplayCont}>
+            {item.tags.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Image </p>
+            <img className={styles.menuItemImage} src={item.image} alt="menuImage" />
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Price </p>
+            <p className={styles.menuItemValue}>₹ {item.price}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Veg </p>
+            <p className={styles.menuItemValue}>{item.veg?"Yes":"No"}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Half Available </p>
+            <p className={styles.menuItemValue}>{item.half.available?"Yes":"No"}</p>
+            </div>
+
+            {item.half.available&&<div  className={styles.inputCont}>
+            <p className={styles.label}>Half Price </p>
+            <p className={styles.menuItemValue}>₹ {item.half.price}</p>
+            </div>}
+            <div className={styles.btnCont}>
+            <button onClick={()=>setEditComboMenuItem(item)} className={styles.editBtn}>Edit</button>
+            <button onClick={()=>handleComboMenuItemDel(item.id)} className={styles.deleteBtn}>Delete</button>
+            </div>
+    </div>
+    
+   
+})}
+                
+
+                </div>
+                </section>
+            }
+
+
+            {(menuList.length!==0||comboMenuList.length!==0)&&<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createRestaurant} className={styles.createRestarauntBtn}>Create Restaraunt</button>}
         </section>
     </>
   )

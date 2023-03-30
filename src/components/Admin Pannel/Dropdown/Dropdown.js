@@ -20,7 +20,7 @@ const Dropdown = ({cusineArray,cusineList,handleCusinineOptionClick}) => {
     {cusineList.sort().map((item,idx)=>{
         return <>
         <Fragment key={idx}>
-        <p style={{backgroundColor:cusineArray.includes(item)?"#3c4ed6":""}} onClick={()=>handleCusinineOptionClick(item)} className={styles.options}>{item}</p>
+        <p style={{backgroundColor:cusineArray.includes(item)?"#3c4ed6":""}} onClick={(e)=>{e.stopPropagation();handleCusinineOptionClick(item)}} className={styles.options}>{item}</p>
         </Fragment>
         </>
     })}
