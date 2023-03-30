@@ -73,7 +73,7 @@ toast.success("Successfully Deleted")
             </div>
 
 
-            <div style={{border:"none"}} className={styles.form}>
+            {restaurant?.menu.length>0&&<div style={{border:"none"}} className={styles.form}>
 {restaurant.menu.map((item,idx)=>{
     return  <div className={styles.menuIndItemCont} key={idx}>
     <h1 className={styles.titlee}>MENU
@@ -138,7 +138,75 @@ toast.success("Successfully Deleted")
     
    
 })}
- </div>
+ </div>}
+
+ {(restaurant?.comboMenu&&restaurant?.comboMenu.length>0)&&<div style={{border:"none"}} className={styles.form}>
+{restaurant?.comboMenu.map((item,idx)=>{
+    return  <div className={styles.menuIndItemCont} key={idx}>
+    <h1 className={styles.titlee}>COMBO MENU
+    {/* <span className={styles.iconSpan}>
+       <MdModeEditOutline onClick={()=>setEditMenu(item)} className={styles.editCon}/>
+       </span> */}
+    </h1>
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Name </p>
+            <p className={styles.menuItemValue}>{item.name}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Category </p>
+            {item.category.length===0&&<p style={{width:"70%"}}>No Category To display</p>}
+           {item.category.length!==0&&<div className={styles.listDisplayCont}>
+           {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+           </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Cuisine </p>
+            {item.cuisine.length===0&&<p style={{width:"70%"}}>No Cuisine To display</p>}
+            {item.cuisine.length!==0&&<div className={styles.listDisplayCont}>
+            {item.cuisine.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Tags </p>
+            {item.tags.length===0&&<p style={{width:"70%"}}>No Tags To Display</p>}
+            {item.tags.length!==0&&<div className={styles.listDisplayCont}>
+            {item.tags.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Image </p>
+            <img className={styles.menuItemImage} src={item.image} alt="menuImage" />
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Price </p>
+            <p className={styles.menuItemValue}>₹ {item.price}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Veg </p>
+            <p className={styles.menuItemValue}>{item.veg?"Yes":"No"}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Half Available </p>
+            <p className={styles.menuItemValue}>{item.half.available?"Yes":"No"}</p>
+            </div>
+
+            {item.half.available&&<div  className={styles.inputCont}>
+            <p className={styles.label}>Half Price </p>
+            <p className={styles.menuItemValue}>₹ {item.half.price}</p>
+            </div>}
+    </div>
+    
+   
+})}
+ </div>}
+
 
             </div>
 

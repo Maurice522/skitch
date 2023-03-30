@@ -8,10 +8,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { uploadMedia } from '../../../firebase/config'
 
 const EditMenuItem = ({setEditMenuItem,editMenuItem,restaurantCategory,restaurantCuisine,menuList,setMenuList}) => {
- 
+//  console.log("editMenuItem",editMenuItem)
     const[loading,setLoading]=useState(false)
     const[newTagItem,setNewTagItem]=useState("")
     const chooseFileRef = useRef(null);
+    const [newAddOnObj,setNewAddonObj]=useState({text:"",price:""})
+    const[newAddOnArray,setNewAddOnArray]=useState(editMenuItem.addOns)
     const[tempImgUrl,setTempImgUrl]=useState(null)
     const[newImageFile,setNewImageFile]=useState(null)
     const[newImage,setNewImage]=useState(editMenuItem.image)
@@ -84,12 +86,13 @@ const EditMenuItem = ({setEditMenuItem,editMenuItem,restaurantCategory,restauran
 const handleSaveChange=async()=>{
     if(newMenuData.name===""||newMenuData.price===""){toast.error("Fill Compulsory Fields");return}
     if(newCusineArray.length===0&&newCategoryArray.length===0){toast.error("Fill one Field out of Category or Cuisine");return}
+    if(newAddOnArray.length===0){toast.error("Have atleast one addon");return}
     setLoading(true)
     let newImgUrl=null
     if(newImageFile){
         newImgUrl=await uploadMedia(newImageFile,"Restaurant/Menu") 
     }
-    let EditedNewData={...newMenuData,image:newImgUrl?newImgUrl:editMenuItem.image,category:newCategoryArray,cuisine:newCusineArray,tags:newMenuTagList}
+    let EditedNewData={...newMenuData,image:newImgUrl?newImgUrl:editMenuItem.image,category:newCategoryArray,cuisine:newCusineArray,tags:newMenuTagList,addOns:newAddOnArray}
     
     let latestMenulist=menuList.map((menu)=>{
         if(menu.id===editMenuItem.id){return EditedNewData}
@@ -106,6 +109,27 @@ const handleMenuCardInput=(e)=>{
     const{name,value}=e.target
     setNewMenuData((prev)=>{return {...prev,[name]:value}})
 }
+
+const handleNewAddonInpChange=(e)=>{
+  const{name,value}=e.target
+  setNewAddonObj((p)=>{
+    return {...p,[name]:value}
+  })
+}
+
+const addNewAddonToArray=()=>{
+  if(newAddOnObj.text===""||newAddOnObj.price===""){toast.error('Fill Req Field');return}
+    setNewAddOnArray((prev)=>{
+        return [...prev,{...newAddOnObj,id:new Date().getTime()}]
+    })
+    setNewAddonObj({text:"",price:""})
+}
+
+const removeNewAddOnItem=(id)=>{
+  const newAddONlist=newAddOnArray.filter((item)=>{return item.id!==id})
+  setNewAddOnArray(newAddONlist)
+  }
+
   return (
    <section className={styles.outerCont}>
     <div className={styles.innerCont}>
@@ -182,9 +206,20 @@ const handleMenuCardInput=(e)=>{
     </div>
 
     <div className={styles.inpCont}>
-            <p className={styles.tagName}>Addons </p>
-            <input onChange={handleMenuCardInput} name='addOns' className={styles.input} type="text" placeholder='Addons' value={newMenuData.addOns}/>
-    </div>
+            <p className={styles.tagName}>Addons* </p>
+            <div className={styles.categoryCont}>
+            <div className={styles.categoryContInputCont}>
+            <input name='text' onChange={handleNewAddonInpChange} className={styles.categoryContInput} type="text" placeholder='Write Text' value={newAddOnObj.text}/>
+            <input name='price' onChange={handleNewAddonInpChange} className={styles.categoryContInput} type="number" placeholder='Write Price' value={newAddOnObj.price}/>
+            <button onClick={addNewAddonToArray} className={styles.AddbtnCont}>Add</button>
+            </div>
+            <div className={styles.categoryListCont}>
+            {newAddOnArray.map((item,idx)=>{
+                return <p onClick={()=>{removeNewAddOnItem(item.id)}} key={idx} className={styles.categoryItem}>{item.text},Rs{item.price} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
+            </div>
 
     <div className={styles.inpCont}>
             <p className={styles.tagName}>Half Available* </p>

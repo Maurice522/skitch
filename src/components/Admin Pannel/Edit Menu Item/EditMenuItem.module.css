@@ -34,6 +34,17 @@
     width: 100%;
     margin-bottom: 1.5rem;
 }
+.inputContCuisine{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.cuisineDropdownNOpt{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
 .tagName{
     width: 30%;
     font-size: 1.2rem;

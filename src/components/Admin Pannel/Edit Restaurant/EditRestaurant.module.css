@@ -41,6 +41,17 @@
     align-items: center;
     margin-bottom: 1.25rem;
 }
+.inputContCuisine{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.cuisineDropdownNOpt{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
 .label{
     font-size: 1.2rem;
     font-weight: 600;
