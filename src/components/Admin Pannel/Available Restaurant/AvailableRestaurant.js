@@ -95,6 +95,14 @@ toast.success("Successfully Deleted")
             </div>
 
             <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
             <p className={styles.label}>Cuisine </p>
             {item.cuisine.length===0&&<p style={{width:"70%"}}>No Cuisine To display</p>}
             {item.cuisine.length!==0&&<div className={styles.listDisplayCont}>
@@ -159,6 +167,14 @@ toast.success("Successfully Deleted")
            {item.category.length!==0&&<div className={styles.listDisplayCont}>
            {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
             </div>
 
             <div  className={styles.inputCont}>

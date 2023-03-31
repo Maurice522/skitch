@@ -16,19 +16,24 @@ const EditRestaurant = () => {
     const[loading,setLoading]=useState(false)
     const navigate=useNavigate()
     const restaurant=useLocation().state
+    console.log(restaurant)
     const chooseFileRef = useRef(null);
+    const[menuAddOnArray,setMenuAddonArray]=useState([])
+    const [addOnObj,setAddonObj]=useState({text:"",price:""})
     const[newMenuTagItem,setNewMenuTagItem]=useState("")
     const[newTagMenuItemArray,setNewMenuTagItemArray]=useState([])
     const[newMenuCuisineArray,setNewMenuCuisineArray]=useState([])
     const[newMenuCategoryArray,setNewMenuCategoryArray]=useState([])
     const[newMenuImage,setNewMenuImage]=useState(null)
     const[editMenu,setEditMenu]=useState(null)
+    const[editComboMenu,setEditComboMenu]=useState(null)
     const[tempRestaurantImg,settempRestaurantImg]=useState(null)
     const[newRestaurantImg,setnewRestaurantImg]=useState(null)
     const[restaurantCategoryArray,setRestaurantCategoryArray]=useState(restaurant.category)
     const[newRestCategoryItem,setNewRestCategoryItem]=useState("")
     const[restaurantCuisineArray,setRestaurantCuisineArray]=useState(restaurant.cusine)
     const[menuList,setMenuList]=useState(restaurant.menu)
+    const[comboMenuList,setComboMenuList]=useState(restaurant.comboMenu)
 
     const[restaurantData,setRestaurantData]=useState({id:restaurant.id,name:restaurant.name,price:restaurant.price,desc:restaurant.desc,coupons:restaurant.coupons,location:restaurant.location,ratings:[],discount:{},foodList:{},type:"delivery"})
     
@@ -154,18 +159,24 @@ const createNewMenuList=async()=>{
         setMenuList(newMenuList)
     }
 
+    const handleComboMenuItemDel=(id)=>{
+        const newComboMenuList=comboMenuList.filter((item)=>{return item.id!==id})
+        setMenuList(newComboMenuList)
+    }
+
 const makeChangesTorestaurantdata=async()=>{
     setLoading(true)
     if(restaurantData.name===""||restaurantData.price===""||restaurantData.desc===""||restaurantData.location===""){toast.error("Fill Compulsory fields");setLoading(false);return}
 
 if(restaurantCategoryArray.length===0&&restaurantCuisineArray.length===0){toast.error("Fill one Field out of Category or Cuisine");setLoading(false);return}
+if(menuList.length===0&&comboMenuList.length===0){toast.error("Must have atleast One Menu or combo Menu");return}
 
 let newImgUrl=null
 if(newRestaurantImg){
     newImgUrl=await uploadMedia(newRestaurantImg,"Restaurant") 
 }
 
-let newEditedRestaurant={...restaurantData,image:newImgUrl?newImgUrl:restaurant.image,category:restaurantCategoryArray,cusine:restaurantCuisineArray,menu:menuList}
+let newEditedRestaurant={...restaurantData,image:newImgUrl?newImgUrl:restaurant.image,category:restaurantCategoryArray,cusine:restaurantCuisineArray,menu:menuList,comboMenu:comboMenuList}
 
 await createRestaurantInDataBase(restaurant.id,newEditedRestaurant)
 setLoading(false)
@@ -178,6 +189,7 @@ navigate("/admin")
    <>
    <ToastContainer/>
    {editMenu&& <EditMenuItem setEditMenuItem={setEditMenu} editMenuItem={editMenu} restaurantCategory={restaurantCategoryArray} restaurantCuisine={restaurantCuisineArray} menuList={menuList} setMenuList={setMenuList}/>}
+   {editComboMenu&&<EditMenuItem setEditMenuItem={setEditComboMenu} editMenuItem={editComboMenu} restaurantCategory={restaurantCategoryArray} restaurantCuisine={restaurantCuisineArray} menuList={comboMenuList} setMenuList={setComboMenuList}/>}
    <section className={styles.outerCont}>
     <h1 className={styles.title}>Edit Restaurant Details</h1>
 
@@ -214,9 +226,20 @@ navigate("/admin")
           />
     </div>
 
-    <div className={styles.inputCont}>
+    <div className={styles.inputContCuisine}>
+            <div className={styles.inputCont}>
             <p className={styles.label}>Cuisine* </p>
+            <div className={styles.cuisineDropdownNOpt}>
             <Dropdown cusineArray={restaurantCuisineArray} cusineList={cusineList} handleCusinineOptionClick={handleCusinineOptionClick}/>
+
+            <div className={styles.categoryListCont}>
+            {restaurantCuisineArray.map((item,idx)=>{
+                return <p onClick={()=>{handleCusinineOptionClick(item)}} key={idx} className={styles.categoryItem}>{item} <span className={styles.remove}>X</span></p>
+            })}
+            </div>
+            </div>
+            </div>
+            
             </div>
 
     <div className={styles.inpCont}>
@@ -236,7 +259,7 @@ navigate("/admin")
     
 
     {/* MENU CARD MAKING */}
-    {(restaurantCategoryArray.length!==0||restaurantCuisineArray.length!==0)&&
+    {/* {(restaurantCategoryArray.length!==0||restaurantCuisineArray.length!==0)&&
             <section className={styles.menuItemCont}>
             <h1 className={styles.menuText}>Create Menu</h1>
             <div className={styles.menuForm}>
@@ -322,11 +345,11 @@ navigate("/admin")
             {newMenuCategoryArray.length===0&&newMenuCuisineArray.length===0?null:<button style={{cursor:loading?"default":""}} disabled={loading} onClick={createNewMenuList} className={styles.createMenuBtn}>Create Menu</button>}
             </div>
             </section>
-            }
+            } */}
 
 
                 {/* SHOWING MENU ITEMS */}
-    <section className={styles.menuItemOuterC}>
+    {menuList.length>0&&<section className={styles.menuItemOuterC}>
                 <h1 className={styles.menuText}>Menu Items</h1>
 
                 <div style={{border:"none"}} className={styles.form}>
@@ -344,6 +367,16 @@ navigate("/admin")
            {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
            </div>}
             </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
+            </div>
+
+
 
             <div  className={styles.inputCont}>
             <p className={styles.label}>Cuisine </p>
@@ -393,13 +426,93 @@ navigate("/admin")
     
    
 })}</div>
-        <div className={styles.btnCont}>
+       
+    </section>}
+
+               {/* SHOWING COMBO MENU ITEMS */}
+               {comboMenuList.length>0&&<section className={styles.menuItemOuterC}>
+                <h1 className={styles.menuText}>Combo Menu Items</h1>
+
+                <div style={{border:"none"}} className={styles.form}>
+{comboMenuList.map((item,idx)=>{
+    return  <div className={styles.menuIndItemCont} key={idx}>
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Name </p>
+            <p className={styles.menuItemValue}>{item.name}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Category </p>
+            {item.category.length===0&&<p style={{width:"70%"}}>No Category To display</p>}
+           {item.category.length!==0&&<div className={styles.listDisplayCont}>
+           {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+           </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
+            </div>
+
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Cuisine </p>
+            {item.cuisine.length===0&&<p style={{width:"70%"}}>No Cuisine To display</p>}
+            {item.cuisine.length!==0&&<div className={styles.listDisplayCont}>
+            {item.cuisine.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Tags </p>
+            {item.tags.length===0&&<p style={{width:"70%"}}>No Tags To Display</p>}
+            {item.tags.length!==0&&<div className={styles.listDisplayCont}>
+            {item.tags.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
+            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Image </p>
+            <img className={styles.menuItemImage} src={item.image} alt="menuImage" />
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Price </p>
+            <p className={styles.menuItemValue}>₹ {item.price}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Veg </p>
+            <p className={styles.menuItemValue}>{item.veg?"Yes":"No"}</p>
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Half Available </p>
+            <p className={styles.menuItemValue}>{item.half.available?"Yes":"No"}</p>
+            </div>
+
+            {item.half.available&&<div  className={styles.inputCont}>
+            <p className={styles.label}>Half Price </p>
+            <p className={styles.menuItemValue}>₹ {item.half.price}</p>
+            </div>}
+            <div className={styles.btnCont}>
+            <button onClick={()=>setEditComboMenu(item)} className={styles.editBtn}>Edit</button>
+            <button onClick={()=>handleComboMenuItemDel(item.id)} className={styles.deleteBtn}>Delete</button>
+            </div>
+    </div>
+    
+   
+})}</div>
+       
+    </section>}
+  
+    <div className={styles.btnCont}>
             <button onClick={()=>navigate("/admin")} className={styles.cancelOrSaveBtn}>Cancel</button>
             {menuList.length>0&&<button style={{cursor:loading?"default":""}} disabled={loading} onClick={makeChangesTorestaurantdata} className={styles.cancelOrSaveBtn}>Save</button>}
-        </div>
-    </section>
-  
-                
+        </div>        
    </section>
    </>
   )

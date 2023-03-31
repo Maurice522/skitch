@@ -606,6 +606,15 @@ const createRestaurant=async()=>{
             </div>
 
             <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
+            </div>
+
+
+            <div  className={styles.inputCont}>
             <p className={styles.label}>Tags </p>
             {item.tags.length===0&&<p style={{width:"70%"}}>No Tags To Display</p>}
             {item.tags.length!==0&&<div className={styles.listDisplayCont}>
@@ -671,6 +680,14 @@ const createRestaurant=async()=>{
            {item.category.length!==0&&<div className={styles.listDisplayCont}>
            {item.category.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item}</p> })}
            </div>}
+            </div>
+
+            <div  className={styles.inputCont}>
+            <p className={styles.label}>Addons </p>
+            {item.addOns.length===0&&<p style={{width:"70%"}}>No Addons To display</p>}
+            {item.addOns.length!==0&&<div className={styles.listDisplayCont}>
+            {item.addOns.map((item,idx)=>{return <p className={styles.listItem} key={idx}>{item.text},Rs{item.price}</p> })}
+            </div>}
             </div>
 
             <div  className={styles.inputCont}>
