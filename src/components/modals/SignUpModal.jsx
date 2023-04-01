@@ -238,6 +238,7 @@ export default function SignUpModal(props) {
                                 generatedOtp={generatedOtp}
                                 num={formData.email}
                                 startSigningUp={signupUsingEmailNPass}
+                                signinWithGoogle={signInWithGoogle}
                             />
                         </form>
                     </div>

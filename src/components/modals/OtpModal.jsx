@@ -13,9 +13,10 @@ const signupUser=(e)=>{
     
 }
 
-
-
-
+const signupWithGoogle=()=>{
+    props.close()
+    props.signinWithGoogle()
+}
 
     return (
         <div style={{
@@ -76,7 +77,7 @@ const signupUser=(e)=>{
                         <div className="h-0 border w-[210px]"></div>
                     </div>
                     <button className="relative p-3 max-sm:top-24 max-sm:left-1 top-24 left-[10%] w-[80%] border border-solid rounded-md border-[#E1E1E1]">
-                        <div className="flex flex-row justify-center gap-2">
+                        <div onClick={signupWithGoogle} className="flex flex-row justify-center gap-2">
                             <img alt="" src="./google.jpg" />
                             <span>Continue with Google</span>
                         </div>
