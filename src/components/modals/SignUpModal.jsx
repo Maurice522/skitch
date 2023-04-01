@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { auth, createUserInDataBase } from "../../firebase/config";
 import OtpModal from "../modals/OtpModal"
 import { create } from '../../redux/newUserSlice';
+import emailjs from "@emailjs/browser";
 export default function SignUpModal(props) {
     const provider = new GoogleAuthProvider();
     const [formData, setFormdata] = useState({ full_name: "", phone: "", email: "", pass: "" })
@@ -16,7 +17,7 @@ export default function SignUpModal(props) {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [openOtpModal,setOtpModal] = useState(false)
-
+    const [generatedOtp,setGeneratedOtp]=useState("")
     const onchange = (e) => {
         const { name, value } = e.target
         setFormdata((prev) => {
@@ -26,18 +27,64 @@ export default function SignUpModal(props) {
 
     const handleSignup = async (e) => {
         e.preventDefault()
-        setLoading(true)
-        let newUser
         if (formData.pass.length < 6) { toast.error("Password should be min 6 letters"); setLoading(false); return }
-        toast("Sigining you up")
-        newUser = {
-            name: formData.full_name,
-            email: formData.email,
-            phone: formData.phone,
-            password: formData.pass,
-        }
+        setLoading(true)
+        const otp=generateOtp(6)
+        setGeneratedOtp(otp)
 
-        try {
+        var templateParams = {
+            from_name: "Skitch",
+            to_name: formData.full_name,
+            to_email: formData.email,
+            otp,
+          };
+          emailjs
+          .send(
+            "service_mj50638",
+            "template_flszx49",
+            templateParams,
+            "sDjbCwaKw0ak8J9gO"
+          )
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+              setLoading(false)
+            },
+            function (error) {
+              console.log("FAILED...", error);
+              setLoading(false)
+            }
+          )
+          .then(() => {
+            setOtpModal(true);
+          })
+          .then(() => {
+            toast.success("An OTP has been sent to your e-mail");
+            setLoading(false)
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error(error.message);
+            setLoading(false)
+          });
+
+       
+ 
+    }
+
+
+    const signupUsingEmailNPass=async(e)=>{
+        setLoading(true)
+        toast("Sigining you up")
+        let newUser
+        
+        newUser = {
+        name:formData.full_name,
+        email:formData.email,
+        phone:formData.phone,
+        password:formData.pass,
+    }
+    try {
             await createUserInDataBase(formData.email, newUser)
             await createUserWithEmailAndPassword(auth, formData.email, formData.pass)
             dispatch(create({ newUser }));
@@ -51,11 +98,18 @@ export default function SignUpModal(props) {
             toast.error(error.message);
         }
     }
+    function generateOtp(n) {
+        var add = 1,
+          max = 12 - add;
+        if (n > max) {
+          return generateOtp(max) + generateOtp(n - max);
+        }
+        max = Math.pow(10, n + add);
+        var min = max / 10;
+        var number = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    function otpModal(e) {
-        e.preventDefault()
-        setOtpModal(true)
-    }
+        return ("" + number).substring(add);
+      }
 
     function closeOtpModal() {
         setOtpModal(false)
@@ -177,10 +231,13 @@ export default function SignUpModal(props) {
                                 />
                                 <label className="" for={"terms"}>By creating an account, I accept the Terms & Conditions & Privacy Policy</label>
                             </div>
-                            <button disabled={loading} onClick={otpModal} type="submit" className="relative top-[65px] max-sm:left-[60%] text-[#808080] w-[109px] h-[46px] left-[70%] bg-[#F3F3F3] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Next</button>
+                            <button disabled={loading} type="submit" className="relative top-[65px] max-sm:left-[60%] text-[#808080] w-[109px] h-[46px] left-[70%] bg-[#F3F3F3] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Next</button>
                             <OtpModal 
                                 open={openOtpModal}
                                 close={closeOtpModal}
+                                generatedOtp={generatedOtp}
+                                num={formData.email}
+                                startSigningUp={signupUsingEmailNPass}
                             />
                         </form>
                     </div>

@@ -1,4 +1,22 @@
+import { useState } from "react"
+import { toast } from "react-toastify"
+
 export default function OtpModal(props) {
+
+const[otpValue,setOtpValue]=useState("")
+
+const signupUser=(e)=>{
+    e.preventDefault()
+    if(otpValue!==props.generatedOtp){toast.error("Wrong Otp");return}
+    props.close()
+    props.startSigningUp()
+    
+}
+
+
+
+
+
     return (
         <div style={{
             pointerEvents: "none",
@@ -28,13 +46,14 @@ export default function OtpModal(props) {
                     </div>
                 </div>
                 <div>
-                    <form>
+                    <div>
                         <input
                             className="relative h-[50px] top-[20px] placeholder:font-normal placeholder:font-nav placeholder:text-base placeholder:text-[#808080] bg-[#F3F3F3] left-[10%] w-[80%] max-sm:w-[100%] max-sm:left-0 placeholder:relative placeholder:left-[26px]"
                             id="phone"
                             name="phone"
                             type="tel"
-                            onChange={onchange}
+                            // onChange={onchange}
+                            disabled
                             defaultValue={props.num}
                         // placeholder='Phone Number'
                         />
@@ -43,12 +62,12 @@ export default function OtpModal(props) {
                             id="phone"
                             name="phone"
                             type="tel"
-                            onChange={onchange}
+                            onChange={(e)=>{setOtpValue(e.target.value)}}
                             placeholder='One Time Password'
                         />
                         <br></br>
-                        <button className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Verify OTP</button>
-                    </form>
+                        <button onClick={signupUser} className="relative text-white top-[65px] max-sm:left-1 w-[80%] h-[46px] left-[10%] bg-[#F59428] border font-nav font-normal text-base border-solid border-[#E1E1E1]">Verify OTP</button>
+                    </div>
                 </div>
                 <div className="flex flex-col relative top-[25%]">
                     <div className="flex flex-row gap-2 w-[80%] max-sm:left-1 relative left-[10%] top-[90px]">
