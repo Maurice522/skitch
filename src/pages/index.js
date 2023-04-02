@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import RestaurantCard from "../components/RestaurantCard";
 import SideDrawer from "../components/SideDrawer";
+import FlipMove from 'react-flip-move';
 
 export default function Home() {
 
     const [sideDrawer, setSideDrawer] = useState(false)
-    const [foods, setFoods] = useState([0, 0, 0, 0])
-    const [arr, setArr] = useState([])
+    const [foods, setFoods] = useState([{ "name": "Indian", "price": 0 }, { "name": "Thai", "price": 0 }, { "name": "French", "price": 0 }, { "name": "Chinese", "price": 0 }])
+    const [arr, setArr] = useState([{ "name": "Indian", "price": 0 }, { "name": "Thai", "price": 0 }, { "name": "French", "price": 0 }, { "name": "Chinese", "price": 0 }])
 
     function closeSideDrawer() {
         setSideDrawer(false)
@@ -16,12 +17,13 @@ export default function Home() {
 
     useEffect(() => {
         setInterval(() => {
-            foods.length = 0
-            // arr.length = 0
             for (let i = 0; i < 4; i++) {
-                setFoods(foods[i]=((Math.random()) * 10).toPrecision(3))
+                setFoods(foods[i].price = ((Math.random()) * 10).toPrecision(3))
             }
-            setArr(foods)
+            const newSortedPrice = [...foods].sort((a, b) => { return b.price - a.price })
+            console.log("Sorted price", newSortedPrice)
+            setArr(newSortedPrice)
+            // sortPrice()
         }, 5000)
     }, [])
 
@@ -70,53 +72,24 @@ export default function Home() {
                                 <span className="ml-auto text-sm text-white">Change(%)</span>
                             </div>
                         </div>
-                        <div className="flex flex-row gap-1 p-1">
-                            <div className="flex flex-row whitespace-pre basis-1/2">
-                                <img src="Indian.jpg" className="w-6 h-8" alt="Indian" />
-                                <span>Indian</span>
-                            </div>
+                        <FlipMove duration={1000}>
                             {
                                 arr.map((food) => {
-                                    console.log("In map updated arr", food)
                                     return (
-                                        <div className="flex flex-col text-right basis-1/2">
-                                            <span className={food >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food > 5 ? ((620 + (620) / 100 * (food - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - food)).toPrecision(5)}</span>
-                                            <span className={food >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food > 5 ? "+" : "-"}{food}%</span>
+                                        <div key={food.name} className="flex flex-row gap-1 p-1">
+                                            <div className="flex flex-row whitespace-pre basis-1/2">
+                                                <img src="Indian.jpg" className="w-6 h-6" alt="Indian" />
+                                                <span>{food.name}</span>
+                                            </div>
+                                            <div className="flex flex-col text-right basis-1/2">
+                                                <span className={food.price >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food.price > 5 ? ((620 + (620) / 100 * (food.price - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - food.price)).toPrecision(5)}</span>
+                                                <span className={food.price >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food.price > 5 ? "+" : "-"}{food.price}%</span>
+                                            </div>
                                         </div>
                                     )
                                 })
                             }
-                        </div>
-                        {/* <div className="flex flex-row gap-1 p-1">
-                            <div className="flex flex-row whitespace-pre basis-1/2">
-                                <img src="Thai.jpg" className="w-6 h-8" alt="Thai" />
-                                <span>Thai</span>
-                            </div>
-                            <div className="flex flex-col text-right basis-1/2">
-                                <span className={food2 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food2 > 5 ? (620 + (620) / 100 * (food2 - 5)).toPrecision(5) : (620 - (620) / 100 * (5 - food2)).toPrecision(5)}</span>
-                                <span className={food2 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food2 > 5 ? "+" : "-"}{food2}%</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-row gap-1 p-1">
-                            <div className="flex flex-row whitespace-pre basis-1/2">
-                                <img src="French.jpg" className="w-6 h-8" alt="French" />
-                                <span>French</span>
-                            </div>
-                            <div className="flex flex-col text-right basis-1/2">
-                                <span className={food3 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food3 > 5 ? (620 + (620) / 100 * (food3 - 5)).toPrecision(5) : (620 - (620) / 100 * (5 - food3)).toPrecision(5)}</span>
-                                <span className={food3 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food3 > 5 ? "+" : "-"}{food3}%</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-row gap-1 p-1">
-                            <div className="flex flex-row whitespace-pre basis-1/2">
-                                <img src="Chinese.jpg" className="w-6 h-8" alt="Chinese" />
-                                <span>Chinese</span>
-                            </div>
-                            <div className="flex flex-col text-right basis-1/2">
-                                <span className={food4 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food4 > 5 ? (620 + (620) / 100 * (food4 - 5)).toPrecision(5) : (620 - (620) / 100 * (5 - food4)).toPrecision(5)}</span>
-                                <span className={food4 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food4 > 5 ? "+" : "-"}{food4}%</span>
-                            </div>
-                        </div> */}
+                        </FlipMove>
                     </div>
                     <div className="flex flex-col mt-4 border border-solid rounded-2xl">
                         <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
