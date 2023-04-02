@@ -15,6 +15,9 @@ export default function SettingModal(props) {
         setAccountModal(!accountModal)
     }
 
+    let id = document.getElementById("profile");
+    id?.addEventListener('click', props.close)
+
     return (
         <div
             style={{
@@ -40,11 +43,11 @@ export default function SettingModal(props) {
             <div className="flex flex-col gap-4 m-4 mt-5 text-black">
                 <button onClick={notification} className="flex flex-row  p-2 rounded-2xl shadow-editCard h-[52px]">
                     <span>Notification</span>
-                    <span className="ml-auto"><img src="dropdown.png" alt="dropdown" /></span>
+                    <span className="m-auto mr-0"><img src="dropdown.png" alt="dropdown" /></span>
                 </button>                
                 <button onClick={account} className="flex flex-row  p-2 rounded-2xl shadow-editCard h-[52px]">
                     <span>Account</span>
-                    <button className="ml-auto"><img src="dropdown.png" alt="dropdown" /></button>
+                    <button className="m-auto mr-0"><img src="dropdown.png" alt="dropdown" /></button>
                 </button>
             </div>
             </div>

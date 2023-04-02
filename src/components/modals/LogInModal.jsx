@@ -160,7 +160,7 @@ export default function LogInModal(props) {
                 </button>
                 <div className="relative overflow-x-hidden max-sm:w-[85%] max-sm:top-28 w-[70%] max-sm:left-1 top-[35%] left-[10%]">
                     <span>New to Skitch? </span>
-                    <a href="/" className="text-[#DC3535]">Create Account</a>
+                    <button onClick={props.closenopenSignUp} className="text-[#DC3535]">Create Account</button>
                 </div>
             </div>
         </div>

@@ -7,26 +7,27 @@ import SideDrawer from "../components/SideDrawer";
 export default function Home() {
 
     const [sideDrawer, setSideDrawer] = useState(false)
-    const [food1, setFood1] = useState(0)
-    const [food2, setFood2] = useState(0)
-    const [food3, setFood3] = useState(0)
-    const [food4, setFood4] = useState(0)
-
-    function random1() {
-        return ((Math.random()) * 10).toPrecision(3);
-    }
+    const [foods, setFoods] = useState([0, 0, 0, 0])
+    const [arr, setArr] = useState([])
 
     function closeSideDrawer() {
         setSideDrawer(false)
     }
 
     useEffect(() => {
-        setInterval(() => { setFood1(random1()); setFood2(random1()); setFood3(random1()); setFood4(random1()) }, 5000)
+        setInterval(() => {
+            foods.length = 0
+            // arr.length = 0
+            for (let i = 0; i < 4; i++) {
+                setFoods(foods[i]=((Math.random()) * 10).toPrecision(3))
+            }
+            setArr(foods)
+        }, 5000)
     }, [])
 
     return (
         <div>
-            <div id="home" style={{ opacity: sideDrawer ? 0.3 : 1 }} className="flex -z-20 flex-row gap-2 mt-4 overflow-x-hidden bg-white lg:ml-4 max-lg:flex max-lg:flex-col">
+            <div id="home" style={{ opacity: sideDrawer ? 0.3 : 1 }} className="flex flex-row gap-2 mt-4 overflow-x-hidden bg-white -z-20 lg:ml-4 max-lg:flex max-lg:flex-col">
                 <div className="flex flex-col gap-4 md:ml-3 xl:basis-3/4 basis-1/2">
                     <div className="flex flex-row w-[98%] gap-4">
                         <div className="flex flex-row p-2 w-full border gap-2 rounded-lg border-r border-solid border-[#969696]">
@@ -37,7 +38,7 @@ export default function Home() {
                             <img src="Setting.png" alt="settings" />
                         </div>
                     </div>
-                    <div className="flex flex-row m-4 items-center overflow-x-auto gap-9">
+                    <div className="flex flex-row items-center m-4 overflow-x-auto gap-9">
                         <button onClick={() => { setSideDrawer(true); console.log("Hello World") }} className="flex flex-row items-center w-[96px] gap-2 p-4 bg-white rounded-lg shadow-filter">
                             <span className="text-base leading-[24px] font-normal font-nav">Sort</span>
                             <img src="Settings(1).jpg" alt="" className="h-3" />
@@ -61,7 +62,7 @@ export default function Home() {
                     <img src="Exchange.png" alt="exchange" />
                     <span className="italic font-medium leading-[30px] text-xl uppercase">The Food Stock Exchange</span>
                 </div>
-                <div className="p-0 ml-auto mr-3 max-lg:ml-2">
+                <div className="p-0 ml-auto mr-3 overflow-hidden max-lg:ml-2">
                     <div className="flex flex-col border border-solid rounded-2xl">
                         <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
                             <div className="flex flex-row gap-10 p-1">
@@ -74,12 +75,19 @@ export default function Home() {
                                 <img src="Indian.jpg" className="w-6 h-8" alt="Indian" />
                                 <span>Indian</span>
                             </div>
-                            <div className="flex flex-col text-right basis-1/2">
-                                <span className={food1 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food1 > 5 ? ((620 + (620) / 100 * (food1 - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - food1)).toPrecision(5)}</span>
-                                <span className={food1 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food1 > 5 ? "+" : "-"}{food1}%</span>
-                            </div>
+                            {
+                                arr.map((food) => {
+                                    console.log("In map updated arr", food)
+                                    return (
+                                        <div className="flex flex-col text-right basis-1/2">
+                                            <span className={food >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food > 5 ? ((620 + (620) / 100 * (food - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - food)).toPrecision(5)}</span>
+                                            <span className={food >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food > 5 ? "+" : "-"}{food}%</span>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
-                        <div className="flex flex-row gap-1 p-1">
+                        {/* <div className="flex flex-row gap-1 p-1">
                             <div className="flex flex-row whitespace-pre basis-1/2">
                                 <img src="Thai.jpg" className="w-6 h-8" alt="Thai" />
                                 <span>Thai</span>
@@ -108,7 +116,7 @@ export default function Home() {
                                 <span className={food4 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food4 > 5 ? (620 + (620) / 100 * (food4 - 5)).toPrecision(5) : (620 - (620) / 100 * (5 - food4)).toPrecision(5)}</span>
                                 <span className={food4 >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food4 > 5 ? "+" : "-"}{food4}%</span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex flex-col mt-4 border border-solid rounded-2xl">
                         <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">

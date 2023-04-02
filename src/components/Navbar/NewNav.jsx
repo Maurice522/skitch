@@ -1,9 +1,9 @@
-import {useState } from "react"
+import { useState } from "react"
 import LogInModal from "../modals/LogInModal"
 import SignUpModal from "../modals/SignUpModal"
 
 export default function NewNav() {
-  
+
     const [logIn, openLogIn] = useState(false)
     const [signUp, openSignUp] = useState(false)
 
@@ -16,9 +16,10 @@ export default function NewNav() {
         openSignUp(!signUp)
     }
 
-
-
-
+    function openSignup() {
+        openLogIn(!logIn)
+        openSignUp(true)
+    }
 
 
     return (
@@ -30,24 +31,25 @@ export default function NewNav() {
                         <button onClick={login} className="border border-solid sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Log In</button>
                         <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5  font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Sign Up</button>
                     </div>
-                </div>                
+                </div>
                 <div className="flex p-2 flex-row gap-4 lg:hidden bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">
-                    <img src="location.png" alt="location"/>
+                    <img src="location.png" alt="location" />
                     <div className="flex flex-col text-left">
                         <span>Home</span>
                         <span>Sector 126, Noida</span>
                     </div>
-                    <img src="dropdown.png" alt="dropdown"/>
+                    <img src="dropdown.png" alt="dropdown" />
                     <div className="float-right ml-auto">
-                        <img src="profile.png" alt="profile"/>
+                        <img src="profile.png" alt="profile" />
                     </div>
                 </div>
             </nav>
             <LogInModal
                 open={logIn}
                 close={login}
+                closenopenSignUp={openSignup}
             />
-            <SignUpModal 
+            <SignUpModal
                 open={signUp}
                 close={signup}
             />

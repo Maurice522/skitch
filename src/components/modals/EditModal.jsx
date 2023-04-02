@@ -1,4 +1,8 @@
 export default function EditModal(props) {
+
+    let id = document.getElementById("profile");
+    id?.addEventListener('click', props.close)
+
     return (
         <div
             style={{
@@ -29,32 +33,32 @@ export default function EditModal(props) {
                     <div className="flex flex-col p-2 rounded-2xl shadow-editCard h-[87px]">
                         <span>Name</span>
                         <div className="flex flex-row">
-                            <span>Abc xyz</span>
-                            <button className="ml-auto text-[#DC3535]">edit</button>
+                            <input type="text" defaultValue={"Abc Xyz"} id="Name" autoFocus/>
+                            <button className="ml-auto text-[#DC3535]" onClick={()=> {document.getElementById("Name").focus();}}>edit</button>
                         </div>
                     </div>
                     <div className="flex flex-col p-2 rounded-2xl shadow-editCard h-[87px]">
                         <span>Email</span>
                         <div className="flex flex-row">
-                            <span>abcd@gmail.com</span>
-                            <button className="ml-auto text-[#DC3535]">edit</button>
+                            <input type="text" defaultValue={"abc@gmail.com"} id="mail" autoFocus/>
+                            <button className="ml-auto text-[#DC3535]" onClick={()=> {document.getElementById("mail").focus();}}>edit</button>
                         </div>
                     </div>
                     <div className="flex flex-col p-2 rounded-2xl shadow-editCard h-[87px]">
                         <span>Phone Number</span>
                         <div className="flex flex-row">
-                            <span>374374388</span>
-                            <button className="ml-auto text-[#DC3535]">edit</button>
+                            <input type="text" defaultValue={"938846365463"} id="num" autoFocus/>
+                            <button className="ml-auto text-[#DC3535]" onClick={()=> {document.getElementById("num").focus();}}>edit</button>
                         </div>
                     </div>
                     <div className="flex flex-col p-2 rounded-2xl shadow-editCard h-[87px]">
                         <span>Gender</span>
-                        <div className="flex flex-row">
-                            <span>Male</span>
-                            <button className="ml-auto text-[#DC3535]"><img src="dropdown.png" alt="dropdown" /></button>
-                        </div>
+                        <select name="gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                     </div>
-                    <button onClick={()=> {props.close()}} className="self-center px-6 py-3 rounded-lg bg-[#F1F1F1] text-[#8D8D8D]">Next</button>
+                    <button onClick={()=> {props.close()}} className="self-center px-6 py-3 rounded-lg bg-[#F1F1F1] text-[#8D8D8D]">Save</button>
                 </div>
             </div>
         </div>
