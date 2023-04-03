@@ -41,20 +41,20 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="flex flex-row items-center m-4 overflow-x-auto gap-9">
-                        <button onClick={() => { setSideDrawer(true); console.log("Hello World") }} className="flex flex-row items-center w-[96px] gap-2 p-4 bg-white rounded-lg shadow-filter">
+                        <button onClick={() => { setSideDrawer(true); console.log("Hello World") }} className="flex flex-row items-center w-[96px] gap-2 p-4 bg-white rounded-lg shadow-filter h-[70%]">
                             <span className="text-base leading-[24px] font-normal font-nav">Sort</span>
                             <img src="Settings(1).jpg" alt="" className="h-3" />
                         </button>
-                        <div className="p-4 bg-white rounded-lg shadow-filter w-[150px]">
+                        <div className="p-2 bg-white text-center h-[70%] rounded-lg shadow-filter w-[150px]">
                             <span className="text-base whitespace-pre leading-[24px] font-normal font-nav">Fast Delivery</span>
                         </div>
-                        <div className="p-4 bg-white rounded-lg shadow-filter w-[88px]">
+                        <div className="p-2 bg-white text-center h-[70%] rounded-lg shadow-filter w-[88px]">
                             <span className="text-base leading-[24px] font-normal font-nav">Offers</span>
                         </div>
-                        <div className="p-4 bg-white rounded-lg shadow-filter w-[102px]">
+                        <div className="p-2 bg-white h-[70%] text-center rounded-lg shadow-filter w-[102px]">
                             <span className="text-base leading-[24px] font-normal font-nav">Cuisines</span>
                         </div>
-                        <div className="p-4 bg-white rounded-lg shadow-filter w-[130px]">
+                        <div className="p-2 bg-white h-[70%] text-center rounded-lg shadow-filter w-[130px]">
                             <span className="text-base whitespace-pre leading-[24px] font-normal font-nav">Rating 4.0+</span>
                         </div>
                     </div>
