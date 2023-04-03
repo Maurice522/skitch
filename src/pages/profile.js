@@ -25,13 +25,13 @@ export default function Profile() {
 
     return (
         <div className="mb-4">
-            <div id="profile" className="flex flex-col gap-8 mt-8 max-md:m-4">
-                <div className="md:flex md:bg-[#F59428] md:flex-row md:gap-4 md:h-[120px] md:items-center md:mt-auto md:justify-center">
+            <div id="profile" className="flex flex-col gap-8 mt-8 max-md:m-4" style={{ opacity: editModal || settingsModal ? 0.3 : 1 }}>
+                <div className="md:flex md:bg-[#DBEAED] md:flex-row md:gap-4 md:h-[120px] md:items-center md:mt-auto md:justify-center">
                     <div className="flex flex-row gap-4 max-md:shadow-profile max-md:rounded-t-none max-md:rounded-3xl max-md:justify-center max-md:flex max-md:flex-col max-md:items-center max-md:bg-white basis-1/2">
                         <img src="Profile.png" alt="profile" />
                         <div className="md:flex md:flex-col md:text-white">
-                            <div className="max-md:text-center"><span>Aman Gupta</span></div>
-                            <div className="flex flex-row gap-2">
+                            <div className="text-black max-md:text-center"><span>Aman Gupta</span></div>
+                            <div className="flex flex-row gap-2 text-black">
                                 <span>7189456329</span>
                                 <span>abcd12@gmail.com</span>
                             </div>

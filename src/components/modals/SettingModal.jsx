@@ -4,8 +4,8 @@ import NotificationModal from "./Notifications"
 
 export default function SettingModal(props) {
 
-    const [notificationModal,setNotificationModal] = useState(false)
-    const [accountModal,setAccountModal] = useState(false)
+    const [notificationModal, setNotificationModal] = useState(false)
+    const [accountModal, setAccountModal] = useState(false)
 
     function notification() {
         setNotificationModal(!notificationModal)
@@ -19,24 +19,7 @@ export default function SettingModal(props) {
     id?.addEventListener('click', props.close)
 
     return (
-        <div
-            style={{
-                zIndex: "99",
-                pointerEvents: "none",
-                display: props.open ? "block" : "none",
-            }}
-            className="fixed top-0 left-0 w-screen min-h-screen backdrop-brightness-50"
-        >
-            <div
-                className="fixed w-11/12 max-w-xl overflow-y-auto text-white bg-white rounded-3xl"
-                style={{
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%,-50%)",
-                    pointerEvents: "all",
-                    height: "90vh",
-                }}
-            >
+        <div className={props.open ? "visible overflow-auto transition delay-300 ease-linear fixed top-0 right-0 bg-white p-4 h-screen w-[50%] lg:w-[35%] m-auto flex z-50 flex-col gap-4" : "hidden"}>
             <button className="w-full p-6 text-black" onClick={() => { props.close() }}>
                 <div className="flex flex-row gap-4"><img src="left_arrow.png" alt="left" /><span>Settings</span></div>
             </button>
@@ -44,18 +27,17 @@ export default function SettingModal(props) {
                 <button onClick={notification} className="flex flex-row  p-2 rounded-2xl shadow-editCard h-[52px]">
                     <span>Notification</span>
                     <span className="m-auto mr-0"><img src="dropdown.png" alt="dropdown" /></span>
-                </button>                
+                </button>
                 <button onClick={account} className="flex flex-row  p-2 rounded-2xl shadow-editCard h-[52px]">
                     <span>Account</span>
                     <button className="m-auto mr-0"><img src="dropdown.png" alt="dropdown" /></button>
                 </button>
             </div>
-            </div>
-            <NotificationModal 
+            <NotificationModal
                 open={notificationModal}
                 close={notification}
             />
-            <AccountModal 
+            <AccountModal
                 open={accountModal}
                 close={account}
             />

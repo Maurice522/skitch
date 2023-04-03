@@ -1,8 +1,8 @@
 export default function Cart() {
     return (
-        <div className="flex flex-row items-start justify-center gap-4 max-md:flex-col-reverse max-md:items-center">
-            <div className="flex flex-col gap-4 p-1 max-md:p-4 max-md:w-full basis-1/2">
-                <div className="flex flex-col border border-solid rounded-md border-[#C8C8C8] p-2 gap-4">
+        <div className="flex flex-row bg-[#EDE7DB] items-start justify-center gap-4 max-md:flex-col-reverse max-md:items-center">
+            <div className="flex flex-col gap-4 p-1 mt-4 max-md:p-4 max-md:w-full basis-1/2">
+                <div className="flex flex-col border bg-white border-solid rounded-md border-[#C8C8C8] p-4 gap-4">
                     <div className="flex flex-row gap-4">
                         <span className="whitespace-pre basis-1/2">Your Details</span>
                         <button className="text-[#DC3535] text-right basis-1/2">Edit</button>
@@ -10,7 +10,7 @@ export default function Cart() {
                     <span>Aman Gupta</span>
                     <span>7892561425</span>
                 </div>
-                <div className="flex flex-col border border-solid rounded-md border-[#C8C8C8] p-2 gap-4">
+                <div className="flex flex-col bg-white border border-solid rounded-md border-[#C8C8C8] p-2 gap-4">
                     <div className="flex flex-row gap-4">
                         <span className="basis-1/2">Address</span>
                         <button className="text-right basis-1/2 text-[#DC3535]">Edit</button>
@@ -23,7 +23,7 @@ export default function Cart() {
                 </div>
                 <button className="p-4 border w-[50%] border-solid rounded-md bg-[#4E9F3D] text-white">Proceed to pay</button>
             </div>
-            <div className="border max-md:w-full max-md:m-4 max-md:p-3 max-md:items-start gap-8 p-8 max-md:border-[0px] border-solid rounded-md border-[#C8C8C8] flex flex-col items-center"> 
+            <div className="border bg-white mt-4 max-md:w-full max-md:m-4 max-md:p-3 max-md:items-start gap-8 p-8 max-md:border-[0px] border-solid rounded-md border-[#C8C8C8] flex flex-col items-center"> 
                 <div className="flex flex-col gap-4 border-solid rounded-lg max-md:border max-md:w-full max-md:p-4">
                 <div className="flex flex-row gap-4">
                     <img src="Burger_king.jpg" alt=""/>
