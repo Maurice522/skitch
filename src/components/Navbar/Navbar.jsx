@@ -24,7 +24,7 @@ const Navbar = () => {
             SKITCH
           </span>
           <span className="font-nav font-normal max-md:w-[126px] max-md:h-[11px] w-[212px] h-[17px] max-md:text-[10px] max-md:leading-[14px] text-base absolute max-md:left-[107px] md:max-lg:left-[20%] left-[310px] max-md:top-[23px] top-[63px] max-md:tracking-nav1 tracking-nav leading-6 drop-shadow-nav text-black">
-            FUN FOOD & FRENDZ
+            FUN FOOD & FRENDZY
           </span>
         </div>
     </nav>
