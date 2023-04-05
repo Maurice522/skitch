@@ -40,7 +40,10 @@ const Landing = () => {
             To experience this wonderful journey be the first one to know when we are live
           </span>
           <button className="max-sm:w-[120px] w-[236px] h-[58px] max-sm:h-[33.48px] bg-black text-white tracking-comm rounded-xl font-nav font-semibold text-xl max-sm:text-[10px] max-sm:leading-[14px] max-sm:text-left text-center max-sm:shadow-none shadow-lan p-2 leading-[28px]">
+            <a target="_blank" href="https://discord.gg/Vvg7mjUe">
+
             Join the Community
+            </a>
           </button>
           <span className="drop-shadow-lan max-sm:text-left max-sm:ml-2 font-bold text-2xl max-sm:text-sm max-sm:leading-[18px] leading-[31px] text-center text-black w-[158px] h-[31px]">
             #SKITCHERS
@@ -63,8 +66,10 @@ const Landing = () => {
         </div>
       </div>
       <div className="max-sm:absolute max-sm:left-[13%] flex flex-row max-sm:w-[273px] max-sm:h-[30px] justify-center gap-4 mt-6">
-        <span className="font-bold text-[32px] self-center leading-[42px] max-sm:text-xs max-sm:leading-[18px]">Join the Community Now</span>
+        <a target="_blank" href="https://discord.gg/Vvg7mjUe">
+        <span className="font-bold text-[32px] self-center leading-[42px] max-sm:text-xs max-sm:leading-[18px]">Join the Community Now </span>
         <button className="w-[155px] h-[44px] max-sm:w-[90px] max-sm:h-[30px] font-nav font-semibold text-base max-sm:rounded-md max-sm:text-[10px] max-sm:leading-[14px] leading-[22px] bg-black text-white rounded-xl">Click Here</button>
+        </a>
       </div>
       <div className="font-bold max-sm:mt-[67px] text-center drop-shadow-lan max-sm:leading-[18px] max-sm:text-sm leading-[31px] text-2xl mt-6 max-sm:text-center">#SKITCHERS</div>
     </div>
