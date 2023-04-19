@@ -7,8 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getRestaurantFromDatabase } from '../../firebase/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRestaurantList } from '../../redux/restaurantSlice';
+import ShowMenuCont from './Show Menu Cont/ShowMenuCont';
+import ShowComboMenuCont from './Show Combo Menu Cont/ShowComboMenuCont';
+import AdminNavbar from './Admin Navbar/AdminNavbar';
 
 const AdminPage = () => {
+  const[individualResMenuData,setIndividualResMenuData]=useState([])
+const[individualResComboMenuData,setIndividualResComboMenuData]=useState([])
     const navigate=useNavigate()
     const[loading,setIsloading]=useState(true)
     const dispatch=useDispatch()
@@ -30,6 +35,8 @@ const AdminPage = () => {
 
   return (
     <>
+    <AdminNavbar/>
+    {individualResMenuData.length>0&&<ShowMenuCont individualResMenuData={individualResMenuData} setIndividualResMenuData={setIndividualResMenuData}/>}{individualResComboMenuData.length>0&&<ShowComboMenuCont individualResComboMenuData={individualResComboMenuData} setIndividualResComboMenuData={setIndividualResComboMenuData}/>}
 <section className={styles.outerCont}>
 <ToastContainer/>
    <div className={styles.leftCont}>
@@ -40,7 +47,7 @@ const AdminPage = () => {
     {loading===false&&!restaurantList?<><h1 style={{fontSize:"2rem"}}>No Restaurant To Show</h1></>:null}
    {restaurantList?.map((restaurant)=>{
     return <>
-    <AvailableRestaurant key={restaurant.id} restaurant={restaurant}/>
+    <AvailableRestaurant key={restaurant.id} setIndividualResMenuData={setIndividualResMenuData} setIndividualResComboMenuData={setIndividualResComboMenuData} restaurant={restaurant}/>
     </>
    })}
 

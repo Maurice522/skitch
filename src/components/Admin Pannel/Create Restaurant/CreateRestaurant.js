@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EditMenuItem from '../Edit Menu Item/EditMenuItem'
+import AdminNavbar from '../Admin Navbar/AdminNavbar'
 
 const cusineList=["Indian","Global","American","Chinese","German","Italian","French","Caribbean","Indonesian","European","Japanese","African","Oceanic","Arab","Spanish","Greek","Mexican","Chifa","Canadian","Thai","Korean","Russian","Regional","Turkish","Brazilian","Mediterranean","Cuban","Irish","Scottish","Egyptian","Belgian","Swedish","British","Tibetian","Lebanese"]
 
@@ -296,6 +297,7 @@ const createRestaurant=async()=>{
 
   return (
     <>
+    <AdminNavbar/>
     {editMenuItem&&<EditMenuItem setEditMenuItem={setEditMenuItem} editMenuItem={editMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={menuList} setMenuList={setMenuList}/>}
     {editComboMenuItem&&<EditMenuItem setEditMenuItem={setEditComboMenuItem} editMenuItem={editComboMenuItem} restaurantCategory={categoryList} restaurantCuisine={cusineArray} menuList={comboMenuList} setMenuList={setComboMenuList}/>}
     <ToastContainer/>
