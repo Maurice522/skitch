@@ -113,11 +113,10 @@ export default function SignUpModal(props) {
 
     function closeOtpModal() {
         setOtpModal(false)
-    } 
+    }
 
-    let id = document.getElementById("home");
-    id?.addEventListener('click', props.close)
-    console.log(document.getElementById("home"))
+    let id = document.getElementById("home")
+    id?.addEventListener("click",props.close)
 
     const signInWithGoogle = async () => {
         signInWithPopup(auth, provider)
