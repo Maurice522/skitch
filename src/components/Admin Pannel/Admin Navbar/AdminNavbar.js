@@ -11,7 +11,7 @@ const AdminNavbar = () => {
       <span className="font-nav font-normal max-md:w-[126px] max-md:h-[11px] w-[212px] h-[17px] max-md:text-[10px] max-md:leading-[14px] text-base absolute max-md:left-[130px] md:max-lg:left-[20%] left-[217px] max-md:top-[18px] top-[32px] max-md:tracking-nav1 tracking-nav leading-6 drop-shadow-nav text-black">
         FUN FOOD & FRENZ
       </span>
-      <span className='font-nav font-normal text-[26px] max-md:text-[16px] max-md:leading-[14px]' style={{position:"absolute",right:"1rem"}}>Admin Pannel</span>
+      <span className='font-nav font-normal text-[26px] max-md:text-[16px] max-md:leading-[14px]' style={{position:"absolute",right:"1rem"}}>Admin Panel</span>
     </div>
 </nav>
   )
