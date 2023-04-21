@@ -62,8 +62,7 @@ export default function LogInModal(props) {
     }
 
     let id = document.getElementById("home");
-    id?.addEventListener('click', props.close)
-    console.log(document.getElementById("home"))
+    id?.addEventListener("click",props.close)
 
 //SIGIN USING GOOGLE AUTH
     const signInWithGoogle = () => {

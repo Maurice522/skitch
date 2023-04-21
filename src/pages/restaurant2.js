@@ -2,7 +2,7 @@ import Reviews from "../components/Reviews";
 
 export default function Restaurant2() {
     return (
-        <div className="flex flex-row justify-center gap-4 max-lg:flex-col">
+        <div className="flex flex-row justify-center gap-4 m-4 max-lg:flex-col">
             <div className="flex flex-col">
                 <img src="image 18.png" alt="" />
                 <div className="absolute right-0 mt-2 bg-white md:hidden items-center gap-6 ml-auto flex border border-solid border-[#C0C0C0] flex-row p-2 rounded-2xl h-[30px]">
