@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { createRestaurantInDataBase, uploadMedia } from '../../../firebase/config'
 import Toggle from 'react-toggle'
 import { SmalluidGenerator } from '../UID GENERATOR/SmallUidGenerator'
+import AdminNavbar from '../Admin Navbar/AdminNavbar'
 
 const cusineList=["Indian","Global","American","Chinese","German","Italian","French","Caribbean","Indonesian","European","Japanese","African","Oceanic","Arab","Spanish","Greek","Mexican","Chifa","Canadian","Thai","Korean","Russian","Regional","Turkish","Brazilian","Mediterranean","Cuban","Irish","Scottish","Egyptian","Belgian","Swedish","British","Tibetian","Lebanese"]
 
@@ -187,6 +188,7 @@ navigate("/admin")
 }
   return (
    <>
+   <AdminNavbar/>
    <ToastContainer/>
    {editMenu&& <EditMenuItem setEditMenuItem={setEditMenu} editMenuItem={editMenu} restaurantCategory={restaurantCategoryArray} restaurantCuisine={restaurantCuisineArray} menuList={menuList} setMenuList={setMenuList}/>}
    {editComboMenu&&<EditMenuItem setEditMenuItem={setEditComboMenu} editMenuItem={editComboMenu} restaurantCategory={restaurantCategoryArray} restaurantCuisine={restaurantCuisineArray} menuList={comboMenuList} setMenuList={setComboMenuList}/>}
@@ -430,7 +432,7 @@ navigate("/admin")
     </section>}
 
                {/* SHOWING COMBO MENU ITEMS */}
-               {comboMenuList.length>0&&<section className={styles.menuItemOuterC}>
+               {comboMenuList&&comboMenuList.length>0&&<section className={styles.menuItemOuterC}>
                 <h1 className={styles.menuText}>Combo Menu Items</h1>
 
                 <div style={{border:"none"}} className={styles.form}>
