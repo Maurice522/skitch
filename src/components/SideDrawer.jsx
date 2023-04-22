@@ -1,13 +1,10 @@
 export default function SideDrawer(props) {
 
-    let id1 = document.getElementById("home");
-    let id2 = document.getElementById("dining");
-    id1?.addEventListener('click', props.close)
-    id2?.addEventListener('click', props.close)
+    let id = document.getElementById("dining");
+    id?.addEventListener('click', props.close)
 
     return (
-        // <div className={props.open ? "w-[100%] z-[99999999]" : "hidden"}>
-        <div id="sideDrawer" className={props.open ? "visible backdrop-blur-2xl transition delay-300 z-[99999] ease-linear fixed top-0 left-0 bg-white p-4 h-screen w-[50%] lg:w-[35%] m-auto flex flex-col gap-4" : "hidden"}>
+        <div id="sideDrawer" className={props.open ? "visible  z-[99999999999] ease-linear fixed top-0 left-0 bg-white p-4 h-screen w-[70%] lg:w-[35%] m-auto flex flex-col gap-4" : "hidden"}>
             <div className="border-b-2 text-center border-solid w-[50%] border-black">
                 <span>SORT BY</span>
             </div>
@@ -32,6 +29,5 @@ export default function SideDrawer(props) {
                 <button className="p-1 w-[30%] ml-auto text-gray-500 border border-gray-500 border-solid rounded-lg">Apply</button>
             </div>
         </div>
-        // </div>
     )
 }

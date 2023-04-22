@@ -1,16 +1,14 @@
-// import Layout from "../components/Layout";
 import Card from "../components/Card";
 import RestaurantCard from "../components/RestaurantCard";
 import Gainers from "../components/Gainers";
 import Filters from "../components/Filters";
 import SearchBar from "../components/SearchBar";
-// import FlipMove from 'react-flip-move';
 
 export default function Home() {
-
+    
     return (
         <div>
-            <div id="home" className="flex flex-row gap-2 mt-4 overflow-x-hidden bg-white -z-20 lg:ml-4 max-lg:flex max-lg:flex-col">
+            <div id="main" className="flex flex-row gap-2 mt-4 overflow-x-hidden bg-white -z-[99999999] lg:ml-4 max-lg:flex max-lg:flex-col">
                 <div className="flex flex-col gap-4 md:ml-3 xl:basis-3/4 basis-1/2">
                     <SearchBar />
                     <Filters />

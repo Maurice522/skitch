@@ -19,8 +19,8 @@ export default function NewNav() {
 
     function signup() {
         openSignUp(true)
-    }    
-    
+    }
+
     function signupClose() {
         openSignUp(false)
     }
@@ -38,25 +38,25 @@ export default function NewNav() {
                     <div className="flex flex-row items-center">
                         <Link to={"/"} className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-2xl max-md:text-xl"><span>SKITCH</span>                    </Link>
                         <div className="flex flex-col text-left">
-                        <span>Address</span>
-                        <span>Sector 126, Noida</span>
-                    </div>
+                            <span>Address</span>
+                            <span>Sector 126, Noida</span>
+                        </div>
                     </div>
                     <div className="flex flex-row items-center ml-auto mr-6 sm:gap-6">
                         {/* <button onClick={login} className="border border-solid sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Log In</button>
                         <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5  font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Sign Up</button> */}
                         <Link to={"/"}>
-                            <button className="flex gap-2 flex-row text-base leading-[22px]"><img src="delivery.png" alt="delivery"/>Delivery</button>
+                            <button className="flex gap-2 flex-row text-base leading-[22px]"><img src="delivery.png" alt="delivery" />Delivery</button>
                         </Link>
                         <Link to={"/restaurant"}>
-                            <button className="flex flex-row gap-2 text-base leading-[22px]"><img src="dining.png" alt="delivery"/>Dining</button>
+                            <button className="flex flex-row gap-2 text-base leading-[22px]"><img src="dining.png" alt="delivery" />Dining</button>
                         </Link>
-                        <button className="flex flex-row text-base gap-2 leading-[22px]"><img src="wallet.png" alt="delivery"/>Wallet</button>
+                        <button className="flex flex-row text-base gap-2 leading-[22px]"><img src="wallet.png" alt="delivery" />Wallet</button>
                         <Link to={"/cart"}>
-                            <button className="flex flex-row text-base gap-2 leading-[22px]"><img src="cart.png" alt="delivery"/>Cart</button>                        
+                            <button className="flex flex-row text-base gap-2 leading-[22px]"><img src="cart.png" alt="delivery" />Cart</button>
                         </Link>
                         <Link to={"/profile"}>
-                            <img src="profile.png" alt="profile" className=""/>
+                            <img src="profile.png" alt="profile" className="" />
                         </Link>
                     </div>
                 </div>
@@ -67,9 +67,9 @@ export default function NewNav() {
                         <span>Sector 126, Noida</span>
                     </div>
                     <img src="dropdown.png" alt="dropdown" />
-                    <div className="float-right ml-auto">
+                    <Link className="float-right ml-auto" to={"/profile"}>
                         <img src="profile.png" alt="profile" />
-                    </div>
+                    </Link>
                 </div>
             </nav>
             <LogInModal

@@ -61,8 +61,8 @@ export default function LogInModal(props) {
       setPhone(e.target.value)
     }
 
-    let id = document.getElementById("home");
-    id?.addEventListener("click",props.close)
+    let id = document.getElementById("main");
+    props.open ? id?.addEventListener("click",props.close) : id?.removeEventListener("click",props.close)
 
 //SIGIN USING GOOGLE AUTH
     const signInWithGoogle = () => {

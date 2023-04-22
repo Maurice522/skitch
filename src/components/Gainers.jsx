@@ -11,7 +11,7 @@ export default function Gainers() {
                 setFoods(foods[i].price = ((Math.random()) * 10).toPrecision(3))
             }
             const newSortedPrice = [...foods].sort((a, b) => { return b.price - a.price })
-            console.log("Sorted price", newSortedPrice)
+            // console.log("Sorted price", newSortedPrice)
             setArr(newSortedPrice)
             // sortPrice()
         }, 5000)
