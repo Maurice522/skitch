@@ -1,8 +1,5 @@
 export default function SideDrawer(props) {
 
-    let id = document.getElementById("dining");
-    id?.addEventListener('click', props.close)
-
     return (
         <div id="sideDrawer" className={props.open ? "visible  z-[99999999999] ease-linear fixed top-0 left-0 bg-white p-4 h-screen w-[70%] lg:w-[35%] m-auto flex flex-col gap-4" : "hidden"}>
             <div className="border-b-2 text-center border-solid w-[50%] border-black">
