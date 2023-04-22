@@ -36,15 +36,15 @@ export default function NewNav() {
             <nav className="w-screen">
                 <div className="flex max-lg:hidden flex-row bg-white max-md:h-[47px] h-[80px] shadow-nav items-center text-center">
                     <div className="flex flex-row items-center">
-                        <span className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-2xl max-md:text-xl">SKITCH</span>                    
+                        <Link to={"/"} className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-2xl max-md:text-xl"><span>SKITCH</span>                    </Link>
                         <div className="flex flex-col text-left">
                         <span>Address</span>
                         <span>Sector 126, Noida</span>
                     </div>
                     </div>
-                    <div className="flex flex-row items-center w-full ml-auto basis-1/2 sm:gap-6">
-                        {/* <button onClick={login} className="border border-solid sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Log In</button> */}
-                        {/* <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5  font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Sign Up</button> */}
+                    <div className="flex flex-row items-center ml-auto mr-6 sm:gap-6">
+                        {/* <button onClick={login} className="border border-solid sm:ml-auto border-[#F59428] font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Log In</button>
+                        <button onClick={signup} className="border border-solid border-[#F59428] sm:mr-5  font-nav font-medium text-base leading-5 rounded-md sm:p-2 w-[122px]">Sign Up</button> */}
                         <Link to={"/"}>
                             <button className="flex gap-2 flex-row text-base leading-[22px]"><img src="delivery.png" alt="delivery"/>Delivery</button>
                         </Link>
@@ -55,7 +55,9 @@ export default function NewNav() {
                         <Link to={"/cart"}>
                             <button className="flex flex-row text-base gap-2 leading-[22px]"><img src="cart.png" alt="delivery"/>Cart</button>                        
                         </Link>
-                        <img src="profile.png" alt="profile" className="ml-auto mr-6"/>
+                        <Link to={"/profile"}>
+                            <img src="profile.png" alt="profile" className=""/>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex p-2 flex-row gap-4 lg:hidden bg-white max-md:h-[47px] h-[103px] shadow-nav items-center text-center">

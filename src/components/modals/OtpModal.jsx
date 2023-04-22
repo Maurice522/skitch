@@ -35,7 +35,7 @@ const signupWithGoogle=()=>{
                     height: "90vh",
                 }}
             >
-                <div className="relative w-[70%] max-sm:left-0 left-[5%] flex flex-row px-5 py-4 md:px-8 rounded-t-3xl">
+                <div className="relative m-4 max-md:left-0 w-[70%] max-sm:left-0 left-[5%] flex flex-row px-5 py-4 md:px-8 rounded-t-3xl">
                     <div className="relative text-left text-black basis-1/2">
                         Enter OTP
                     </div>

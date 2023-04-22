@@ -4,9 +4,9 @@ export default function EditModal(props) {
     id?.addEventListener('click', props.close)
 
     return (
-        <div className={props.open ? "visible overflow-auto transition delay-300 ease-linear fixed top-0 right-0 bg-white p-4 h-screen w-[50%] lg:w-[35%] m-auto flex z-50 flex-col gap-4" : "hidden"}>
+        <div className={props.open ? "visible overflow-auto transition delay-300 ease-linear fixed top-0 right-0 bg-white p-4 h-screen max-md:w-[100%] w-[50%] lg:w-[35%] m-auto flex z-50 flex-col gap-4" : "hidden"}>
             <button className="w-full p-6 text-black" onClick={() => { props.close() }}>
-                <div className="flex flex-row gap-4"><img src="left_arrow.png" alt="left" /><span>Edit Your Profile</span></div>
+                <div className="flex flex-row items-center gap-4"><img src="left_arrow.png" className="w-3 h-3" alt="left" /><span>Edit Your Profile</span></div>
             </button>
             <div className="flex flex-col items-center gap-2 text-black">
                 <img src="profile.png" alt="profile" />
