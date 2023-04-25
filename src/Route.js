@@ -8,6 +8,7 @@ import Restaurant2 from "./pages/restaurant2";
 import CreateRestaurant from "./components/Admin Pannel/Create Restaurant/CreateRestaurant";
 import EditRestaurant from "./components/Admin Pannel/Edit Restaurant/EditRestaurant";
 import Cart from "./pages/cart";
+import Menu from "./pages/menu";
 
 
 const routes = [
@@ -52,6 +53,11 @@ const routes = [
     path: "/cart",
     name: "cart",
     component: <Cart />
+  },
+  {
+    path: "/menu",
+    name: "menu",
+    component: <Menu />
   }
 ];
 

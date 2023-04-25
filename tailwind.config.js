@@ -34,7 +34,9 @@ module.exports = {
         'optionCard' : ' 0px 0px 28px rgba(0, 0, 0, 0.1)',
         'editCard' : '0px 0px 28px rgba(0, 0, 0, 0.1)',
         'direction' : '0px 3px 10px rgba(0, 0, 0, 0.12)',
-        'new-nav' : '0px 4px 17px 0px rgba(0,0,0,0.11)'
+        'new-nav' : '0px 4px 17px 0px rgba(0,0,0,0.11)',
+        'menuTotal': '0px, 5px rgba(0, 0, 0, 0.08)',
+        'priceCard' : '0px, -1px rgba(0, 0, 0, 0.13)'
       },
       borderRadius: {
         'card' : '30px'
