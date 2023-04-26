@@ -1,4 +1,3 @@
-
 import AdminPage from "./components/Admin Pannel/AdminPage";
 import Landing from "./pages/Landingpage/Landing";
 import Home from "./pages";
@@ -9,7 +8,7 @@ import CreateRestaurant from "./components/Admin Pannel/Create Restaurant/Create
 import EditRestaurant from "./components/Admin Pannel/Edit Restaurant/EditRestaurant";
 import Cart from "./pages/cart";
 import Menu from "./pages/menu";
-
+import Privacy from "./pages/Privacy";
 
 const routes = [
   {
@@ -18,7 +17,6 @@ const routes = [
     component: <Home />,
   },
   {
-
     path: "/admin",
     name: "admin",
     component: <AdminPage />,
@@ -26,39 +24,43 @@ const routes = [
   {
     path: "/restaurant",
     name: "restaurant",
-    component: <Restaurant />
+    component: <Restaurant />,
   },
   {
     path: "/restaurant2",
     name: "restaurant2",
-    component: <Restaurant2 />
+    component: <Restaurant2 />,
   },
   {
-
     path: "/createrestaurant",
     name: "createrestaurant",
-    component: <CreateRestaurant/>,
+    component: <CreateRestaurant />,
   },
   {
     path: "/editRestaurant",
     name: "editRestaurant",
-    component: <EditRestaurant/>,
+    component: <EditRestaurant />,
   },
   {
     path: "/profile",
     name: "profile",
-    component: <Profile />
+    component: <Profile />,
   },
   {
     path: "/cart",
     name: "cart",
-    component: <Cart />
+    component: <Cart />,
   },
   {
     path: "/menu",
     name: "menu",
-    component: <Menu />
-  }
+    component: <Menu />,
+  },
+  {
+    path: "/privacypolicy",
+    name: "privacypolicy",
+    component: <Privacy />,
+  },
 ];
 
 export default routes;
