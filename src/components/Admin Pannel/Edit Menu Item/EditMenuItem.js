@@ -214,7 +214,7 @@ const removeNewAddOnItem=(id)=>{
             <button onClick={addNewAddonToArray} className={styles.AddbtnCont}>Add</button>
             </div>
             <div className={styles.categoryListCont}>
-            {newAddOnArray.map((item,idx)=>{
+            {newAddOnArray&&newAddOnArray.map((item,idx)=>{
                 return <p onClick={()=>{removeNewAddOnItem(item.id)}} key={idx} className={styles.categoryItem}>{item.text},Rs{item.price} <span className={styles.remove}>X</span></p>
             })}
             </div>

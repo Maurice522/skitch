@@ -1,8 +1,37 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 import MenuCard from "../components/MenuCard";
 import SearchBar from "../components/SearchBar";
-
+import { useLocation, useNavigate } from 'react-router-dom'
 export default function Menu() {
+
+    const restaurant=useLocation().state
+    const[orderCartArray,setOrderCartArray]=useState([])
+    const[tempIdArr,setTempIdArr]=useState([])
+    const navigate=useNavigate()
+
+const handleQuantityOfOrderIncrease=(order)=>{
+
+const newArr=orderCartArray.map((item)=>{
+    if(item.id===order.id){return{...item,quantity:(order.quantity)+1}}
+    else{return item}
+})
+setOrderCartArray(newArr)
+}
+const handleQuantityOfOrderDecrease=(order)=>{
+    if(order.quantity===1){
+      let tempArr=  orderCartArray.filter((item)=>{return item.id!==order.id})
+      let tempIdArray=tempIdArr.filter((item)=>{return item!==order.id})
+      setOrderCartArray(tempArr)
+      setTempIdArr(tempIdArray)
+        return}
+    const newArr=orderCartArray.map((item)=>{
+        if(item.id===order.id){return{...item,quantity:(order.quantity)-1}}
+        else{return item}
+    })
+    setOrderCartArray(newArr)
+}
+
     return (
         <div className="flex flex-row gap-6 mt-8 mb-8 ml-4 max-lg:flex max-lg:flex-col-reverse">
             <div className="flex flex-col gap-8 basis-1/2">
@@ -11,8 +40,8 @@ export default function Menu() {
                 </div>
                 <div className="flex flex-row items-center max-lg:top-40 max-sm:top-20 max-lg:w-[100%] max-lg:absolute max-lg:border-0 border-b-[2px] p-2 border-[#949494]">
                     <div className="flex flex-col max-lg:w-[50vw] items-start justify-center gap-4 max-lg:basis-1/2">
-                        <div className="flex flex-row items-center justify-center"><img src="/Burger_king.jpg" alt="burger king" className="max-lg:w-[30px] max-lg:h-[30px] w-[70px] h-[70px]" /> <span className="text-3xl font-semibold whitespace-pre max-lg:text-xl">Burger King</span></div>
-                        <span className="text-xl font-medium max-lg:text-xs max-lg:font-medium">Burger, Fast food, Beverages</span>
+                        <div className="flex flex-row items-center justify-center"><img style={{marginRight:"1rem"}} src={restaurant?.image} alt="burger king" className="max-lg:w-[30px] max-lg:h-[30px] w-[70px] h-[70px]" /> <span className="text-3xl font-semibold whitespace-pre max-lg:text-xl">{restaurant?.name}</span></div>
+                        <span className="text-xl font-medium max-lg:text-xs max-lg:font-medium">{restaurant?.desc}</span>
                         <div className="flex flex-row gap-2">
                             <div className="flex flex-row items-center gap-1 w-12 rounded-[4px] bg-[#F59428]">
                                 <img src="star_white.png" alt="star" className="w-4" />
@@ -54,7 +83,13 @@ export default function Menu() {
                     </div>
                 </div>
                 <div className="max-lg:hidden">
-                    <MenuCard />
+                {restaurant.menu.map((menu)=>{
+                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                })}
+                {restaurant.comboMenu&&restaurant.comboMenu.map((menu)=>{
+                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                })}
+                    
                 </div>
             </div>
             <div className="flex flex-col gap-8 max-lg:py-7 max-lg:relative max-sm:top-56 max-lg:top-60 max-lg:border max-lg:border-solid max-lg:rounded-md max-lg:mr-4 lg:ml-auto lg:mr-16">
@@ -79,39 +114,37 @@ export default function Menu() {
                     </div>
                 </div>
                 <div className="lg:hidden">
-                    <MenuCard />
+                {restaurant.menu.map((menu)=>{
+                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                })}
+                {restaurant.comboMenu&&restaurant.comboMenu.map((menu)=>{
+                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                })}
                 </div>
                 <div className="flex flex-col max-lg:hidden gap-7 border-[#949494] border rounded-[8px] p-4">
                     <div className="flex flex-row shadow-menuTotal">
-                        <span>2 ITEMS added</span>
-                        <button className="text-[#DC3535] ml-auto flex flex-row justify-center items-center gap-2">Order Now <img src="right-arrow_pink.png" /></button>
+                        <span>{orderCartArray.length} ITEMS added</span>
+                        <button onClick={()=>navigate("/cart",{state:{restaurant:restaurant,cart:orderCartArray}})}  className="text-[#DC3535] ml-auto flex flex-row justify-center items-center gap-2">Order Now <img src="right-arrow_pink.png" /></button>
                     </div>
                     <div className="flex flex-row items-center">
-                        <img src="/Burger_king.jpg" alt="burger king" className="w-[48px] h-[48px]" />
-                        <span className="text-xl font-medium">Burger King</span>
+                        <img style={{marginRight:"1rem"}} src={restaurant.image} alt="burger king" className="w-[48px] h-[48px]" />
+                        <span className="text-xl font-medium">{restaurant.name}</span>
                     </div>
-                    <div className="flex flex-row gap-16">
+                    {orderCartArray.map((order)=>{
+                        return <>
+                        <div key={order.id} className="flex flex-row gap-16">
                         <div className="flex flex-row">
-                            <img src="veg.png" />
-                            <span className="whitespace-pre">Veg Whopper</span>
+                            <img src={order.veg?"veg.png":"non-veg.png"} />
+                            <span className="whitespace-pre">{order.name}</span>
                         </div>
                         <div className="flex text-[#F59428] flex-row border border-solid rounded-md border-[#F59428] gap-4 px-1">
-                            <button>-</button>
-                            <span>1</span>
-                            <button>+</button>
+                            <button onClick={()=>handleQuantityOfOrderDecrease(order)}>-</button>
+                            <span>{order.quantity}</span>
+                            <button onClick={()=>handleQuantityOfOrderIncrease(order)}>+</button>
                         </div>
-                    </div>
-                    <div className="flex flex-row gap-16">
-                        <div className="flex flex-row">
-                            <img src="veg.png" />
-                            <span className="whitespace-pre">Veg Whopper</span>
-                        </div>
-                        <div className="flex text-[#F59428] flex-row border border-solid rounded-md border-[#F59428] gap-4 px-1">
-                            <button>-</button>
-                            <span>1</span>
-                            <button>+</button>
-                        </div>
-                    </div>
+                    </div> 
+                        </>
+                    })}
                 </div>
             </div>
         </div>

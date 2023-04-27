@@ -28,6 +28,7 @@ export default function LogInModal(props) {
         toast.success("Sucessfully logged in");
         setLoading(false)
         setEmailModal(false)
+        props.close()
         // navigate("/dashboard");
       })
       .catch((error) => {

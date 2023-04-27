@@ -3,15 +3,16 @@ import { getRestaurantFromDatabase } from "../firebase/config";
 import { setRestaurantList } from "../redux/restaurantSlice";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Card() {
     const dispatch=useDispatch()
     const[loading,setIsloading]=useState(true)
     const restaurantList=useSelector((state)=>state.restaurantList.restaurantList)
-
+    const navigate=useNavigate()
     const getRestaurants = async () => {
         const results = await getRestaurantFromDatabase();
-        console.log("results",results)
+
         if (results.length) {
           dispatch(setRestaurantList([...results]));
         }
@@ -28,7 +29,7 @@ export default function Card() {
         {(restaurantList&&restaurantList.length>0)&&<>
             {restaurantList.map((restraunt)=>{
                 return <>
-                <div className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
+                <div key={restraunt.id} onClick={()=>navigate("/menu",{state:restraunt})} className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
                 <div style={{backgroundImage:`url(${restraunt.image})`}} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div>
                 <div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
                     <span className="text-white">25% OFF up to ₹170</span>

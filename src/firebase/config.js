@@ -61,7 +61,7 @@ export const updateUserInDataBase=async(email,data,setIsloading)=>{
   
   try {
    
-    await updateDoc(userDocumentRef,{name:data.name,phoneNumber:data.number}) 
+    await updateDoc(userDocumentRef,data) 
     toast.success("Successfully Updated")  
     setIsloading(false)   
 } catch (error) {
