@@ -1,8 +1,12 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { setCart } from "../../redux/CartSlice"
 
 export default function OrderDetails({restaurant,cart,setFinalCart}) {
     const[totalAmt,setTotalAmt]=useState(0)
+    const dispatch=useDispatch()
+
 
     const handleQuantityOfOrderIncrease=(order)=>{
 
@@ -11,6 +15,7 @@ export default function OrderDetails({restaurant,cart,setFinalCart}) {
             else{return item}
         })
         setFinalCart(newArr)
+        dispatch(setCart(newArr))
         }
         const handleQuantityOfOrderDecrease=(order)=>{
             if(order.quantity===0){return}
@@ -19,12 +24,14 @@ export default function OrderDetails({restaurant,cart,setFinalCart}) {
                 else{return item}
             })
             setFinalCart(newArr)
+            dispatch(setCart(newArr))
         }
 
 useEffect(()=>{
     let amt=0
     cart.map((item)=>{
-        amt=amt+(Number(item.price)*item.quantity)
+        if(item.askedForHalf){amt=amt+(Number(item.half.price)*item.quantity)}
+        else{amt=amt+(Number(item.price)*item.quantity)}
     })
     setTotalAmt(amt)
 },[cart])

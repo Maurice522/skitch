@@ -4,16 +4,22 @@ import { setRestaurantList } from "../redux/restaurantSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { setRestraunt } from "../redux/CartSlice";
 
 export default function Card() {
     const dispatch=useDispatch()
+    const sorter=useSelector((state)=>state.sorter)
     const[loading,setIsloading]=useState(true)
-    const restaurantList=useSelector((state)=>state.restaurantList.restaurantList)
     const navigate=useNavigate()
+    const[restrauntToShow,setRestrauntToShow]=useState([])
+console.log("restrauntToShow",restrauntToShow)
+
+
     const getRestaurants = async () => {
         const results = await getRestaurantFromDatabase();
 
         if (results.length) {
+            setRestrauntToShow([...results])
           dispatch(setRestaurantList([...results]));
         }
         setIsloading(false);
@@ -24,16 +30,41 @@ export default function Card() {
         getRestaurants();
       }, []);
 
+      function compareLow( a, b ) {
+        return(Number(a.price)-Number(b.price))
+       
+      }
+      function compareHigh( a, b ) {
+        return(Number(b.price)-Number(a.price))
+       
+      }
+      useEffect(()=>{
+        if(restrauntToShow.length===0){return}
+        if(sorter===""){return}
+        if(sorter==="lowToHigh"){
+            let tempArr=restrauntToShow
+            tempArr.sort(compareLow)
+            setRestrauntToShow(tempArr)
+            return
+        }
+        if(sorter==="highToLow"){
+            let tempArr=restrauntToShow
+            tempArr.sort(compareHigh)
+            setRestrauntToShow(tempArr)
+            return  
+        }
+      },[sorter])
+
     return (
         <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-4">
-        {(restaurantList&&restaurantList.length>0)&&<>
-            {restaurantList.map((restraunt)=>{
+        {(restrauntToShow&&restrauntToShow.length>0)&&<>
+            {restrauntToShow.map((restraunt)=>{
                 return <>
-                <div key={restraunt.id} onClick={()=>navigate("/menu",{state:restraunt})} className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
+                <div key={restraunt.id} onClick={()=>{navigate("/menu",{state:restraunt});dispatch(setRestraunt(restraunt))}} className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
                 <div style={{backgroundImage:`url(${restraunt.image})`}} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div>
-                <div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
+                {(JSON.stringify(restraunt.discount)!=="{}")&&<div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
                     <span className="text-white">25% OFF up to ₹170</span>
-                </div>
+                </div>}
                 <div className="flex flex-row">
                     <span>{restraunt.name}</span>
                     <div className="flex flex-row items-center gap-1 w-12 rounded-[4px] ml-auto border-[#F59428] border border-solid">

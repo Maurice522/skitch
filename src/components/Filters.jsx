@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import SideDrawer from "../components/SideDrawer";
 
-export default function Filters() {
-    const [sideDrawer, setSideDrawer] = useState(false)
+export default function Filters({sideDrawer,setSideDrawer}) {
+    // const [sideDrawer, setSideDrawer] = useState(false)
 
     function closeSideDrawer() {
         setSideDrawer(false)

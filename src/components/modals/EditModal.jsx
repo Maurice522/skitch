@@ -56,7 +56,7 @@ const handleInputChange=(e)=>{
 const handleEditProfile=async()=>{
     console.log("profileData",profileData)
     let imgLink=null
-    if(!profileData.name||!profileData.gender||!profileData.phone||!profileData.address){toast.error("Fill all fields");return}
+    // if(!profileData.name||!profileData.gender||!profileData.phone||!profileData.address){toast.error("Fill all fields");return}
     if(tempImgUrl){
         setLoading(true)
         imgLink=await uploadMedia(profileImage,"User Profile")

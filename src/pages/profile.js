@@ -13,7 +13,7 @@ export default function Profile() {
     const [settingsModal, setSettingsModal] = useState(false)
     const[isProfileUpdated,setIsProfileUpdated]=useState(false)
     const dispatch=useDispatch()
-    console.log("isProfileUpdated",isProfileUpdated)
+ 
   //FETCH USERDATA FROM FIREBASE
   const fetchdata = async (email) => {
     const userDetaill = await getUserFromDatabase(email)

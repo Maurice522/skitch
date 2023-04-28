@@ -3,12 +3,24 @@ import Layout from "../components/Layout";
 import MenuCard from "../components/MenuCard";
 import SearchBar from "../components/SearchBar";
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../redux/CartSlice";
+import { useEffect } from "react";
 export default function Menu() {
 
-    const restaurant=useLocation().state
-    const[orderCartArray,setOrderCartArray]=useState([])
+    // const restaurant=useLocation().state
+    const restaurant=useSelector((state)=>state.cart.restraunt)
+    const orderCartArray=useSelector((state)=>state.cart.menuCart)
+    // const[orderCartArray,setOrderCartArray]=useState([])
     const[tempIdArr,setTempIdArr]=useState([])
     const navigate=useNavigate()
+    const dispatch=useDispatch()
+
+
+useEffect(()=>{
+dispatch(setCart([]))
+},[])
+
 
 const handleQuantityOfOrderIncrease=(order)=>{
 
@@ -16,20 +28,20 @@ const newArr=orderCartArray.map((item)=>{
     if(item.id===order.id){return{...item,quantity:(order.quantity)+1}}
     else{return item}
 })
-setOrderCartArray(newArr)
+dispatch(setCart(newArr))
 }
 const handleQuantityOfOrderDecrease=(order)=>{
     if(order.quantity===1){
       let tempArr=  orderCartArray.filter((item)=>{return item.id!==order.id})
       let tempIdArray=tempIdArr.filter((item)=>{return item!==order.id})
-      setOrderCartArray(tempArr)
+      dispatch(setCart(tempArr))
       setTempIdArr(tempIdArray)
         return}
     const newArr=orderCartArray.map((item)=>{
         if(item.id===order.id){return{...item,quantity:(order.quantity)-1}}
         else{return item}
     })
-    setOrderCartArray(newArr)
+    dispatch(setCart(newArr))
 }
 
     return (
@@ -84,10 +96,10 @@ const handleQuantityOfOrderDecrease=(order)=>{
                 </div>
                 <div className="max-lg:hidden">
                 {restaurant.menu.map((menu)=>{
-                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                    return <MenuCard menu={menu} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
                 })}
                 {restaurant.comboMenu&&restaurant.comboMenu.map((menu)=>{
-                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                    return <MenuCard menu={menu} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
                 })}
                     
                 </div>
@@ -115,10 +127,10 @@ const handleQuantityOfOrderDecrease=(order)=>{
                 </div>
                 <div className="lg:hidden">
                 {restaurant.menu.map((menu)=>{
-                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                    return <MenuCard menu={menu} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
                 })}
                 {restaurant.comboMenu&&restaurant.comboMenu.map((menu)=>{
-                    return <MenuCard menu={menu} setOrderCartArray={setOrderCartArray} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
+                    return <MenuCard menu={menu} tempIdArr={tempIdArr} setTempIdArr={setTempIdArr} />
                 })}
                 </div>
                 <div className="flex flex-col max-lg:hidden gap-7 border-[#949494] border rounded-[8px] p-4">
