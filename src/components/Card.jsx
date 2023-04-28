@@ -63,7 +63,7 @@ console.log("restrauntToShow",restrauntToShow)
                 <div key={restraunt.id} onClick={()=>{navigate("/menu",{state:restraunt});dispatch(setRestraunt(restraunt))}} className="flex flex-col gap-3 lg:max-xl:w-[200px] w-[274px]">
                 <div style={{backgroundImage:`url(${restraunt.image})`}} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div>
                 {(JSON.stringify(restraunt.discount)!=="{}")&&<div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
-                    <span className="text-white">25% OFF up to ₹170</span>
+                    <span className="text-white">{restraunt.discount.percentage&&(`${restraunt.discount.percentage}% OFF`) + restraunt.discount.upto&&(`up to ₹${restraunt.discount.upto}`)}</span>
                 </div>}
                 <div className="flex flex-row">
                     <span>{restraunt.name}</span>
