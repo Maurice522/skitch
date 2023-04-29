@@ -32,7 +32,9 @@ const handleProceedToPaymentClick=()=>{
                 <span className="whitespace-pre basis-1/2">Your Details</span>
                 <button className="text-[#DC3535] text-right basis-1/2" onClick={() => { document.getElementById("Name").focus();document.getElementById("Phone").focus(); }}>Edit</button>
             </div>
+            <label htmlFor="Name">Name</label>
             <input type="text" className="border-0" name="name" id="Name" autoFocus={false} defaultValue={userData?.name}/>
+            <label htmlFor="Phone">Phone</label>
             <input type="number" name="phone" id="Phone" className="border-0" autoFocus={false} defaultValue={userData?.phone}/>
         </div>
         <div className="flex flex-col bg-white border border-solid rounded-md border-[#C8C8C8] p-2 gap-4">
