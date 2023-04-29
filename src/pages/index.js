@@ -24,7 +24,7 @@ export default function Home() {
                 <div className="m-2">
                     <RestaurantCard />
                 </div>
-            </div>
+            </div>            
         </div>
     )
 }

@@ -23,12 +23,19 @@ export default function Gainers() {
         }, 5000)
     }, [])
 
+    window.addEventListener("scroll",addStyle)
+
     function addStyle() {
-        
+        console.log("Scrolled")
+        if(window.scrollY > 65) {
+            setScroll(true)
+        } else {
+            setScroll(false)
+        }
     }
 
     return (
-        <div id="gainer" onScroll={addStyle} className="p-0 ml-auto mr-3 overflow-hidden max-lg:ml-2">
+        <div id="gainer" className={`p-0 ml-auto mr-3 overflow-hidden max-lg:ml-2 ${scroll ? "lg:fixed top-2 right-0 mr-3" : ""}`}>
             <div className="flex flex-col border border-solid rounded-2xl">
                 <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
                     <div className="flex flex-row gap-10 p-1">
