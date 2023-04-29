@@ -56,7 +56,7 @@ console.log("restrauntToShow",restrauntToShow)
       },[sorter])
 
     return (
-        <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-4">
+        <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-7">
         {(restrauntToShow&&restrauntToShow.length>0)&&<>
             {restrauntToShow.map((restraunt)=>{
                 return <>

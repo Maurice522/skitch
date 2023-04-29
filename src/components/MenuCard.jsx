@@ -33,8 +33,10 @@ setToggle1(false)
                 </div>
             </div>
             <div className="flex flex-col max-lg:mt-2 max-lg:w-[50vw] order-2 max-lg:order-2">
-                <img src={menu.veg?"veg.png":"non-veg.png"} alt="veg" className="w-[17px] h-[17px]" />
-                <span className="text-base font-medium font-nav">{menu?.name}</span>
+                <div className="flex flex-row justify-center">                    
+                    <span className="text-base font-medium font-nav">{menu?.name}</span>
+                    <img src={menu.veg?"veg.png":"non-veg.png"} alt="veg" className="w-[17px] h-[17px]" />
+                </div>
                 <img src="menu_star.png" className="w-[111px] h-[25px]" />
                 <span>{menu?.desc}</span>
             </div>

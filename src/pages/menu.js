@@ -145,9 +145,9 @@ const handleQuantityOfOrderDecrease=(order)=>{
                     {orderCartArray.map((order)=>{
                         return <>
                         <div key={order.id} className="flex flex-row gap-16">
-                        <div className="flex flex-row">
-                            <img src={order.veg?"veg.png":"non-veg.png"} />
+                        <div className="flex flex-row">                            
                             <span className="whitespace-pre">{order.name}</span>
+                            <img src={order.veg?"veg.png":"non-veg.png"} />
                         </div>
                         <div className="flex text-[#F59428] flex-row border border-solid rounded-md border-[#F59428] gap-4 px-1">
                             <button onClick={()=>handleQuantityOfOrderDecrease(order)}>-</button>

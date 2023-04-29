@@ -1,6 +1,6 @@
 export default function RestaurantCard() {
     return (
-        <div className="flex flex-col gap-8 lg:hidden sm:items-center">          
+        <div className="flex flex-col gap-8 hover:cursor-pointer lg:hidden sm:items-center">          
             <div className="bg-pizzeria bg-no-repeat flex flex-row border border-solid sm:w-[550px] w-auto h-[154px] rounded-2xl border-[#CFCFCF]">
                 <div className="flex flex-col items-end w-full gap-2">
                     <div className="bg-[#F59428] rounded-md self-end p-2 relative left-5">
