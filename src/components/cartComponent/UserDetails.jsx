@@ -12,8 +12,8 @@ export default function UserDetails({cart}) {
     const userData=useSelector((state)=>state.user.userData)
 const handleProceedToPaymentClick=()=>{
     if(orderCartArray.length===0){toast.error("Cart Is Empty");return}
-    if(!userData.phone||userData.phone===""){toast.error("Can not make payment without phone number");return}
     if(!userData){toast.error("Login First");return}
+    if(!userData.phone||userData.phone===""){toast.error("Can not make payment without phone number");return}
     setPaymentModeOn(true);
 }
     return (

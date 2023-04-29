@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore';
 import axios from 'axios';
 import { db } from '../../firebase/config';
 import { useSelector } from 'react-redux';
@@ -137,16 +137,16 @@ txTime:""
 
 //UPDATE DATA IN USER DATABASE
 const updateUserDatabase=async(newId,transaction)=>{
-  let userPaymentArray
-  let userOldOrder
-  if(!userDoc.Payments){userPaymentArray=[]}
-  else{userPaymentArray=userDoc.Payments}
-  const newUserPaymentArray=[...userPaymentArray,newId]
-  if(!userDoc.Orders){userOldOrder=[]}
-  else{userPaymentArray=userDoc.Orders}
-  const newOrderArray=[...userOldOrder,{restraunt:restaurant,cart:orderCartArray}]
+  // let userPaymentArray
+  // let userOldOrder
+  // if(!userDoc.Payments){userPaymentArray=[]}
+  // else{userPaymentArray=userDoc.Payments}
+  // const newUserPaymentArray=[...userPaymentArray,newId]
+  // if(!userDoc.Orders){userOldOrder=[]}
+  // else{userPaymentArray=userDoc.Orders}
+  // const newOrderArray=[...userOldOrder,{restraunt:restaurant,cart:orderCartArray}]
 const userDocumentRef=doc(db,"Users",userDoc?.email)
-await updateDoc(userDocumentRef,{Payments:newUserPaymentArray,Orders:newOrderArray}).then(()=>{
+await updateDoc(userDocumentRef,{Payments:arrayUnion(newId)}).then(()=>{
   if(transaction.txStatus==="FAILED"){
   toast.error(transaction.txMsg);
   setTimeout(()=>{
@@ -155,11 +155,12 @@ await updateDoc(userDocumentRef,{Payments:newUserPaymentArray,Orders:newOrderArr
         return;
       }
     if(transaction.txStatus==="SUCCESS"){
-        toast.success(transaction.txMsg); 
+    updateDoc(userDocumentRef,{Orders:arrayUnion({restraunt:restaurant,cart:orderCartArray})}).then(()=>{
+      toast.success(transaction.txMsg); 
       setPaymentModeOn(false) 
       setPaymentMade(true)
       return
-      
+    })
     }
 }).catch((err)=>{toast(err.message)})
 }

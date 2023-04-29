@@ -103,7 +103,7 @@ const handleEditProfile=async()=>{
                 <div className="flex flex-col p-2 rounded-2xl shadow-editCard h-[87px]">
                     <span>Phone Number</span>
                     <div className="flex flex-row">
-                        <input disabled={profileData?.phone} onChange={handleInputChange} name="phone" value={profileData?.phone} type="text" defaultValue={userData?.phone} id="num" autoFocus />
+                        <input disabled={userData?.phone} onChange={handleInputChange} name="phone" value={profileData?.phone} type="text" defaultValue={userData?.phone} id="num" autoFocus />
                         {!userData?.phone&&<button className="ml-auto text-[#DC3535]" onClick={() => { document.getElementById("num").focus(); }}>edit</button>}
                     </div>
                 </div>
