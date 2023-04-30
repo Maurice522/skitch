@@ -45,7 +45,7 @@ const handleQuantityOfOrderDecrease=(order)=>{
 }
 
     return (
-        <div className="flex flex-row gap-6 mt-8 mb-8 ml-4 max-lg:flex max-lg:flex-col-reverse">
+        <div className="flex flex-row gap-3 mt-8 mb-8 ml-4 lg:gap-3 max-lg:flex max-lg:flex-col-reverse">
             <div className="flex flex-col gap-8 basis-1/2">
                 <div className="max-lg:hidden">
                     <SearchBar />

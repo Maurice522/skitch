@@ -61,7 +61,8 @@ export default function Card() {
                 {restrauntToShow.map((restraunt) => {
                     return <>
                         <div key={restraunt.id} onClick={() => { navigate("/menu", { state: restraunt }); dispatch(setRestraunt(restraunt)) }} className="flex flex-col w-full gap-3 hover:cursor-pointer">
-                            <div style={{ backgroundImage: `url(${restraunt.image})` }} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div>
+                            {/* <div style={{ backgroundImage: `url(${restraunt.image})` }} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div> */}
+                            <img src={restraunt.image} className="rounded-2xl"/>
                             {(JSON.stringify(restraunt.discount) !== "{}") && <div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
                                 <span className="text-white">{restraunt.discount.percentage && (`${restraunt.discount.percentage}% OFF`) + restraunt.discount.upto && (`up to ₹${restraunt.discount.upto}`)}</span>
                             </div>}

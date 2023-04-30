@@ -35,7 +35,7 @@ export default function Gainers() {
     }
 
     return (
-        <div id="gainer" className={`p-0 ml-auto mr-3 no-scrollbar overflow-y-hidden overflow-hidden max-lg:ml-2 ${scroll ? "lg:fixed top-2 right-0 mr-3" : ""}`}>
+        <div id="gainer" className={`p-0 ml-auto mr-3 no-scrollbar overflow-y-hidden overflow-hidden max-lg:ml-2 ${scroll ? "lg:fixed top-2 -right-2 mr-3" : ""}`}>
             <div className="flex flex-col border border-solid rounded-2xl">
                 <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
                     <div className="flex flex-row gap-10 p-1">
