@@ -24,7 +24,7 @@ setToggle1(false)
         <div className="flex flex-row gap-3 max-lg:-ml-4 max-lg:border max-lg:rounded-lg max-lg:gap-2 max-lg:flex-wrap">
             <div className="flex flex-col max-lg:m-1 max-lg:w-[40vw] md:w-[20vw] order-1 max-lg:order-1">
                 <img src={menu?.image} className="max-lg:w-[200px] max-lg:h-[200px] w-[127px] h-[139px] rounded-2xl" />
-                <div onClick={()=>handleAddCartFunction(menu)} className="flex flex-row self-center items-center justify-center -top-4 bg-white w-[92px] gap-1 relative rounded-[4px] border-[#F59428] border border-solid">
+                <div onClick={()=>handleAddCartFunction(menu)} className="flex hover:cursor-pointer flex-row self-center items-center justify-center -top-4 bg-white w-[92px] gap-1 relative rounded-[4px] border-[#F59428] border border-solid">
                     {!toggle1&&<span className="text-[#F59428] text-center whitespace-pre"> ADD+</span>}
                     {toggle1&&<div className="text-[#F59428] text-center whitespace-pre"> ADD HALF ?
                     <p onClick={(e)=>{e.stopPropagation(); addToCartClick(menu,true)}}>Yes</p>
@@ -33,7 +33,7 @@ setToggle1(false)
                 </div>
             </div>
             <div className="flex flex-col justify-center max-lg:mt-2 max-lg:w-[40vw] order-2 max-lg:order-2">
-                <div className="flex flex-row">                    
+                <div className="flex flex-row gap-2">                    
                     <span className="text-base font-medium font-nav">{menu?.name}</span>
                     <img src={menu.veg?"veg.png":"non-veg.png"} alt="veg" className="w-[17px] h-[17px]" />
                 </div>

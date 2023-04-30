@@ -145,7 +145,7 @@ const handleQuantityOfOrderDecrease=(order)=>{
                     {orderCartArray.map((order)=>{
                         return <>
                         <div key={order.id} className="flex flex-row gap-16">
-                        <div className="flex flex-row">                            
+                        <div className="flex flex-row gap-2">                            
                             <span className="whitespace-pre">{order.name}</span>
                             <img src={order.veg?"veg.png":"non-veg.png"} />
                         </div>
