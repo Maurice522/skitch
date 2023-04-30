@@ -22,8 +22,8 @@ export default function RestaurantCard() {
                     <span className="text-right relative -left-[5%]">Tandoori Kitchen</span>
                     <div className="flex flex-row relative -left-[27%] w-[43px] border-[#F59428] rounded-md border border-solid"><img src="Star.png" alt="Star"/><span>4.4</span></div>
                     <div className="flex flex-row gap-4 ml-3 sm:ml-24">
-                        <span className="sm:whitespace-pre">Sector 71</span>
-                        <span className="sm:whitespace-pre justify-self-end">32 mins</span>
+                        <span className="whitespace-pre">Sector 71</span>
+                        <span className="whitespace-pre justify-self-end">32 mins</span>
                     </div>
                 </div>
             </div>            

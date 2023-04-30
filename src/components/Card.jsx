@@ -76,7 +76,7 @@ export default function Card() {
                                 <span>₹ {restraunt.price} for one</span>
                                 <div className="flex flex-row ml-auto">
                                     <img src="Clock.png" alt="Clock" />
-                                    <span className="font-medium leading-[21px] w-16 ml-auto text-sm font-nav">32 mins</span>
+                                    <span className="font-medium leading-[21px] w-16 whitespace-pre ml-auto text-sm font-nav">32 mins</span>
                                 </div>
                             </div>
                         </div>
