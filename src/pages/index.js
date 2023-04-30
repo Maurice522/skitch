@@ -16,9 +16,9 @@ export default function Home() {
                     <Filters sideDrawer={sideDrawer} setSideDrawer={setSideDrawer} />
                     <Card />
                 </div>
-                <div className="flex flex-row items-center justify-center lg:hidden">
+                <div className="flex flex-row items-center justify-center mb-3 lg:hidden">
                     <img src="Exchange.png" alt="exchange" />
-                    <span className="italic font-medium leading-[30px] text-xl uppercase">The Food Stock Exchange</span>
+                    <span className="italic font-medium leading-[30px] text-xl whitespace-pre uppercase">The Food Stock Exchange</span>
                 </div>
                 <Gainers />
                 <div className="m-2">
