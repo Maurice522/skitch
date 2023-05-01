@@ -68,7 +68,7 @@ export default function Card() {
                             </div>}
                             <div className="items-end justify-end mt-auto">
                                 <div className="flex flex-row">
-                                    <span>{restraunt.name}</span>
+                                    <span className="font-bold">{restraunt.name}</span>
                                     <div className="flex flex-row items-center h-[24px] gap-1 w-12 rounded-[4px] ml-auto border-[#F59428] border border-solid">
                                         <img src="Star.png" alt="star" className="w-4" />
                                         <span>4.4</span>
