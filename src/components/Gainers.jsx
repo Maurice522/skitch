@@ -3,9 +3,9 @@ import FlipMove from 'react-flip-move';
 
 export default function Gainers() {
     const [foods, setFoods] = useState([{ "name": "Indian", "price": 0 }, { "name": "Thai", "price": 0 }, { "name": "French", "price": 0 }, { "name": "Chinese", "price": 0 }])
-    const [restaurant, setRestaurant] = useState([{ "name": "Burger King", "price": 0 }, { "name": "McDonalds", "price": 0 }, { "name": "Little Italy", "price": 0 }, { "name": "UFO", "price": 0 }])
+    const [restaurant, setRestaurant] = useState([{ "name": "Classic Burger", "price": 0 }, { "name": "Pizza", "price": 0 }, { "name": "Momos", "price": 0 }, { "name": "Tandoori Chicken", "price": 0 }])
     const [arr, setArr] = useState([{ "name": "Indian", "price": 0 }, { "name": "Thai", "price": 0 }, { "name": "French", "price": 0 }, { "name": "Chinese", "price": 0 }])
-    const [arr1, setArr1] = useState([{ "name": "Burger King", "price": 0 }, { "name": "McDonalds", "price": 0 }, { "name": "Little Italy", "price": 0 }, { "name": "UFO", "price": 0 }])
+    const [arr1, setArr1] = useState([{ "name": "Classic Burger", "price": 0 }, { "name": "Pizza", "price": 0 }, { "name": "Momos", "price": 0 }, { "name": "Tandoori Chicken", "price": 0 }])
     const [scroll,setScroll] = useState(false)
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function Gainers() {
             <div className="flex flex-col border border-solid rounded-2xl">
                 <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
                     <div className="flex flex-row gap-10 p-1">
-                        <span className="text-sm text-white whitespace-pre">Top Gainer Food</span>
+                        <span className="text-sm text-white whitespace-pre">Top Gainer cuisine</span>
                         <span className="ml-auto text-sm text-white">Change(%)</span>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ export default function Gainers() {
                                 <div key={food.name} className="flex flex-row gap-1 p-1">
                                     <div className="flex flex-row whitespace-pre basis-1/2">
                                         <img src="Indian.jpg" className="w-6 h-6" alt="Indian" />
-                                        <span>{food.name}</span>
+                                        <span> {food.name}</span>
                                     </div>
                                     <div className="flex flex-col text-right basis-1/2">
                                         <span className={food.price >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{food.price > 5 ? ((620 + (620) / 100 * (food.price - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - food.price)).toPrecision(5)}</span>
@@ -65,7 +65,7 @@ export default function Gainers() {
             <div className="flex flex-col mt-4 border border-solid rounded-2xl">
                 <div className="bg-[#F59428] p-1 rounded-b-none rounded-2xl">
                     <div className="flex flex-row gap-10 p-1">
-                        <span className="text-sm text-white whitespace-pre">Top Gainer Restaurant</span>
+                        <span className="text-sm text-white whitespace-pre">Top Gainer Food</span>
                         <span className="ml-auto text-sm text-white">Change(%)</span>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export default function Gainers() {
                                 <div key={restaurant.name} className="flex flex-row gap-1 p-1">
                                     <div className="flex flex-row whitespace-pre basis-1/2">
                                         <img src="Indian.jpg" className="w-6 h-6" alt="Indian" />
-                                        <span>{restaurant.name}</span>
+                                        <span> {restaurant.name}</span>
                                     </div>
                                     <div className="flex flex-col text-right basis-1/2">
                                         <span className={restaurant.price >= 5 ? "text-[#4E9F3D]" : "text-[#DC3535]"}>{restaurant.price > 5 ? ((620 + (620) / 100 * (restaurant.price - 5))).toPrecision(5) : (620 - (620) / 100 * (5 - restaurant.price)).toPrecision(5)}</span>
