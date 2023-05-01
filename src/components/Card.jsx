@@ -56,28 +56,30 @@ export default function Card() {
     }, [sorter])
 
     return (
-        <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-7">
+        <div className="grid grid-cols-3 gap-12 max-lg:hidden lg:grid-cols-3 lg:gap-12">
             {(restrauntToShow && restrauntToShow.length > 0) && <>
                 {restrauntToShow.map((restraunt) => {
                     return <>
                         <div key={restraunt.id} onClick={() => { navigate("/menu", { state: restraunt }); dispatch(setRestraunt(restraunt)) }} className="flex flex-col w-full gap-3 hover:cursor-pointer">
                             {/* <div style={{ backgroundImage: `url(${restraunt.image})` }} className="bg-burger lg:max-xl:bg-contain lg:max-xl:h-[175px] h-[240px] rounded-2xl bg-no-repeat"></div> */}
-                            <img src={restraunt.image} alt={restraunt.name} className="rounded-2xl"/>
+                            <img src={restraunt.image} alt={restraunt.name} className="rounded-2xl" />
                             {(JSON.stringify(restraunt.discount) !== "{}") && <div className="bg-[#F59428] rounded-md self-end p-1 mt-2 absolute">
                                 <span className="text-white">{restraunt.discount.percentage && (`${restraunt.discount.percentage}% OFF`) + restraunt.discount.upto && (`up to ₹${restraunt.discount.upto}`)}</span>
                             </div>}
-                            <div className="flex flex-row">
-                                <span>{restraunt.name}</span>
-                                <div className="flex flex-row items-center gap-1 w-12 rounded-[4px] ml-auto border-[#F59428] border border-solid">
-                                    <img src="Star.png" alt="star" className="w-4" />
-                                    <span>4.4</span>
+                            <div className="items-end justify-end mt-auto">
+                                <div className="flex flex-row">
+                                    <span>{restraunt.name}</span>
+                                    <div className="flex flex-row items-center h-[24px] gap-1 w-12 rounded-[4px] ml-auto border-[#F59428] border border-solid">
+                                        <img src="Star.png" alt="star" className="w-4" />
+                                        <span>4.4</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex flex-row">
-                                <span>₹ {restraunt.price} for one</span>
-                                <div className="flex flex-row ml-auto">
-                                    <img src="Clock.png" alt="Clock" />
-                                    <span className="font-medium leading-[21px] w-16 whitespace-pre ml-auto text-sm font-nav">32 mins</span>
+                                <div className="flex flex-row">
+                                    <span>₹ {restraunt.price} for one</span>
+                                    <div className="flex flex-row ml-auto">
+                                        <img src="Clock.png" alt="Clock" />
+                                        <span className="font-medium leading-[21px] w-16 whitespace-pre ml-auto text-sm font-nav">32 mins</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
