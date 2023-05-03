@@ -9,6 +9,8 @@ import EditRestaurant from "./components/Admin Pannel/Edit Restaurant/EditRestau
 import Cart from "./pages/cart";
 import Menu from "./pages/menu";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Refund from "./pages/Refund";
 
 const routes = [
   {
@@ -60,6 +62,16 @@ const routes = [
     path: "/privacypolicy",
     name: "privacypolicy",
     component: <Privacy />,
+  },
+  {
+    path: "/termsandcondition",
+    name: "termsandcondition",
+    component: <Terms />,
+  },
+  {
+    path: "/refundpolicy",
+    name: "refundpolicy",
+    component: <Refund />,
   },
 ];
 
