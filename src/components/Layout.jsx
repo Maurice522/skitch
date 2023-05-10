@@ -13,7 +13,7 @@ else{setShowNavbar(true)}
     return(
         <div>
             {showNavbar&&<NewNav />}
-            <div>{children}</div>
+            <div>{children}</div>            
         </div>
     )
 }

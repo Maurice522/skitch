@@ -1,7 +1,7 @@
 import { useState } from "react"
 import LogInModal from "../modals/LogInModal"
 import SignUpModal from "../modals/SignUpModal"
-import { Route, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import userImg from "../../assets/user_img.jpg"
 export default function NewNav() {
@@ -38,7 +38,7 @@ export default function NewNav() {
             <nav className="w-screen">
                 <div className="flex max-lg:hidden flex-row bg-white max-md:h-[47px] h-[80px] shadow-nav items-center text-center">
                     <div className="flex flex-row items-center">
-                        <Link to={"/"} className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-2xl max-md:text-xl"><span>SKITCH</span>                    </Link>
+                        <Link to={"/"} className="font-nav italic text-transparent max-md:w-[80px] max-md:h-[20px] w-[156px] h-[28px] bg-clip-text font-bold max-md:leading-[22px] leading-[24px] bg-gradient-to-b from-[#DC3535] to-[#F59428] text-2xl max-md:text-xl"><span>SKITCH</span></Link>
                         {(user?.user&&userData?.address)&&<div className="flex flex-col text-left">
                             <span>Address</span>
                             <span>{userData?.address}</span>
