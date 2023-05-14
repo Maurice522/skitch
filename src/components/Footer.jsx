@@ -12,7 +12,7 @@ export default function Footer() {
                     <span className="text-[#fdb602] text-xl font-normal">Company</span>
                     <span className="text-lg font-normal text-[#999]">About Us</span>                    
                     <span className="text-lg font-normal text-[#999]">Blog</span>                    
-                    <span className="text-lg font-normal text-[#999]">Contact Us</span>                    
+                    <a href="mailto:Connect@skitch.in" className="text-lg font-normal text-[#999]">Contact Us</a>                    
                 </div>
                 <div className="flex flex-col gap-4">
                     <span className="text-[#fdb602] text-xl font-normal">For You</span>
@@ -23,7 +23,7 @@ export default function Footer() {
                 <div className="flex flex-col gap-4">
                     <span className="text-[#fdb602] text-xl font-normal">Help</span>
                     <span className="text-lg font-normal text-[#999]">FAQ s</span>                                                      
-                    <span className="text-lg font-normal text-[#999]">Contact Us</span>                    
+                    <a href="mailto:Connect@skitch.in" className="text-lg font-normal text-[#999]">Contact Us</a>                    
                 </div>
             </div>
             <span className="text-[#999] px-16 text-lg font-normal">By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners.</span>

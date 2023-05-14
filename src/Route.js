@@ -11,6 +11,7 @@ import Menu from "./pages/menu";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
+import About from "./pages/about";
 
 const routes = [
   {
@@ -73,6 +74,11 @@ const routes = [
     name: "refundpolicy",
     component: <Refund />,
   },
+  {
+    path: "/about",
+    name: "about",
+    component: <About />
+  }
 ];
 
 export default routes;
