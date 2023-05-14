@@ -51,8 +51,8 @@ const handleQuantityOfOrderDecrease=(order)=>{
                     <SearchBar />
                 </div>
                 <div className="flex flex-row items-center max-lg:top-40 max-sm:top-20 max-lg:w-[100%] max-lg:absolute max-lg:border-0 border-b-[2px] p-2 border-[#949494]">
-                    <div className="flex flex-col max-lg:w-[50vw] items-start justify-center gap-4 max-lg:basis-1/2">
-                        <div className="flex flex-row items-center justify-center"><img style={{marginRight:"1rem"}} src={restaurant?.image} alt="burger king" className="max-lg:w-[30px] max-lg:h-[30px] w-[70px] h-[70px]" /> <span className="text-3xl font-semibold whitespace-pre max-lg:text-xl">{restaurant?.name}</span></div>
+                    <div className="flex flex-col  lg:basis-1/2 max-lg:w-[50vw] items-start justify-center gap-4 max-lg:basis-1/2">
+                        <div className="flex flex-row items-center justify-center"><img style={{marginRight:"1rem"}} src={restaurant?.image} alt="burger king" className="max-lg:w-[30px] rounded-md max-lg:h-[30px] w-[70px] h-[70px]" /> <span className="text-3xl font-semibold max-lg:text-xl">{restaurant?.name}</span></div>
                         <span className="text-xl font-medium max-lg:text-xs max-lg:font-medium">{restaurant?.desc}</span>
                         <div className="flex flex-row gap-2">
                             <div className="flex flex-row items-center gap-1 w-12 rounded-[4px] bg-[#F59428]">
@@ -66,10 +66,10 @@ const handleQuantityOfOrderDecrease=(order)=>{
                             <div className="px-2 border-l-2">35 min</div>
                         </div>
                     </div>
-                    <div className="max-lg:flex max-lg:gap-4 max-lg:flex-col">
-                        <div className="border border-[#A6A6A6] max-lg:w-[145px] max-lg:p-2 max-lg:h-[42px] text-center max-lg:ml-auto rounded-lg flex flex-row gap-6 self-start ml-auto p-4">
+                    <div className="max-lg:flex lg:basis-1/2 max-lg:gap-4 max-lg:flex-col">
+                        <div className="border lg:w-fit border-[#A6A6A6] max-lg:w-[145px] max-lg:p-2 max-lg:h-[42px] text-center max-lg:ml-auto rounded-lg flex flex-row gap-6 self-start ml-auto p-4">
                             <span className="self-start text-base font-semibold">Outlet</span>
-                            <div className="ml-auto">GIP DT</div>
+                            <div className="ml-auto whitespace-pre">GIP DT</div>
                         </div>
                         <div className="flex flex-row lg:hidden max-lg:p-2 border gap-2 border-[#414141] rounded-lg p-3 bg-black text-white">
                             <span>Menu</span>
