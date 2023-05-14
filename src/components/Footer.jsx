@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex flex-col gap-8 max-md:px-16 max-md:self-start md:gap-40 md:flex-row">
                 <div className="flex flex-col gap-4">
                     <span className="text-[#fdb602] text-xl font-normal">Company</span>
-                    <span className="text-lg font-normal text-[#999]">About Us</span>                    
+                    <Link to={"/about"} className="text-lg font-normal text-[#999]">About Us</Link>                    
                     <span className="text-lg font-normal text-[#999]">Blog</span>                    
                     <a href="mailto:Connect@skitch.in" className="text-lg font-normal text-[#999]">Contact Us</a>                    
                 </div>
