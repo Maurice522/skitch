@@ -21,9 +21,10 @@ export default function Footer() {
                     <Link to={"/refundpolicy"} className="text-lg font-normal text-[#999]">Refund</Link>                    
                 </div>
                 <div className="flex flex-col gap-4">
-                    <span className="text-[#fdb602] text-xl font-normal">Help</span>
-                    <span className="text-lg font-normal text-[#999]">FAQ s</span>                                                      
-                    <a href="mailto:Connect@skitch.in" className="text-lg font-normal text-[#999]">Contact Us</a>                    
+                    <Link to={"/contactus"} className="text-[#fdb602] text-xl font-normal" style={{cursor:"pointer"}}>Contact Us</Link>  
+                    <span className="text-lg font-normal text-[#999]">📍 Sector-13 rohini Delhi-110085</span>                                                      
+                    <span className="text-lg font-normal text-[#999]">📱 +91 7042517208</span>                                                      
+                    <a href="mailto:Connect@skitch.in" className="text-lg font-normal text-[#999]">✉️ connect@skitch.in</a>                    
                 </div>
             </div>
             <span className="text-[#999] px-16 text-lg font-normal">By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners.</span>

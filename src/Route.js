@@ -12,6 +12,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
 import About from "./pages/about";
+import Contact from "./pages/contact";
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: "/about",
     name: "about",
     component: <About />
+  },
+  {
+    path: "/contactus",
+    name: "contactus",
+    component: <Contact />
   }
 ];
 
