@@ -28,7 +28,7 @@ export default function Footer() {
                 </div>
             </div>
             <span className="text-[#999] px-16 text-lg font-normal">By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners.</span>
-            <span className="text-[#999] text-lg font-normal">SKITCH. All rights reserved.</span>
+            <span className="text-[#999] text-lg font-normal">SKITCH Technology. All rights reserved.</span>
         </div>
     )
 }
